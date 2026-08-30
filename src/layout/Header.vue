@@ -1,17 +1,32 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue';
+import { ref, useTemplateRef, watch } from 'vue';
 import { useProgressStore } from '../stores/progress';
 import { useAuthStore } from '../stores/auth';
 import { JsonExportImportService } from '../services/export/JsonExportImportService';
 import { APP_NAME_SHORT } from '../config/app';
-import Button from '../components/common/Button.vue';
-import { Download, Upload, RotateCcw, Check, Sparkles, AlertCircle, LogOut } from 'lucide-vue-next';
+import { useToast } from '../composables/useToast';
+import AppTooltip from '../components/common/AppTooltip.vue';
+import AppDropdown from '../components/common/AppDropdown.vue';
+import AppDropdownItem from '../components/common/AppDropdownItem.vue';
+import AppAlertDialog from '../components/common/AppAlertDialog.vue';
+import { Download, Upload, RotateCcw, Check, Sparkles, LogOut, MoreHorizontal } from 'lucide-vue-next';
 
 const progressStore = useProgressStore();
 const authStore = useAuthStore();
+const toast = useToast();
+
 const fileInputRef = useTemplateRef<HTMLInputElement>('fileInputRef');
 const copiedAiContext = ref(false);
-const statusMessage = ref<string | null>(null);
+const resetDialogOpen = ref(false);
+const signOutDialogOpen = ref(false);
+
+// Surface storage failures as a toast instead of a silent header badge.
+watch(
+  () => progressStore.lastSaveError,
+  (error) => {
+    if (error) toast.error('Прогресс не сохранён', error);
+  }
+);
 
 function handleExport() {
   JsonExportImportService.exportProgress(progressStore.userProgress);
@@ -29,22 +44,22 @@ async function handleFileSelected(e: Event) {
   try {
     const result = await JsonExportImportService.importProgress(file);
     await progressStore.importProgress(result.data);
-    if (result.skippedOrphanCount > 0) {
-      statusMessage.value = `Импортировано (пропущено ${result.skippedOrphanCount} устаревших записей)`;
-      setTimeout(() => { statusMessage.value = null; }, 4000);
-    }
+    toast.success(
+      'Прогресс импортирован',
+      result.skippedOrphanCount > 0
+        ? `Пропущено устаревших записей: ${result.skippedOrphanCount}`
+        : undefined
+    );
   } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : 'Ошибка импорта';
-    alert(message);
+    toast.error('Импорт не удался', err instanceof Error ? err.message : 'Ошибка импорта');
   } finally {
     target.value = '';
   }
 }
 
 async function handleReset() {
-  if (confirm('Сбросить весь прогресс матрицы?')) {
-    await progressStore.resetProgress();
-  }
+  await progressStore.resetProgress();
+  toast.notify('Прогресс сброшен');
 }
 
 async function handleCopyAiContext() {
@@ -67,118 +82,95 @@ ${gapList || 'Все обязательные навыки закрыты!'}
 
 Используй этот контекст для проведения mock-интервью и разбора пробелов.`;
 
-  await navigator.clipboard.writeText(text);
-  copiedAiContext.value = true;
-  setTimeout(() => {
-    copiedAiContext.value = false;
-  }, 2000);
-}
-
-async function handleSignOut() {
-  if (confirm('Выйти из аккаунта?')) {
-    await authStore.signOut();
+  try {
+    await navigator.clipboard.writeText(text);
+    copiedAiContext.value = true;
+    setTimeout(() => { copiedAiContext.value = false; }, 2000);
+  } catch {
+    toast.error('Не удалось скопировать', 'Буфер обмена недоступен');
   }
 }
 </script>
 
 <template>
-  <header class="bg-[var(--surface-1)] sticky top-0 z-30 px-6 py-3">
-    <div class="max-w-[1160px] mx-auto flex items-center justify-between gap-4">
-      <!-- Wordmark -->
-      <div class="flex items-center gap-2.5">
-        <span class="text-sm font-bold tracking-tight text-[var(--text-primary)] font-mono">
-          {{ APP_NAME_SHORT }}
-        </span>
-        <span class="text-[10px] font-mono text-[var(--text-tertiary)] bg-[var(--surface-2)] px-1.5 py-0.5 rounded">
-          v2.0
-        </span>
-        <!-- Storage error indicator -->
-        <span
-          v-if="progressStore.lastSaveError"
-          class="text-[11px] text-[var(--critical)] flex items-center gap-1 font-mono"
-          :title="progressStore.lastSaveError"
-        >
-          <AlertCircle class="w-3.5 h-3.5" />
-          <span>Ошибка сохранения</span>
-        </span>
-        <!-- Import status message -->
-        <span
-          v-if="statusMessage"
-          class="text-[11px] text-[var(--text-secondary)] font-mono"
-        >
-          {{ statusMessage }}
-        </span>
-      </div>
+  <header class="bg-(--surface-1) sticky top-0 z-30 px-4 sm:px-6 py-3">
+    <div class="max-w-[1320px] mx-auto flex items-center justify-between gap-4">
+      <span class="text-sm font-semibold tracking-tight text-(--text-primary)">
+        {{ APP_NAME_SHORT }}
+      </span>
 
-      <!-- Action Icons with tooltips -->
-      <div class="flex items-center gap-1.5">
-        <!-- Copy AI Context -->
-        <Button
-          variant="ghost"
-          size="icon"
-          :title="copiedAiContext ? 'Контекст скопирован!' : 'Скопировать контекст для ИИ'"
-          aria-label="Скопировать контекст для ИИ"
-          @click="handleCopyAiContext"
-        >
-          <component
-            :is="copiedAiContext ? Check : Sparkles"
-            :class="['w-4 h-4', copiedAiContext ? 'text-[var(--success)]' : 'text-[var(--text-secondary)]']"
-          />
-        </Button>
+      <div class="flex items-center gap-1">
+        <!-- Frequent action stays visible; the rest lives in the menu. -->
+        <AppTooltip :label="copiedAiContext ? 'Скопировано' : 'Скопировать контекст для ИИ'">
+          <button
+            type="button"
+            aria-label="Скопировать контекст для ИИ"
+            class="p-2 rounded-lg cursor-pointer transition-colors hover:bg-(--surface-2)
+                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
+            @click="handleCopyAiContext"
+          >
+            <component
+              :is="copiedAiContext ? Check : Sparkles"
+              :class="['w-4 h-4', copiedAiContext ? 'text-(--success)' : 'text-(--text-secondary)']"
+            />
+          </button>
+        </AppTooltip>
 
-        <input
-          ref="fileInputRef"
-          type="file"
-          accept=".json"
-          class="hidden"
-          @change="handleFileSelected"
-        >
+        <input ref="fileInputRef" type="file" accept=".json" class="hidden" @change="handleFileSelected">
 
-        <!-- Export -->
-        <Button
-          variant="ghost"
-          size="icon"
-          title="Экспорт прогресса в JSON"
-          aria-label="Экспорт прогресса в JSON"
-          @click="handleExport"
-        >
-          <Download class="w-4 h-4 text-[var(--text-secondary)]" />
-        </Button>
+        <AppDropdown>
+          <template #trigger>
+            <button
+              type="button"
+              aria-label="Меню действий"
+              class="p-2 rounded-lg cursor-pointer transition-colors hover:bg-(--surface-2)
+                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
+            >
+              <MoreHorizontal class="w-4 h-4 text-(--text-secondary)" />
+            </button>
+          </template>
 
-        <!-- Import -->
-        <Button
-          variant="ghost"
-          size="icon"
-          title="Импорт прогресса из JSON"
-          aria-label="Импорт прогресса из JSON"
-          @click="handleImportClick"
-        >
-          <Upload class="w-4 h-4 text-[var(--text-secondary)]" />
-        </Button>
+          <AppDropdownItem @select="handleExport">
+            <Download class="w-3.5 h-3.5 shrink-0" />
+            <span>Экспорт прогресса</span>
+          </AppDropdownItem>
 
-        <!-- Reset -->
-        <Button
-          variant="ghost"
-          size="icon"
-          title="Сбросить отметки"
-          aria-label="Сбросить отметки"
-          @click="handleReset"
-        >
-          <RotateCcw class="w-4 h-4 text-[var(--text-tertiary)] hover:text-[var(--critical)]" />
-        </Button>
+          <AppDropdownItem @select="handleImportClick">
+            <Upload class="w-3.5 h-3.5 shrink-0" />
+            <span>Импорт из файла</span>
+          </AppDropdownItem>
 
-        <!-- Logout -->
-        <Button
-          v-if="authStore.status === 'authed'"
-          variant="ghost"
-          size="icon"
-          title="Выйти из системы"
-          aria-label="Выйти из системы"
-          @click="handleSignOut"
-        >
-          <LogOut class="w-4 h-4 text-[var(--text-tertiary)] hover:text-[var(--critical)]" />
-        </Button>
+          <AppDropdownItem tone="critical" @select="resetDialogOpen = true">
+            <RotateCcw class="w-3.5 h-3.5 shrink-0" />
+            <span>Сбросить прогресс</span>
+          </AppDropdownItem>
+
+          <AppDropdownItem
+            v-if="authStore.status === 'authed'"
+            tone="critical"
+            @select="signOutDialogOpen = true"
+          >
+            <LogOut class="w-3.5 h-3.5 shrink-0" />
+            <span>Выйти из аккаунта</span>
+          </AppDropdownItem>
+        </AppDropdown>
       </div>
     </div>
+
+    <AppAlertDialog
+      v-model:open="resetDialogOpen"
+      title="Сбросить весь прогресс?"
+      description="Все отметки и заметки будут удалены. Действие необратимо."
+      confirm-label="Сбросить"
+      @confirm="handleReset"
+    />
+
+    <AppAlertDialog
+      v-model:open="signOutDialogOpen"
+      title="Выйти из аккаунта?"
+      description="Локальные данные на этом устройстве будут очищены. Прогресс останется в облаке."
+      confirm-label="Выйти"
+      @confirm="authStore.signOut()"
+    />
   </header>
 </template>

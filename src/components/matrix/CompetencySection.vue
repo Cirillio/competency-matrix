@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed } from 'vue';
+import { AccordionItem, AccordionHeader, AccordionTrigger, AccordionContent } from 'reka-ui';
 import type { SkillItem } from '../../types/matrix';
 import { useProgressStore } from '../../stores/progress';
 import SkillRow from './SkillRow.vue';
@@ -8,63 +9,61 @@ import { ChevronRight } from 'lucide-vue-next';
 const props = defineProps<{
   id: string;
   name: string;
-  category: string;
   section: string;
   skills: SkillItem[];
-  defaultExpanded?: boolean;
 }>();
 
 const progressStore = useProgressStore();
-const isExpanded = ref(props.defaultExpanded ?? false);
 
-const completedCount = computed(() => {
-  return props.skills.filter((s) => progressStore.isSkillCompleted(s.id)).length;
-});
-</script>
+const completedCount = computed(
+  () => props.skills.filter((s) => progressStore.isSkillCompleted(s.id)).length
+);
 
-<script lang="ts">
-import { computed } from 'vue';
+const percent = computed(() =>
+  props.skills.length === 0 ? 0 : Math.round((completedCount.value / props.skills.length) * 100)
+);
+
+const isComplete = computed(() => completedCount.value === props.skills.length);
 </script>
 
 <template>
-  <div class="space-y-2">
-    <!-- Competency Header -->
-    <button
-      type="button"
-      @click="isExpanded = !isExpanded"
-      class="w-full px-4 py-2.5 bg-[var(--surface-1)] hover:bg-[var(--surface-2)] rounded-xl flex items-center justify-between gap-3 text-left transition-colors cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-    >
-      <div class="flex items-center gap-2.5 truncate">
+  <AccordionItem :value="id" class="rounded-xl bg-(--surface-1) overflow-hidden">
+    <AccordionHeader as="h3">
+      <AccordionTrigger
+        class="group w-full min-h-12 px-3 flex items-center gap-3 text-left cursor-pointer
+               transition-colors hover:bg-(--surface-2)
+               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
+      >
         <ChevronRight
-          :class="[
-            'w-4 h-4 text-[var(--text-tertiary)] transition-transform duration-200 shrink-0',
-            isExpanded ? 'rotate-90 text-[var(--text-primary)]' : ''
-          ]"
+          class="w-4 h-4 shrink-0 text-(--text-tertiary) transition-transform duration-200
+                 group-data-[state=open]:rotate-90"
         />
-        <span class="text-sm font-semibold text-[var(--text-primary)] truncate">
-          {{ name }}
+
+        <span class="min-w-0 flex-1">
+          <span class="block truncate text-[13px] font-medium text-(--text-primary)">{{ name }}</span>
+          <span class="block truncate text-[11px] text-(--text-tertiary)">{{ section }}</span>
         </span>
-        <span class="text-xs text-[var(--text-tertiary)] truncate">
-          {{ section }}
+
+        <!-- Thin completion bar doubles as the counter -->
+        <span class="shrink-0 flex items-center gap-2.5">
+          <span class="hidden sm:block w-16 h-1 rounded-full bg-(--surface-3) overflow-hidden">
+            <span
+              :class="['block h-full rounded-full transition-all duration-300', isComplete ? 'bg-(--success)' : 'bg-(--accent)']"
+              :style="{ width: `${percent}%` }"
+            />
+          </span>
+          <span class="text-[11px] font-mono tabular-nums">
+            <span :class="isComplete ? 'text-(--success)' : 'text-(--text-secondary)'">{{ completedCount }}</span>
+            <span class="text-(--text-tertiary)">/{{ skills.length }}</span>
+          </span>
         </span>
+      </AccordionTrigger>
+    </AccordionHeader>
+
+    <AccordionContent class="overflow-hidden">
+      <div class="p-1.5 pt-0 space-y-1">
+        <SkillRow v-for="skill in skills" :key="skill.id" :skill="skill" />
       </div>
-
-      <!-- Counter -->
-      <span class="text-xs font-mono text-[var(--text-secondary)] shrink-0">
-        <strong :class="completedCount === skills.length ? 'text-[var(--success)]' : 'text-[var(--text-primary)]'">
-          {{ completedCount }}
-        </strong>
-        <span class="text-[var(--text-tertiary)]">/{{ skills.length }}</span>
-      </span>
-    </button>
-
-    <!-- Skills Rows List -->
-    <div v-if="isExpanded" class="space-y-1 pl-2 sm:pl-3">
-      <SkillRow
-        v-for="skill in skills"
-        :key="skill.id"
-        :skill="skill"
-      />
-    </div>
-  </div>
+    </AccordionContent>
+  </AccordionItem>
 </template>

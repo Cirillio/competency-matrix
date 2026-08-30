@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
+import { CheckboxRoot, CheckboxIndicator } from 'reka-ui';
 import type { SkillItem } from '../../types/matrix';
 import { useProgressStore } from '../../stores/progress';
 import Badge from '../common/Badge.vue';
-import { Check, ExternalLink, ChevronDown, ChevronUp } from 'lucide-vue-next';
+import AppPopover from '../common/AppPopover.vue';
+import SkillDetailsDialog from './SkillDetailsDialog.vue';
+import { Check, StickyNote } from 'lucide-vue-next';
 
-const props = defineProps<{
-  skill: SkillItem;
-}>();
+const props = defineProps<{ skill: SkillItem }>();
 
 const progressStore = useProgressStore();
 
@@ -15,139 +16,129 @@ const isCompleted = computed(() => progressStore.isSkillCompleted(props.skill.id
 const skillRecord = computed(() => progressStore.getSkillRecord(props.skill.id));
 const isGap = computed(() => progressStore.gapSkillIds.has(props.skill.id));
 
-const isExpanded = ref(false);
-const notes = ref(skillRecord.value?.notes || '');
+const detailsOpen = ref(false);
+const notesOpen = ref(false);
+const notes = ref(skillRecord.value?.notes ?? '');
 
-function handleToggle(e: Event) {
-  e.stopPropagation();
+// Keep the draft in sync when the record changes underneath (import, remote sync).
+watch(
+  () => skillRecord.value?.notes,
+  (incoming) => {
+    if (!notesOpen.value) notes.value = incoming ?? '';
+  }
+);
+
+function handleCheckedChange(value: boolean | 'indeterminate') {
+  if (value === 'indeterminate') return;
   progressStore.toggleSkill(props.skill.id, notes.value || undefined);
 }
 
-function handleKeydown(e: KeyboardEvent) {
-  if (e.key === ' ' || e.key === 'Enter') {
-    e.preventDefault();
-    progressStore.toggleSkill(props.skill.id, notes.value || undefined);
+function persistNotes() {
+  if ((skillRecord.value?.notes ?? '') !== notes.value) {
+    progressStore.updateSkillNotes(props.skill.id, notes.value);
   }
 }
 
-function handleNotesBlur() {
-  progressStore.updateSkillNotes(props.skill.id, notes.value);
-}
+// Closing the popover (Escape, outside click) must not lose an unsaved draft.
+watch(notesOpen, (isOpen, wasOpen) => {
+  if (wasOpen && !isOpen) persistNotes();
+});
 </script>
 
 <template>
-  <div class="bg-[var(--surface-1)] hover:bg-[var(--surface-2)] rounded-lg transition-colors overflow-hidden">
-    <!-- Main Row -->
-    <div
-      @click="isExpanded = !isExpanded"
-      class="px-4 py-3 flex items-center justify-between gap-3 cursor-pointer select-none"
+  <div
+    class="group flex items-center gap-3 pl-3 pr-2 min-h-12 rounded-lg
+           bg-(--surface-1) hover:bg-(--surface-2) transition-colors"
+  >
+    <CheckboxRoot
+      :model-value="isCompleted"
+      :aria-label="`Отметить навык: ${skill.title}`"
+      :class="[
+        'w-5 h-5 shrink-0 rounded-md flex items-center justify-center cursor-pointer transition-colors',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)',
+        isCompleted ? 'bg-(--accent) text-white' : 'bg-(--surface-3) text-transparent hover:bg-(--surface-3)',
+      ]"
+      @update:model-value="handleCheckedChange"
     >
-      <!-- Left: Checkbox + Title -->
-      <div class="flex items-center gap-3 min-w-0">
-        <!-- Accessible Checkbox -->
+      <CheckboxIndicator class="inline-flex">
+        <Check class="w-3 h-3 stroke-[3]" />
+      </CheckboxIndicator>
+    </CheckboxRoot>
+
+    <!-- Title opens the details dialog -->
+    <button
+      type="button"
+      class="min-w-0 flex-1 py-2 text-left cursor-pointer rounded
+             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
+      @click="detailsOpen = true"
+    >
+      <span
+        :class="[
+          'block truncate text-[13px] transition-colors',
+          isCompleted
+            ? 'text-(--text-tertiary) line-through'
+            : isGap
+              ? 'text-(--text-primary) font-medium'
+              : 'text-(--text-primary)',
+        ]"
+      >
+        {{ skill.title }}
+      </span>
+    </button>
+
+    <span
+      v-if="isGap && !isCompleted"
+      class="w-1.5 h-1.5 rounded-full bg-(--critical) shrink-0"
+      aria-hidden="true"
+    />
+
+    <!-- Wrappers own the responsive display: a `hidden` class passed to Badge would
+         lose to its own `inline-flex` base utility (same specificity, later in source). -->
+    <span class="hidden sm:inline-flex shrink-0">
+      <Badge variant="grade" :grade="skill.grade" size="sm" />
+    </span>
+    <span class="hidden md:inline-flex shrink-0">
+      <Badge variant="requirement" :requirement="skill.requirement" size="sm" />
+    </span>
+
+    <AppPopover
+      v-model:open="notesOpen"
+      side="left"
+      align="start"
+      width-class="w-[min(20rem,calc(100vw-2rem))]"
+    >
+      <template #trigger>
         <button
           type="button"
-          role="checkbox"
-          :aria-checked="isCompleted"
-          :aria-label="`Отметить навык ${skill.title}`"
-          @click="handleToggle"
-          @keydown="handleKeydown"
+          :aria-label="skillRecord?.notes ? 'Изменить заметку' : 'Добавить заметку'"
           :class="[
-            'w-4.5 h-4.5 rounded border flex items-center justify-center transition-all cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
-            isCompleted
-              ? 'bg-[var(--accent)] border-[var(--accent)] text-white'
-              : 'border-[var(--text-tertiary)] bg-[var(--surface-2)] hover:border-[var(--text-secondary)] text-transparent'
+            'shrink-0 p-2 rounded-lg cursor-pointer transition-colors',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)',
+            skillRecord?.notes
+              ? 'text-(--accent)'
+              : 'text-(--text-tertiary) opacity-0 group-hover:opacity-100 focus-visible:opacity-100 sm:opacity-0',
           ]"
         >
-          <Check class="w-3 h-3 stroke-[3]" />
+          <StickyNote class="w-3.5 h-3.5" />
         </button>
+      </template>
 
-        <!-- Title -->
-        <div class="truncate text-sm">
-          <span
-            :class="[
-              'transition-colors',
-              isCompleted
-                ? 'text-[var(--text-tertiary)] line-through'
-                : isGap
-                ? 'text-[var(--text-primary)] font-medium'
-                : 'text-[var(--text-primary)]'
-            ]"
-          >
-            {{ skill.title }}
-          </span>
-          <span
-            v-if="skillRecord?.notes"
-            class="ml-2 text-[10px] font-mono text-[var(--accent)] bg-[var(--accent-subtle)] px-1 rounded"
-          >
-            заметка
-          </span>
-        </div>
-      </div>
-
-      <!-- Right: Grade + Requirement + Expand Chevron -->
-      <div class="flex items-center gap-3 shrink-0">
-        <Badge variant="grade" :grade="skill.grade" size="sm" />
-        <Badge variant="requirement" :requirement="skill.requirement" size="sm" />
-        <button
-          type="button"
-          :aria-label="isExpanded ? 'Свернуть детали' : 'Развернуть детали'"
-          class="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors p-0.5"
-        >
-          <component :is="isExpanded ? ChevronUp : ChevronDown" class="w-4 h-4" />
-        </button>
-      </div>
-    </div>
-
-    <!-- Expandable Details Drawer -->
-    <div
-      v-if="isExpanded"
-      class="px-4 pb-4 pt-1 space-y-3 bg-[var(--surface-0)]/50 border-t border-[var(--surface-2)] text-xs"
-    >
-      <!-- Description -->
-      <p class="text-[var(--text-secondary)] leading-relaxed pt-2">
-        {{ skill.description }}
-      </p>
-
-      <!-- Topics Chips -->
-      <div v-if="skill.topics.length > 0" class="flex flex-wrap gap-1.5">
-        <span
-          v-for="topic in skill.topics"
-          :key="topic"
-          class="text-[11px] font-mono px-2 py-0.5 rounded bg-[var(--surface-2)] text-[var(--text-secondary)]"
-        >
-          {{ topic }}
-        </span>
-      </div>
-
-      <!-- Official Links -->
-      <div v-if="skill.links.length > 0" class="flex flex-wrap items-center gap-3 pt-1">
-        <a
-          v-for="link in skill.links"
-          :key="link.url"
-          :href="link.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1 text-[11px] text-[var(--accent)] hover:underline"
-        >
-          <span>{{ link.title }}</span>
-          <ExternalLink class="w-3 h-3" />
-        </a>
-      </div>
-
-      <!-- Notes Field -->
-      <div class="pt-2">
+      <div class="space-y-2">
+        <label :for="`notes-${skill.id}`" class="block text-[11px] text-(--text-secondary)">
+          Заметка
+        </label>
         <textarea
+          :id="`notes-${skill.id}`"
           v-model="notes"
-          @blur="handleNotesBlur"
-          aria-label="Личные заметки к навыку"
-          placeholder="Личные заметки, вопросы для собеседования, код-памятки..."
-          class="w-full bg-[var(--surface-2)] rounded-lg p-2.5 text-xs text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)] resize-y min-h-[56px]"
+          rows="4"
+          placeholder="Вопросы к собеседованию, ссылки, памятки…"
+          class="w-full resize-y rounded-lg bg-(--surface-1) p-2.5 text-xs text-(--text-primary)
+                 placeholder-(--text-tertiary) focus:outline-none focus:ring-1 focus:ring-(--accent)"
+          @blur="persistNotes"
         />
-        <div v-if="skillRecord?.completedAt" class="text-[10px] font-mono text-[var(--text-tertiary)] mt-1">
-          Сдано: {{ new Date(skillRecord.completedAt).toLocaleDateString() }}
-        </div>
       </div>
-    </div>
+    </AppPopover>
+
+    <SkillDetailsDialog v-model:open="detailsOpen" :skill="skill" />
   </div>
 </template>

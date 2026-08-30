@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { TooltipProvider } from 'reka-ui';
 import Header from './Header.vue';
+import AppToaster from '../components/common/AppToaster.vue';
 </script>
 
 <template>
-  <div class="min-h-screen bg-[var(--surface-0)] text-[var(--text-primary)] flex flex-col font-sans selection:bg-[var(--accent-subtle)] selection:text-[var(--accent)]">
-    <!-- Top Header -->
-    <Header />
+  <TooltipProvider :delay-duration="400" :skip-delay-duration="300">
+    <div
+      class="min-h-screen bg-(--surface-0) text-(--text-primary) flex flex-col font-sans
+             selection:bg-(--accent-subtle) selection:text-(--accent)"
+    >
+      <Header />
 
-    <!-- Main Content Container -->
-    <main class="flex-1 max-w-[1160px] w-full mx-auto px-4 sm:px-6 py-6">
-      <slot />
-    </main>
-  </div>
+      <main class="flex-1 w-full max-w-[1320px] mx-auto px-4 sm:px-6 py-5 sm:py-6">
+        <slot />
+      </main>
+    </div>
+
+    <AppToaster />
+  </TooltipProvider>
 </template>

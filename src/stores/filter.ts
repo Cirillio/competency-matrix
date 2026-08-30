@@ -16,6 +16,34 @@ export const useFilterStore = defineStore('filter', () => {
   const onlyUncompleted = ref(false);
   const onlyGap = ref(false);
 
+  // Which competency accordion items are open. Lives here (not in the component)
+  // so the open/closed state survives re-filtering and re-mounting of rows.
+  const expandedCompetencies = ref<string[]>([]);
+
+  const hasActiveFilters = computed(() =>
+    Boolean(
+      searchQuery.value.trim() ||
+      selectedGrade.value !== 'all' ||
+      selectedCategory.value !== 'all' ||
+      selectedSection.value !== 'all' ||
+      selectedRequirement.value !== 'all' ||
+      onlyUncompleted.value ||
+      onlyGap.value
+    )
+  );
+
+  const activeFilterCount = computed(() => {
+    let count = 0;
+    if (searchQuery.value.trim()) count++;
+    if (selectedGrade.value !== 'all') count++;
+    if (selectedCategory.value !== 'all') count++;
+    if (selectedSection.value !== 'all') count++;
+    if (selectedRequirement.value !== 'all') count++;
+    if (onlyUncompleted.value) count++;
+    if (onlyGap.value) count++;
+    return count;
+  });
+
   const availableSections = computed(() => {
     const list = selectedCategory.value === 'all'
       ? matrixStore.skills
@@ -82,6 +110,17 @@ export const useFilterStore = defineStore('filter', () => {
     onlyGap.value = false;
   }
 
+  function setExpandedCompetencies(ids: string[]) {
+    expandedCompetencies.value = ids;
+  }
+
+  /** Used by the GAP popover: jump straight to the blocking skills in the matrix. */
+  function showGapInMatrix() {
+    resetFilters();
+    onlyGap.value = true;
+    onlyUncompleted.value = true;
+  }
+
   return {
     searchQuery,
     selectedGrade,
@@ -90,8 +129,13 @@ export const useFilterStore = defineStore('filter', () => {
     selectedRequirement,
     onlyUncompleted,
     onlyGap,
+    expandedCompetencies,
+    hasActiveFilters,
+    activeFilterCount,
     availableSections,
     filteredSkills,
     resetFilters,
+    setExpandedCompetencies,
+    showGapInMatrix,
   };
 });
