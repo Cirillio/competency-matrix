@@ -25,6 +25,13 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown));
 
 const gradesList: (Grade | 'all')[] = ['all', ...ORDERED_GRADES];
 
+/** Grades below the selected one are swept in by the cumulative filter. */
+function isIncluded(g: Grade | 'all'): boolean {
+  const selected = filterStore.selectedGrade;
+  if (g === 'all' || selected === 'all') return false;
+  return ORDERED_GRADES.indexOf(g) < ORDERED_GRADES.indexOf(selected);
+}
+
 const categoryOptions = computed<SelectOption[]>(() => [
   { value: 'all', label: 'Все категории' },
   ...matrixStore.categories.map((c) => ({ value: c, label: c })),
@@ -133,7 +140,12 @@ const requirement = computed({
 
     <!-- Grade pills -->
     <div class="space-y-1.5">
-      <span class="block text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">Грейд</span>
+      <div class="flex items-baseline justify-between gap-2">
+        <span class="text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">Грейд</span>
+        <span v-if="filterStore.selectedGrade !== 'all'" class="text-[10px] text-(--text-tertiary)">
+          включая нижние
+        </span>
+      </div>
       <div class="flex flex-wrap gap-1">
         <button
           v-for="g in gradesList"
@@ -144,7 +156,9 @@ const requirement = computed({
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)',
             filterStore.selectedGrade === g
               ? 'bg-(--text-primary) text-(--surface-0) font-semibold'
-              : 'bg-(--surface-2) text-(--text-tertiary) hover:text-(--text-secondary)',
+              : isIncluded(g)
+                ? 'bg-(--surface-3) text-(--text-secondary)'
+                : 'bg-(--surface-2) text-(--text-tertiary) hover:text-(--text-secondary)',
           ]"
           @click="filterStore.selectedGrade = g"
         >

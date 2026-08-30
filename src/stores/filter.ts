@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import type { Grade, RequirementLevel, SkillItem } from '../types/matrix';
+import { ORDERED_GRADES, type Grade, type RequirementLevel, type SkillItem } from '../types/matrix';
 import { useMatrixStore } from './matrix';
 import { useProgressStore } from './progress';
 
@@ -56,8 +56,13 @@ export const useFilterStore = defineStore('filter', () => {
 
     return matrixStore.skills.filter((skill) => {
       // 1. Grade filter
-      if (selectedGrade.value !== 'all' && skill.grade !== selectedGrade.value) {
-        return false;
+      // Grades are cumulative: reaching E1.2 also requires everything from E1.1,
+      // so selecting a grade shows that grade and every grade below it.
+      if (selectedGrade.value !== 'all') {
+        const maxIndex = ORDERED_GRADES.indexOf(selectedGrade.value);
+        if (ORDERED_GRADES.indexOf(skill.grade) > maxIndex) {
+          return false;
+        }
       }
 
       // 2. Category filter

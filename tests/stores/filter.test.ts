@@ -19,6 +19,33 @@ describe('useFilterStore', () => {
     expect(filterStore.filteredSkills.every(s => s.grade === 'E1.1')).toBe(true);
   });
 
+  it('grade filter is cumulative: a grade includes every grade below it', () => {
+    const filterStore = useFilterStore();
+
+    filterStore.selectedGrade = 'E1.1';
+    const e11Count = filterStore.filteredSkills.length;
+
+    filterStore.selectedGrade = 'E1.2';
+    const upToE12 = filterStore.filteredSkills;
+
+    // E1.2 now carries E1.1 along with it
+    expect(upToE12.some(s => s.grade === 'E1.1')).toBe(true);
+    expect(upToE12.some(s => s.grade === 'E1.2')).toBe(true);
+    expect(upToE12.every(s => s.grade === 'E1.1' || s.grade === 'E1.2')).toBe(true);
+    expect(upToE12.length).toBeGreaterThan(e11Count);
+
+    // ...and nothing from higher grades leaks in
+    expect(upToE12.some(s => s.grade === 'E2.1')).toBe(false);
+  });
+
+  it('top grade selection includes the whole matrix', () => {
+    const filterStore = useFilterStore();
+    const total = filterStore.filteredSkills.length; // 'all' by default
+
+    filterStore.selectedGrade = 'E5.2';
+    expect(filterStore.filteredSkills.length).toBe(total);
+  });
+
   it('filters by Category and Requirement', () => {
     const filterStore = useFilterStore();
     filterStore.selectedCategory = 'Тех. скилы';
