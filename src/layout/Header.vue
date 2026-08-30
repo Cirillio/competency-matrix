@@ -9,9 +9,10 @@ import AppTooltip from '../components/common/AppTooltip.vue';
 import AppDropdown from '../components/common/AppDropdown.vue';
 import AppDropdownItem from '../components/common/AppDropdownItem.vue';
 import AppAlertDialog from '../components/common/AppAlertDialog.vue';
+import AiContextDialog from '../components/ai/AiContextDialog.vue';
 import {
   PhDownloadSimple, PhUploadSimple, PhArrowCounterClockwise,
-  PhCheck, PhSparkle, PhSignOut, PhDotsThree,
+  PhSparkle, PhSignOut, PhDotsThree,
 } from '@phosphor-icons/vue';
 
 const progressStore = useProgressStore();
@@ -19,7 +20,6 @@ const authStore = useAuthStore();
 const toast = useToast();
 
 const fileInputRef = useTemplateRef<HTMLInputElement>('fileInputRef');
-const copiedAiContext = ref(false);
 const resetDialogOpen = ref(false);
 const signOutDialogOpen = ref(false);
 
@@ -65,34 +65,9 @@ async function handleReset() {
   toast.notify('Прогресс сброшен');
 }
 
-async function handleCopyAiContext() {
-  const evalResult = progressStore.evaluation;
-  const target = evalResult.targetGrade || 'E5.2';
-
-  const gapList = evalResult.gapSkills
-    .map((s) => `- [${s.grade}] ${s.competencyName}: **${s.title}** (${s.topics.join(', ')})`)
-    .join('\n');
-
-  const text = `# Контекст компетенций фронтенд-разработчика
-
-- **Текущий подтвержденный грейд:** ${evalResult.currentGrade}
-- **Целевой грейд:** ${target}
-- **Прогресс до целевого грейда:** ${evalResult.targetGradeProgressPercent}%
-- **Общий охват матрицы:** ${evalResult.matrixProgressPercent}%
-
-## Критические блокеры перехода (GAP-навыки):
-${gapList || 'Все обязательные навыки закрыты!'}
-
-Используй этот контекст для проведения mock-интервью и разбора пробелов.`;
-
-  try {
-    await navigator.clipboard.writeText(text);
-    copiedAiContext.value = true;
-    setTimeout(() => { copiedAiContext.value = false; }, 2000);
-  } catch {
-    toast.error('Не удалось скопировать', 'Буфер обмена недоступен');
-  }
-}
+// The prompt is reviewed and edited in the dialog rather than copied blind:
+// its calibration depends on a profile the user has to supply.
+const aiDialogOpen = ref(false);
 </script>
 
 <template>
@@ -111,17 +86,16 @@ ${gapList || 'Все обязательные навыки закрыты!'}
 
       <div class="flex items-center gap-0.5">
         <!-- Frequent action stays visible; the rest lives in the menu. -->
-        <AppTooltip :label="copiedAiContext ? 'Скопировано' : 'Контекст для ИИ'">
+        <AppTooltip label="Контекст для ИИ">
           <button
             type="button"
-            aria-label="Скопировать контекст для ИИ"
+            aria-label="Открыть контекст для ИИ"
             class="w-10 h-10 inline-flex items-center justify-center rounded-full cursor-pointer
                    transition-colors hover:bg-(--surface-2)
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
-            @click="handleCopyAiContext"
+            @click="aiDialogOpen = true"
           >
-            <PhCheck v-if="copiedAiContext" :size="18" weight="bold" class="text-(--success)" />
-            <PhSparkle v-else :size="18" class="text-(--text-secondary)" />
+            <PhSparkle :size="18" class="text-(--text-secondary)" />
           </button>
         </AppTooltip>
 
@@ -167,6 +141,8 @@ ${gapList || 'Все обязательные навыки закрыты!'}
         </AppDropdown>
       </div>
     </div>
+
+    <AiContextDialog v-model:open="aiDialogOpen" />
 
     <AppAlertDialog
       v-model:open="resetDialogOpen"

@@ -79,6 +79,11 @@ export const useProgressStore = defineStore('progress', () => {
     await saveProgress();
   }
 
+  async function setProfile(profile: string) {
+    userProgress.value.profile = profile;
+    await saveProgress();
+  }
+
   async function setTargetGrade(grade: Grade | null) {
     userProgress.value.manualTargetGrade = grade;
     await saveProgress();
@@ -139,6 +144,7 @@ export const useProgressStore = defineStore('progress', () => {
     loadProgress,
     toggleSkill,
     updateSkillNotes,
+    setProfile,
     setTargetGrade,
     resetLocalState,
     resetProgress,

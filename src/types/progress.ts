@@ -14,6 +14,8 @@ export const userProgressSchema = z.object({
   version: z.string().default(PROGRESS_SCHEMA_VERSION),
   updatedAt: z.string(),
   manualTargetGrade: gradeSchema.nullable().optional(),
+  /** Free-text background (experience, stack, goal) used to calibrate the AI context. */
+  profile: z.string().optional(),
   completedSkills: z.record(z.string(), skillProgressRecordSchema),
 });
 export type UserProgress = z.infer<typeof userProgressSchema>;
