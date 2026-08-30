@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { DialogRoot, DialogPortal, DialogOverlay, DialogContent, DialogTitle, DialogDescription, DialogClose } from 'reka-ui';
-import { X } from 'lucide-vue-next';
+import { PhX } from '@phosphor-icons/vue';
 
 withDefaults(
   defineProps<{
@@ -51,7 +51,7 @@ const open = defineModel<boolean>('open', { default: false });
                    hover:bg-(--surface-3) cursor-pointer transition-colors
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
           >
-            <X class="w-4 h-4" />
+            <PhX :size="18" />
           </DialogClose>
         </header>
 

@@ -4,7 +4,7 @@ import { AccordionItem, AccordionHeader, AccordionTrigger, AccordionContent } fr
 import type { SkillItem } from '../../types/matrix';
 import { useProgressStore } from '../../stores/progress';
 import SkillRow from './SkillRow.vue';
-import { ChevronRight } from 'lucide-vue-next';
+import { PhCaretRight } from '@phosphor-icons/vue';
 
 const props = defineProps<{
   id: string;
@@ -34,8 +34,9 @@ const isComplete = computed(() => completedCount.value === props.skills.length);
                transition-colors hover:bg-(--surface-2)
                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
       >
-        <ChevronRight
-          class="w-4 h-4 shrink-0 text-(--text-tertiary) transition-transform duration-200
+        <PhCaretRight
+          :size="14"
+          class="shrink-0 text-(--text-tertiary) transition-transform duration-200
                  group-data-[state=open]:rotate-90"
         />
 

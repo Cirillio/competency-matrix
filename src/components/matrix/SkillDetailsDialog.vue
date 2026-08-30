@@ -4,7 +4,7 @@ import type { SkillItem } from '../../types/matrix';
 import { useProgressStore } from '../../stores/progress';
 import AppDialog from '../common/AppDialog.vue';
 import Badge from '../common/Badge.vue';
-import { ExternalLink } from 'lucide-vue-next';
+import { PhArrowSquareOut } from '@phosphor-icons/vue';
 
 const props = defineProps<{ skill: SkillItem }>();
 const open = defineModel<boolean>('open', { default: false });
@@ -58,7 +58,7 @@ const record = computed(() => progressStore.getSkillRecord(props.skill.id));
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
           >
             <span>{{ link.title }}</span>
-            <ExternalLink class="w-3 h-3 shrink-0" />
+            <PhArrowSquareOut :size="14" class="shrink-0" />
           </a>
         </div>
       </div>

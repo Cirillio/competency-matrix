@@ -4,7 +4,7 @@ import { useFilterStore } from '../../stores/filter';
 import { useMatrixStore } from '../../stores/matrix';
 import { ORDERED_GRADES, type Grade, type RequirementLevel } from '../../types/matrix';
 import AppSelect, { type SelectOption } from '../common/AppSelect.vue';
-import { Search, X, RotateCcw } from 'lucide-vue-next';
+import { PhMagnifyingGlass, PhX, PhArrowCounterClockwise } from '@phosphor-icons/vue';
 
 const filterStore = useFilterStore();
 const matrixStore = useMatrixStore();
@@ -69,7 +69,7 @@ const requirement = computed({
   <div class="space-y-4">
     <!-- Search -->
     <div class="relative">
-      <Search class="w-3.5 h-3.5 text-(--text-tertiary) absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+      <PhMagnifyingGlass :size="16" class="text-(--text-tertiary) absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
       <input
         ref="searchInputRef"
         v-model="filterStore.searchQuery"
@@ -89,7 +89,7 @@ const requirement = computed({
                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
         @click="filterStore.searchQuery = ''"
       >
-        <X class="w-3 h-3" />
+        <PhX :size="14" />
       </button>
     </div>
 
@@ -134,7 +134,7 @@ const requirement = computed({
                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
         @click="filterStore.resetFilters"
       >
-        <RotateCcw class="w-3.5 h-3.5" />
+        <PhArrowCounterClockwise :size="16" />
       </button>
     </div>
 

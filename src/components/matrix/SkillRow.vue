@@ -6,7 +6,7 @@ import { useProgressStore } from '../../stores/progress';
 import Badge from '../common/Badge.vue';
 import AppPopover from '../common/AppPopover.vue';
 import SkillDetailsDialog from './SkillDetailsDialog.vue';
-import { Check, StickyNote } from 'lucide-vue-next';
+import { PhCheck, PhNotePencil } from '@phosphor-icons/vue';
 
 const props = defineProps<{ skill: SkillItem }>();
 
@@ -61,7 +61,7 @@ watch(notesOpen, (isOpen, wasOpen) => {
       @update:model-value="handleCheckedChange"
     >
       <CheckboxIndicator class="inline-flex">
-        <Check class="w-3 h-3 stroke-[3]" />
+        <PhCheck :size="13" weight="bold" />
       </CheckboxIndicator>
     </CheckboxRoot>
 
@@ -119,7 +119,7 @@ watch(notesOpen, (isOpen, wasOpen) => {
               : 'text-(--text-tertiary) opacity-0 group-hover:opacity-100 focus-visible:opacity-100 sm:opacity-0',
           ]"
         >
-          <StickyNote class="w-3.5 h-3.5" />
+          <PhNotePencil :size="16" />
         </button>
       </template>
 

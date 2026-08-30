@@ -8,7 +8,7 @@ import ProgressSummary from '../components/progress/ProgressSummary.vue';
 import FilterPanel from '../components/matrix/FilterPanel.vue';
 import CompetencySection from '../components/matrix/CompetencySection.vue';
 import AppDialog from '../components/common/AppDialog.vue';
-import { SlidersHorizontal } from 'lucide-vue-next';
+import { PhSlidersHorizontal } from '@phosphor-icons/vue';
 
 interface CompetencyGroup {
   id: string;
@@ -79,7 +79,7 @@ const accordionValue = computed<string[]>({
                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
           @click="filtersDialogOpen = true"
         >
-          <SlidersHorizontal class="w-3.5 h-3.5" />
+          <PhSlidersHorizontal :size="16" />
           <span>Фильтры</span>
           <span
             v-if="filterStore.activeFilterCount > 0"

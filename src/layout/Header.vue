@@ -9,7 +9,10 @@ import AppTooltip from '../components/common/AppTooltip.vue';
 import AppDropdown from '../components/common/AppDropdown.vue';
 import AppDropdownItem from '../components/common/AppDropdownItem.vue';
 import AppAlertDialog from '../components/common/AppAlertDialog.vue';
-import { Download, Upload, RotateCcw, Check, Sparkles, LogOut, MoreHorizontal } from 'lucide-vue-next';
+import {
+  PhDownloadSimple, PhUploadSimple, PhArrowCounterClockwise,
+  PhCheck, PhSparkle, PhSignOut, PhDotsThree,
+} from '@phosphor-icons/vue';
 
 const progressStore = useProgressStore();
 const authStore = useAuthStore();
@@ -93,26 +96,32 @@ ${gapList || 'Все обязательные навыки закрыты!'}
 </script>
 
 <template>
-  <header class="bg-(--surface-1) sticky top-0 z-30 px-4 sm:px-6 py-3">
-    <div class="max-w-[1320px] mx-auto flex items-center justify-between gap-4">
-      <span class="text-sm font-semibold tracking-tight text-(--text-primary)">
-        {{ APP_NAME_SHORT }}
-      </span>
+  <!-- Same ground as the page: content slides under it without a visible slab edge. -->
+  <header class="bg-(--surface-0) sticky top-0 z-30 px-4 sm:px-6">
+    <div class="max-w-[1320px] mx-auto h-14 flex items-center justify-between gap-4">
+      <!-- Wordmark: name carries the weight, qualifier stays quiet -->
+      <h1 class="flex items-baseline gap-1.5 select-none">
+        <span class="text-[15px] font-semibold tracking-[-0.01em] text-(--text-primary)">
+          {{ APP_NAME_SHORT }}
+        </span>
+        <span class="hidden sm:inline text-[13px] font-normal text-(--text-tertiary)">
+          компетенций
+        </span>
+      </h1>
 
-      <div class="flex items-center gap-1">
+      <div class="flex items-center gap-0.5">
         <!-- Frequent action stays visible; the rest lives in the menu. -->
-        <AppTooltip :label="copiedAiContext ? 'Скопировано' : 'Скопировать контекст для ИИ'">
+        <AppTooltip :label="copiedAiContext ? 'Скопировано' : 'Контекст для ИИ'">
           <button
             type="button"
             aria-label="Скопировать контекст для ИИ"
-            class="p-2 rounded-lg cursor-pointer transition-colors hover:bg-(--surface-2)
+            class="w-10 h-10 inline-flex items-center justify-center rounded-full cursor-pointer
+                   transition-colors hover:bg-(--surface-2)
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
             @click="handleCopyAiContext"
           >
-            <component
-              :is="copiedAiContext ? Check : Sparkles"
-              :class="['w-4 h-4', copiedAiContext ? 'text-(--success)' : 'text-(--text-secondary)']"
-            />
+            <PhCheck v-if="copiedAiContext" :size="18" weight="bold" class="text-(--success)" />
+            <PhSparkle v-else :size="18" class="text-(--text-secondary)" />
           </button>
         </AppTooltip>
 
@@ -123,25 +132,27 @@ ${gapList || 'Все обязательные навыки закрыты!'}
             <button
               type="button"
               aria-label="Меню действий"
-              class="p-2 rounded-lg cursor-pointer transition-colors hover:bg-(--surface-2)
+              class="w-10 h-10 inline-flex items-center justify-center rounded-full cursor-pointer
+                     transition-colors hover:bg-(--surface-2)
+                     data-[state=open]:bg-(--surface-2)
                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
             >
-              <MoreHorizontal class="w-4 h-4 text-(--text-secondary)" />
+              <PhDotsThree :size="20" weight="bold" class="text-(--text-secondary)" />
             </button>
           </template>
 
           <AppDropdownItem @select="handleExport">
-            <Download class="w-3.5 h-3.5 shrink-0" />
+            <PhDownloadSimple :size="16" class="shrink-0" />
             <span>Экспорт прогресса</span>
           </AppDropdownItem>
 
           <AppDropdownItem @select="handleImportClick">
-            <Upload class="w-3.5 h-3.5 shrink-0" />
+            <PhUploadSimple :size="16" class="shrink-0" />
             <span>Импорт из файла</span>
           </AppDropdownItem>
 
           <AppDropdownItem tone="critical" @select="resetDialogOpen = true">
-            <RotateCcw class="w-3.5 h-3.5 shrink-0" />
+            <PhArrowCounterClockwise :size="16" class="shrink-0" />
             <span>Сбросить прогресс</span>
           </AppDropdownItem>
 
@@ -150,7 +161,7 @@ ${gapList || 'Все обязательные навыки закрыты!'}
             tone="critical"
             @select="signOutDialogOpen = true"
           >
-            <LogOut class="w-3.5 h-3.5 shrink-0" />
+            <PhSignOut :size="16" class="shrink-0" />
             <span>Выйти из аккаунта</span>
           </AppDropdownItem>
         </AppDropdown>

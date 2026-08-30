@@ -6,7 +6,7 @@ import { GRADE_DETAILS } from '../../config/grades';
 import ProgressBar from '../common/ProgressBar.vue';
 import AppPopover from '../common/AppPopover.vue';
 import GradesDialog from './GradesDialog.vue';
-import { ChevronRight, ArrowRight } from 'lucide-vue-next';
+import { PhCaretRight, PhArrowRight } from '@phosphor-icons/vue';
 
 const progressStore = useProgressStore();
 const filterStore = useFilterStore();
@@ -40,7 +40,7 @@ function jumpToGapInMatrix() {
     >
       <span class="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">
         Сейчас
-        <ChevronRight class="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+        <PhCaretRight :size="14" class="transition-transform group-hover:translate-x-0.5" />
       </span>
       <span class="mt-1 flex items-baseline gap-2">
         <span class="text-3xl font-semibold tracking-tight text-(--text-primary)">
@@ -125,7 +125,7 @@ function jumpToGapInMatrix() {
             @click="jumpToGapInMatrix"
           >
             Показать в матрице
-            <ArrowRight class="w-3 h-3" />
+            <PhArrowRight :size="14" />
           </button>
         </div>
       </AppPopover>

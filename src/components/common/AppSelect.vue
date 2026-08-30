@@ -3,7 +3,7 @@ import {
   SelectRoot, SelectTrigger, SelectValue, SelectIcon, SelectPortal,
   SelectContent, SelectViewport, SelectItem, SelectItemText, SelectItemIndicator,
 } from 'reka-ui';
-import { ChevronDown, Check } from 'lucide-vue-next';
+import { PhCaretDown, PhCheck } from '@phosphor-icons/vue';
 
 export interface SelectOption {
   value: string;
@@ -32,7 +32,7 @@ const model = defineModel<string>({ required: true });
       >
         <SelectValue :placeholder="placeholder ?? label" class="truncate text-left" />
         <SelectIcon class="shrink-0 text-(--text-tertiary)">
-          <ChevronDown class="w-3.5 h-3.5" />
+          <PhCaretDown :size="16" />
         </SelectIcon>
       </SelectTrigger>
 
@@ -57,7 +57,7 @@ const model = defineModel<string>({ required: true });
             >
               <SelectItemText>{{ opt.label }}</SelectItemText>
               <SelectItemIndicator class="absolute right-2 inline-flex items-center text-(--accent)">
-                <Check class="w-3.5 h-3.5" />
+                <PhCheck :size="16" />
               </SelectItemIndicator>
             </SelectItem>
           </SelectViewport>

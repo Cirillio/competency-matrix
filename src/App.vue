@@ -5,7 +5,7 @@ import { isSupabaseConfigured } from './services/supabase/client';
 import MainLayout from './layout/MainLayout.vue';
 import DashboardPage from './pages/DashboardPage.vue';
 import LoginPage from './pages/LoginPage.vue';
-import { Loader2 } from 'lucide-vue-next';
+import { PhSpinnerGap } from '@phosphor-icons/vue';
 
 const authStore = useAuthStore();
 
@@ -25,7 +25,7 @@ onMounted(async () => {
     class="min-h-screen bg-[var(--surface-0)] flex items-center justify-center text-[var(--text-tertiary)]"
   >
     <div class="flex flex-col items-center gap-3">
-      <Loader2 class="w-6 h-6 animate-spin text-[var(--accent)]" />
+      <PhSpinnerGap :size="24" class="animate-spin text-[var(--accent)]" />
       <span class="text-xs font-mono">Загрузка сессии...</span>
     </div>
   </div>

@@ -2,7 +2,7 @@
 import { ref, onMounted, useTemplateRef } from 'vue';
 import { useAuthStore } from '../stores/auth';
 import { APP_NAME } from '../config/app';
-import { Loader2 } from 'lucide-vue-next';
+import { PhSpinnerGap } from '@phosphor-icons/vue';
 
 const authStore = useAuthStore();
 
@@ -102,7 +102,7 @@ async function handleSubmit() {
           :disabled="isLoading"
           class="w-full py-2 px-4 rounded-lg bg-[var(--accent)] hover:opacity-90 text-white text-xs font-semibold tracking-wide transition-opacity cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         >
-          <Loader2 v-if="isLoading" class="w-3.5 h-3.5 animate-spin" />
+          <PhSpinnerGap v-if="isLoading" :size="16" class="animate-spin" />
           <span>{{ isLoading ? 'Проверка...' : 'Войти' }}</span>
         </button>
       </form>

@@ -6,7 +6,7 @@ import { ORDERED_GRADES, type Grade } from '../../types/matrix';
 import { GRADE_DETAILS, TIERS } from '../../config/grades';
 import AppDialog from '../common/AppDialog.vue';
 import ProgressBar from '../common/ProgressBar.vue';
-import { RotateCcw, Check } from 'lucide-vue-next';
+import { PhArrowCounterClockwise, PhCheck } from '@phosphor-icons/vue';
 
 const open = defineModel<boolean>('open', { default: false });
 
@@ -96,7 +96,7 @@ const specializations = computed(() =>
                    hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) rounded"
             @click="progressStore.setTargetGrade(null)"
           >
-            <RotateCcw class="w-3 h-3" />
+            <PhArrowCounterClockwise :size="14" />
             <span>Вернуть авто-цель</span>
           </button>
         </div>
@@ -141,7 +141,7 @@ const specializations = computed(() =>
                 <span class="shrink-0 text-right">
                   <span class="block text-[11px] font-mono opacity-80">{{ grade }}</span>
                   <span class="block text-[11px] font-mono mt-0.5">
-                    <Check v-if="evalResult.certifiedGrades.includes(grade)" class="w-3.5 h-3.5 inline" />
+                    <PhCheck v-if="evalResult.certifiedGrades.includes(grade)" class="w-3.5 h-3.5 inline" />
                     <template v-else>
                       {{ evalResult.gradesProgress[grade].completedMandatory }}/{{ evalResult.gradesProgress[grade].totalMandatory }}
                     </template>
