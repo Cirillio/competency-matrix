@@ -1,0 +1,3020 @@
+{
+  "version": "2.0.0",
+  "skills": [
+    {
+      "id": "git-e1.1-ui-client",
+      "competencyId": "git",
+      "competencyName": "Git",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Использование UI-клиентов Git",
+      "description": "Выполнение базовых операций системы контроля версий через графический интерфейс (GitKraken, VS Code Git, SourceTree).",
+      "topics": ["Клонирование репозитория", "Создание коммитов через UI", "Переключение веток"],
+      "links": [
+        {
+          "title": "Git - GUI Clients",
+          "url": "https://git-scm.com/downloads/guis"
+        }
+      ]
+    },
+    {
+      "id": "git-e1.2-basic-cli",
+      "competencyId": "git",
+      "competencyName": "Git",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Базовые команды Git CLI",
+      "description": "Создание веток, фиксация изменений и отправка локальных коммитов в удаленный репозиторий через командную строку.",
+      "topics": ["git branch", "git commit", "git push"],
+      "links": [
+        {
+          "title": "Git Basics",
+          "url": "https://git-scm.com/book/ru/v2/Основы-Git-Запись-изменений-в-репозиторий"
+        }
+      ]
+    },
+    {
+      "id": "git-e1.2-sync-and-merge",
+      "competencyId": "git",
+      "competencyName": "Git",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E1.2",
+      "requirement": "desirable",
+      "title": "Синхронизация и слияние веток",
+      "description": "Получение актуальных изменений из основной ветки в feature-ветку и базовое разрешение конфликтов слияния.",
+      "topics": ["git pull", "git merge", "Разрешение конфликтов слияния"],
+      "links": [
+        {
+          "title": "Git Branching - Basic Branching and Merging",
+          "url": "https://git-scm.com/book/ru/v2/Ветвление-в-Git-Основы-ветвления-и-слияния"
+        }
+      ]
+    },
+    {
+      "id": "git-e2.1-internals-states",
+      "competencyId": "git",
+      "competencyName": "Git",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Внутреннее устройство и состояния Git",
+      "description": "Понимание жизненного цикла файлов и внутреннего устройства директории .git, областей Working Directory, Staging Area и Git Repository.",
+      "topics": ["Working directory", "Staging Area (Index)", ".git structure", "Git tree objects"],
+      "links": [
+        {
+          "title": "Git Internals - Git Objects",
+          "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+        }
+      ]
+    },
+    {
+      "id": "git-e2.1-history-and-reset",
+      "competencyId": "git",
+      "competencyName": "Git",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Инспекция истории и откат изменений",
+      "description": "Просмотр различий между состояниями, анализ журнала коммитов и откат изменений с помощью soft/mixed/hard reset.",
+      "topics": ["git diff", "git log", "git reset --soft/--hard"],
+      "links": [
+        {
+          "title": "Git Reset Demystified",
+          "url": "https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified"
+        }
+      ]
+    },
+    {
+      "id": "git-e2.2-cherry-pick-fetch",
+      "competencyId": "git",
+      "competencyName": "Git",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E2.2",
+      "requirement": "mandatory",
+      "title": "Продвинутое манипулирование коммитами",
+      "description": "Точечный перенос отдельных коммитов между ветками и безопасное получение метаданных удаленного репозитория.",
+      "topics": ["git cherry-pick", "git fetch", "Удаленные tracking-ветки"],
+      "links": [
+        {
+          "title": "Git Cherry-Pick Documentation",
+          "url": "https://git-scm.com/docs/git-cherry-pick"
+        }
+      ]
+    },
+    {
+      "id": "git-e3.1-branching-workflows",
+      "competencyId": "git",
+      "competencyName": "Git",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E3.1",
+      "requirement": "additional",
+      "title": "Модели ветвления и Git Workflows",
+      "description": "Выбор и организация моделей ветвления под процессы релизов, CI/CD и распределенные команды (Git Flow, GitHub Flow, Trunk-based).",
+      "topics": [
+        "Git Flow",
+        "GitHub / GitLab Flow",
+        "Trunk-Based Development",
+        "Pull Request Workflows"
+      ],
+      "links": [
+        {
+          "title": "Git Workflows and Branching Strategies",
+          "url": "https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows"
+        }
+      ]
+    },
+    {
+      "id": "git-e3.1-rebase-no-ff",
+      "competencyId": "git",
+      "competencyName": "Git",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E3.1",
+      "requirement": "additional",
+      "title": "Продвинутый Rebase и стратегии слияния",
+      "description": "Линеаризация истории коммитов через интерактивный rebase и управление созданием merge-коммитов с флагом --no-ff.",
+      "topics": ["git rebase -i", "git merge --no-ff", "Squash commits"],
+      "links": [
+        {
+          "title": "Git Branching - Rebasing",
+          "url": "https://git-scm.com/book/en/v2/Git-Branching-Rebasing"
+        }
+      ]
+    },
+    {
+      "id": "bundlers-e1.1-webpack-basics",
+      "competencyId": "bundlers",
+      "competencyName": "Сборщики",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E1.1",
+      "requirement": "desirable",
+      "title": "Концепции сборщиков модулей Webpack",
+      "description": "Понимание базовых концепций бандлинга: точки входа (entry), выходной файл (output), загрузчики (loaders) и плагины (plugins).",
+      "topics": ["Entry", "Output", "Loaders", "Plugins"],
+      "links": [
+        {
+          "title": "Webpack Core Concepts",
+          "url": "https://webpack.js.org/concepts/"
+        }
+      ]
+    },
+    {
+      "id": "bundlers-e1.2-basic-config",
+      "competencyId": "bundlers",
+      "competencyName": "Сборщики",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E1.2",
+      "requirement": "desirable",
+      "title": "Создание базовой конфигурации Webpack",
+      "description": "Самостоятельная настройка базового файла webpack.config.js для сборки JS, CSS и работы с HTML Webpack Plugin.",
+      "topics": ["webpack.config.js", "Babel loader", "CSS/Style loaders", "HtmlWebpackPlugin"],
+      "links": [
+        {
+          "title": "Webpack - Getting Started",
+          "url": "https://webpack.js.org/guides/getting-started/"
+        }
+      ]
+    },
+    {
+      "id": "bundlers-e2.1-config-maintenance",
+      "competencyId": "bundlers",
+      "competencyName": "Сборщики",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Поддержка конфигураций сборки",
+      "description": "Уверенная работа с существующими конфигурациями Webpack/Vite, разделение конфигов на dev и prod окружения.",
+      "topics": ["Webpack Merge", "Source Maps", "DevServer", "Environment variables"],
+      "links": [
+        {
+          "title": "Webpack - Production Guide",
+          "url": "https://webpack.js.org/guides/production/"
+        }
+      ]
+    },
+    {
+      "id": "bundlers-e2.2-advanced-optimization",
+      "competencyId": "bundlers",
+      "competencyName": "Сборщики",
+      "category": "Тех. скилы",
+      "section": "Инструменты",
+      "grade": "E2.2",
+      "requirement": "desirable",
+      "title": "Продвинутая конфигурация и оптимизация бандла",
+      "description": "Написание кастомных загрузчиков/плагинов, разделение бандла (Code Splitting), Tree Shaking и миграция систем сборки.",
+      "topics": ["SplitChunksPlugin", "Tree Shaking", "Dynamic Imports", "Asset Modules"],
+      "links": [
+        {
+          "title": "Webpack - Code Splitting",
+          "url": "https://webpack.js.org/guides/code-splitting/"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.1-data-types",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Типы данных и базовые конструкции JS",
+      "description": "Примитивные и ссылочные типы данных, явное и неявное приведение типов, операторы сравнения и управляющие конструкции.",
+      "topics": [
+        "Примитивы vs Ссылки",
+        "Type coercion",
+        "Циклы for/while",
+        "Операторы typeof и instanceof"
+      ],
+      "links": [
+        {
+          "title": "MDN - JavaScript data types and data structures",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.1-standard-methods",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Базовые методы строк, массивов и объектов",
+      "description": "Применение стандартных методов для манипулирования коллекциями, строками и числами.",
+      "topics": [
+        "Array.prototype (map, filter, forEach, slice)",
+        "String methods",
+        "Object.keys/values/entries"
+      ],
+      "links": [
+        {
+          "title": "MDN - Indexed collections",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.1-variables-and-this",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Объявление переменных и контекст вызова (this)",
+      "description": "Различия между var, let и const, блочная и функциональная области видимости, базовые правила вычисления this.",
+      "topics": ["var vs let vs const", "Контекст this", "Стрелочные функции и лексический this"],
+      "links": [
+        {
+          "title": "MDN - The this keyword",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.1-callbacks-es6",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Функции обратного вызова и синтаксис ES6",
+      "description": "Использование функций обратного вызова (callbacks), деструктуризации, rest/spread операторов и шаблонных строк.",
+      "topics": [
+        "Callbacks",
+        "Destructuring assignment",
+        "Spread / Rest syntax",
+        "Template literals"
+      ],
+      "links": [
+        {
+          "title": "MDN - Functions",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.2-closures-and-scope",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Замыкания и лексическое окружение",
+      "description": "Глубокое понимание механизма замыканий (closures), Lexical Environment и Scope Chain.",
+      "topics": [
+        "Closures",
+        "Lexical Environment",
+        "Scope Chain",
+        "Инкапсуляция данных через замыкания"
+      ],
+      "links": [
+        {
+          "title": "MDN - Closures",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.2-hoisting-and-getters",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Поднятие (Hoisting), 'use strict' и аксессоры объектов",
+      "description": "Поведение всплытия переменных и функций, Temporal Dead Zone (TDZ), строгий режим и геттеры/сеттеры свойств.",
+      "topics": ["Hoisting", "Temporal Dead Zone", "use strict", "Getters and Setters"],
+      "links": [
+        {
+          "title": "MDN - Hoisting",
+          "url": "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.2-promises-async-flow",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Обещания (Promises) и асинхронный поток",
+      "description": "Создание и цепочки промисов, методы Promise.all / race / allSettled, сравнение промисов с callbacks.",
+      "topics": [
+        "Promise lifecycle",
+        "Promise chaining",
+        "Promise combinators",
+        "Error handling in Promises"
+      ],
+      "links": [
+        {
+          "title": "MDN - Promise",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.2-dom-event-model",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Событийная модель браузера",
+      "description": "Распространение событий в DOM: фазы погружения (capturing), цели (target) и всплытия (bubbling), делегирование событий.",
+      "topics": [
+        "Event Bubbling & Capturing",
+        "event.stopPropagation()",
+        "event.preventDefault()",
+        "Event Delegation"
+      ],
+      "links": [
+        {
+          "title": "MDN - Introduction to events",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e1.2-descriptors-collections",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "additional",
+      "title": "Дескрипторы свойств и коллекции Keyed Collections",
+      "description": "Управление свойствами через Object.defineProperty, применение коллекций Map, Set, WeakMap, WeakSet.",
+      "topics": [
+        "Property Descriptors (writable, enumerable, configurable)",
+        "Map / Set",
+        "WeakMap / WeakSet (сборка мусора)"
+      ],
+      "links": [
+        {
+          "title": "MDN - Object.defineProperty()",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty"
+        },
+        {
+          "title": "MDN - Keyed collections",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e2.1-event-loop",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Асинхронность и Event Loop в JS",
+      "description": "Понимание работы стека вызовов (Call Stack), очередей макро- и микротасок (Macrotasks, Microtasks / Job Queue) и механизма async/await.",
+      "topics": [
+        "Call Stack",
+        "Event Loop",
+        "Microtask Queue (Job Queue)",
+        "async/await execution order"
+      ],
+      "links": [
+        {
+          "title": "MDN - The event loop",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e2.1-regex",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Регулярные выражения (RegExp)",
+      "description": "Создание регулярных выражений, использование квантификаторов, наборов, флагов и строковых методов поиска/замены.",
+      "topics": [
+        "RegExp syntax",
+        "Quantifiers and character sets",
+        "Flags (g, i, m, s, u)",
+        "String match/replace"
+      ],
+      "links": [
+        {
+          "title": "MDN - Regular Expressions",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e2.1-oop-classes",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Объектно-ориентированное программирование и классы ES6",
+      "description": "Реализация прототипного наследования, синтаксис class, constructor, super, статические поля и полиморфизм.",
+      "topics": [
+        "ES6 Classes",
+        "Constructor function",
+        "Prototypal inheritance",
+        "super keyword",
+        "Polymorphism"
+      ],
+      "links": [
+        {
+          "title": "MDN - Classes",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e2.1-functional-concepts",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Элементы функционального программирования",
+      "description": "Применение чистых функций, функций высшего порядка (HOF), принципов иммутабельности и рекурсивных алгоритмов.",
+      "topics": ["Pure Functions", "Higher-Order Functions", "Immutability", "Recursion"],
+      "links": [
+        {
+          "title": "MDN - First-class Function",
+          "url": "https://developer.mozilla.org/en-US/docs/Glossary/First_class_Function"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e3.1-iterators-generators",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Протоколы итераторов и генераторы",
+      "description": "Понимание протоколов Iterable/Iterator, Symbol.iterator, разработка функций-генераторов (function*, yield).",
+      "topics": [
+        "Iterable / Iterator protocols",
+        "Symbol.iterator",
+        "Generators (yield)",
+        "Async Generators"
+      ],
+      "links": [
+        {
+          "title": "MDN - Iterators and generators",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e3.1-currying-memoization",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Каррирование и мемоизация",
+      "description": "Реализация каррирования (Currying / Partial Application), создание функций мемоизации и кеширования вычислений.",
+      "topics": ["Currying", "Partial Application", "Memoization techniques"],
+      "links": [
+        {
+          "title": "JavaScript.info - Currying",
+          "url": "https://javascript.info/currying-partials"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e3.1-data-structures",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Базовые структуры данных на JS",
+      "description": "Реализация и анализ классических структур данных: стек, очередь, связный список, хеш-таблица, деревья, граф.",
+      "topics": [
+        "Stack / Queue",
+        "Linked List",
+        "Hash Table",
+        "Binary Search Tree",
+        "Graph representations"
+      ],
+      "links": [
+        {
+          "title": "MDN - Memory Management",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management"
+        }
+      ]
+    },
+    {
+      "id": "javascript-e3.1-advanced-scope-tco",
+      "competencyId": "javascript",
+      "competencyName": "JavaScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E3.1",
+      "requirement": "additional",
+      "title": "Специфика Scope и хвостовая рекурсия (TCO)",
+      "description": "Понимание статического, динамического и рантайм-изменяемого скоупа, оптимизация хвостового вызова (Tail Call Optimization).",
+      "topics": [
+        "Static vs Dynamic Scope",
+        "Runtime-augmented scope (eval/with)",
+        "Tail Call Optimization (TCO)"
+      ],
+      "links": [
+        {
+          "title": "ECMAScript Specification - Tail Position Calls",
+          "url": "https://tc39.es/ecma262/#sec-tail-position-calls"
+        }
+      ]
+    },
+    {
+      "id": "typescript-e1.1-primitive-typing",
+      "competencyId": "typescript",
+      "competencyName": "TypeScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Базовая типизация примитивов и сигнатур функций",
+      "description": "Типизация переменных, аргументов функций и возвращаемых значений с использованием существующих базовых типов.",
+      "topics": ["Primitive types", "Function parameter types", "Return types", "Type inference"],
+      "links": [
+        {
+          "title": "TypeScript Handbook - Everyday Types",
+          "url": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html"
+        }
+      ]
+    },
+    {
+      "id": "typescript-e1.2-oop-interfaces",
+      "competencyId": "typescript",
+      "competencyName": "TypeScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Интерфейсы, классы и перечисления (Enums)",
+      "description": "Описание интерфейсов, классов, модификаторов доступа (public/private/protected/readonly), абстрактных классов и enums.",
+      "topics": [
+        "Interfaces vs Type aliases",
+        "Classes and access modifiers",
+        "Abstract classes",
+        "Enums",
+        "Optional properties"
+      ],
+      "links": [
+        {
+          "title": "TypeScript Handbook - Object Types",
+          "url": "https://www.typescriptlang.org/docs/handbook/2/objects.html"
+        }
+      ]
+    },
+    {
+      "id": "typescript-e2.1-generics-utility-types",
+      "competencyId": "typescript",
+      "competencyName": "TypeScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Дженерики, служебные типы и конфигурация tsconfig",
+      "description": "Создание обобщенных типов (Generics), использование встроенных Utility Types (Partial, Record, Pick, Omit) и настройка tsconfig.json.",
+      "topics": [
+        "Generics in functions & classes",
+        "Utility Types (Partial, Pick, Omit, Record)",
+        "tsconfig compiler options"
+      ],
+      "links": [
+        {
+          "title": "TypeScript Handbook - Generics",
+          "url": "https://www.typescriptlang.org/docs/handbook/2/generics.html"
+        },
+        {
+          "title": "TypeScript Handbook - Utility Types",
+          "url": "https://www.typescriptlang.org/docs/handbook/utility-types.html"
+        }
+      ]
+    },
+    {
+      "id": "typescript-e2.2-strict-typing-declarations",
+      "competencyId": "typescript",
+      "competencyName": "TypeScript",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.2",
+      "requirement": "additional",
+      "title": "Строгая типизация и декларации типов (d.ts)",
+      "description": "Разработка без применения типов any/unknown, использование type guards, понимание работы файлов деклараций .d.ts и типизации npm-пакетов.",
+      "topics": [
+        "No-any / strict typing",
+        "Type Guards & Narrowing",
+        "Declaration files (.d.ts)",
+        "@types resolution"
+      ],
+      "links": [
+        {
+          "title": "TypeScript Handbook - Type Narrowing",
+          "url": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+        }
+      ]
+    },
+    {
+      "id": "vuejs-e1.1-component-basics",
+      "competencyId": "vuejs",
+      "competencyName": "VueJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "optional",
+      "title": "Базовые концепции Vue 2/3",
+      "description": "Однофайловые компоненты (SFC), хуки жизненного цикла, computed, methods, watchers, передача props и генерация событий $emit.",
+      "topics": [
+        "Single File Components",
+        "Lifecycle Hooks",
+        "Computed & Watchers",
+        "Props & Emits",
+        "Встроенные директивы"
+      ],
+      "links": [
+        {
+          "title": "Vue.js Guide - Essentials",
+          "url": "https://vuejs.org/guide/essentials/application.html"
+        }
+      ]
+    },
+    {
+      "id": "vuejs-e1.1-router-state-intro",
+      "competencyId": "vuejs",
+      "competencyName": "VueJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "optional",
+      "title": "Основы маршрутизации и Flux-архитектуры",
+      "description": "Базовая настройка Vue Router для SPA навигации и понимание принципов однонаправленного потока данных Flux.",
+      "topics": ["Vue Router basics", "router-link / router-view", "Flux pattern in Vuex / Pinia"],
+      "links": [
+        {
+          "title": "Vue Router - Getting Started",
+          "url": "https://router.vuejs.org/guide/"
+        }
+      ]
+    },
+    {
+      "id": "vuejs-e1.2-advanced-components-nuxt",
+      "competencyId": "vuejs",
+      "competencyName": "VueJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "optional",
+      "title": "Продвинутые компоненты Vue, State Management и SSR",
+      "description": "Использование слотов (Slots), динамических компонентов, миксинов/композаблов, структуры Vuex/Pinia (state, getters, actions, mutations) и основы SSR в Nuxt.js.",
+      "topics": [
+        "Scoped Slots",
+        "Dynamic Components",
+        "Custom Directives",
+        "Vue Router Navigation Guards",
+        "Vuex Modules",
+        "Nuxt.js SSR basics"
+      ],
+      "links": [
+        {
+          "title": "Vue.js - Slots",
+          "url": "https://vuejs.org/guide/components/slots.html"
+        },
+        { "title": "Nuxt Documentation", "url": "https://nuxt.com/docs" }
+      ]
+    },
+    {
+      "id": "vuejs-e2.1-render-fn-plugins-nuxt",
+      "competencyId": "vuejs",
+      "competencyName": "VueJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "optional",
+      "title": "Render-функции, плагины хранилища и архитектура Nuxt",
+      "description": "Написание кастомных render-функций с JSX/h(), организация персистентности данных в хранилище, конфигурирование Nuxt плагинов и middleware.",
+      "topics": [
+        "Render functions & JSX",
+        "Data persistence plugins",
+        "Nuxt.js configuration",
+        "Nuxt middlewares & plugins"
+      ],
+      "links": [
+        {
+          "title": "Vue.js - Render Functions & JSX",
+          "url": "https://vuejs.org/guide/extras/render-function.html"
+        }
+      ]
+    },
+    {
+      "id": "angularjs-e1.1-mvc-basics",
+      "competencyId": "angularjs",
+      "competencyName": "AngularJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "optional",
+      "title": "Основы контроллеров и директив AngularJS",
+      "description": "Понимание архитектуры контроллеров, фабрик, базовых директив ng-app, ng-model, ng-repeat, ng-if и стандартных фильтров.",
+      "topics": ["Controllers", "Factories", "ng-directives", "Filters"],
+      "links": [
+        {
+          "title": "AngularJS Developer Guide",
+          "url": "https://docs.angularjs.org/guide"
+        }
+      ]
+    },
+    {
+      "id": "angularjs-e1.2-scope-and-services",
+      "competencyId": "angularjs",
+      "competencyName": "AngularJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "optional",
+      "title": "Двустороннее связывание, $scope и встроенные сервисы",
+      "description": "Жизненный цикл scope, two-way data binding, написание кастомных директив, фильтров, сервисов ($http, $location, $timeout).",
+      "topics": [
+        "$scope lifecycle",
+        "Two-way data binding",
+        "Custom Directives",
+        "Built-in services ($http, $timeout)"
+      ],
+      "links": [
+        {
+          "title": "AngularJS - Scopes",
+          "url": "https://docs.angularjs.org/guide/scope"
+        }
+      ]
+    },
+    {
+      "id": "angularjs-e2.1-forms-optimization",
+      "competencyId": "angularjs",
+      "competencyName": "AngularJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "optional",
+      "title": "Валидация форм и оптимизация $digest loop",
+      "description": "Работа с AngularJS Global API, валидация форм, диагностика и ускорение цикла $digest ($applyAsync, отписка от watcher).",
+      "topics": [
+        "AngularJS Global API",
+        "Form validation",
+        "$digest loop optimization",
+        "Memory leak prevention in AngularJS"
+      ],
+      "links": [
+        {
+          "title": "AngularJS - Forms",
+          "url": "https://docs.angularjs.org/guide/forms"
+        }
+      ]
+    },
+    {
+      "id": "angularjs-e2.2-ecosystem-and-architecture",
+      "competencyId": "angularjs",
+      "competencyName": "AngularJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.2",
+      "requirement": "optional",
+      "title": "Конфигурирование и интеграция сторонних библиотек",
+      "description": "Выбор и подключение сторонних решений под AngularJS, архитектурное конфигурирование модулей приложения.",
+      "topics": [
+        "App Configuration",
+        "Third-party AngularJS modules",
+        "Dependency Injection config"
+      ],
+      "links": [
+        {
+          "title": "AngularJS - Modules",
+          "url": "https://docs.angularjs.org/guide/module"
+        }
+      ]
+    },
+    {
+      "id": "angularjs-e3.1-legacy-refactoring",
+      "competencyId": "angularjs",
+      "competencyName": "AngularJS",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E3.1",
+      "requirement": "optional",
+      "title": "Рефакторинг и подготовка к миграции legacy AngularJS",
+      "description": "Глубокий рефакторинг legacy AngularJS приложений, компонентный подход (ng-component) и подготовка к апгрейду на современный стек.",
+      "topics": [
+        "Component-based architecture in AngularJS",
+        "Migration strategies to Angular/React",
+        "ngUpgrade preparation"
+      ],
+      "links": [
+        {
+          "title": "AngularJS to Angular Migration Guide",
+          "url": "https://angular.dev/tools/cli/upgrading"
+        }
+      ]
+    },
+    {
+      "id": "angular-e1.1-cli-and-components",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "optional",
+      "title": "Angular CLI, компоненты и Template-Driven формы",
+      "description": "Генерация и сборка проекта через Angular CLI, создание компонентов, внедрение сервисов (DI), template-driven формы.",
+      "topics": [
+        "ng CLI commands",
+        "Components & Services",
+        "Input/Output decorators",
+        "Template-driven forms"
+      ],
+      "links": [
+        {
+          "title": "Angular Documentation - Components",
+          "url": "https://angular.dev/guide/components"
+        }
+      ]
+    },
+    {
+      "id": "angular-e1.1-rxjs-basics",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "optional",
+      "title": "Основы реактивного программирования и RxJS",
+      "description": "Концепция Observable, подписки и отписки (Subscription), базовый пайплайн обработки потока через .pipe().",
+      "topics": ["Observables", "Subscriptions & memory management", ".pipe() operator chaining"],
+      "links": [{ "title": "RxJS - Overview", "url": "https://rxjs.dev/guide/overview" }]
+    },
+    {
+      "id": "angular-e1.2-reactive-forms-http",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "optional",
+      "title": "Реактивные формы, HttpClient и хуки жизненного цикла",
+      "description": "Создание Reactive Forms (FormGroup, FormControl), кастомные директивы, pipes, инкапсуляция стилей, роутинг и HttpClient.",
+      "topics": [
+        "Reactive Forms",
+        "HttpClient",
+        "ViewEncapsulation",
+        "Lifecycle Hooks (ngOnInit, ngOnDestroy)",
+        "Angular Router"
+      ],
+      "links": [
+        {
+          "title": "Angular - Reactive Forms",
+          "url": "https://angular.dev/guide/forms/reactive-forms"
+        }
+      ]
+    },
+    {
+      "id": "angular-e1.2-rxjs-operators",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "optional",
+      "title": "Базовые операторы RxJS и обработка ошибок",
+      "description": "Применение ключевых операторов потоков (map, tap, switchMap, takeUntil), таймеров и стратегий обработки ошибок.",
+      "topics": [
+        "Transformation & Filtering operators",
+        "switchMap",
+        "takeUntil pattern",
+        "catchError"
+      ],
+      "links": [
+        {
+          "title": "RxJS - Pipeable Operators",
+          "url": "https://rxjs.dev/guide/operators"
+        }
+      ]
+    },
+    {
+      "id": "angular-e2.1-advanced-forms-di",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "optional",
+      "title": "Сложные формы, валидация и модульный DI",
+      "description": "Создание динамических форм с FormArray, асинхронные валидаторы, иерархический Dependency Injection, локализация ngx-translate.",
+      "topics": [
+        "FormArray & dynamic controls",
+        "Custom Async Validators",
+        "Hierarchical DI",
+        "ngx-translate"
+      ],
+      "links": [
+        {
+          "title": "Angular - Dependency Injection",
+          "url": "https://angular.dev/guide/di"
+        }
+      ]
+    },
+    {
+      "id": "angular-e2.1-rxjs-subjects",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "optional",
+      "title": "RxJS Subjects и мультикастинг",
+      "description": "Использование Subject, BehaviorSubject, ReplaySubject, AsyncSubject для реактивного управления состоянием.",
+      "topics": ["Subject vs BehaviorSubject", "ReplaySubject", "Multicasting in RxJS"],
+      "links": [{ "title": "RxJS - Subjects", "url": "https://rxjs.dev/guide/subject" }]
+    },
+    {
+      "id": "angular-e2.2-change-detection-interceptors",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.2",
+      "requirement": "optional",
+      "title": "Change Detection, Lazy Loading и HTTP Интерцепторы",
+      "description": "Оптимизация рендеринга через ChangeDetectionStrategy.OnPush, манипуляция DOM через Renderer2, ленивая загрузка модулей и HttpInterceptor.",
+      "topics": [
+        "ChangeDetectionStrategy.OnPush",
+        "Renderer2 / ElementRef",
+        "Lazy Loading routes",
+        "HttpInterceptor"
+      ],
+      "links": [
+        {
+          "title": "Angular - Change Detection",
+          "url": "https://angular.dev/best-practices/runtime-performance"
+        },
+        {
+          "title": "Angular - HTTP Interceptors",
+          "url": "https://angular.dev/guide/http/interceptors"
+        }
+      ]
+    },
+    {
+      "id": "angular-e3.1-cva-and-animations",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E3.1",
+      "requirement": "optional",
+      "title": "ControlValueAccessor, Schematics и Анимации",
+      "description": "Разработка переиспользуемых кастомных компонентов форм с интерфейсом ControlValueAccessor, генераторы schematics, Angular Animations.",
+      "topics": [
+        "ControlValueAccessor (CVA)",
+        "Angular Schematics",
+        "Angular Animations DSL",
+        "RxJS Schedulers"
+      ],
+      "links": [
+        {
+          "title": "Angular - ControlValueAccessor",
+          "url": "https://angular.dev/api/forms/ControlValueAccessor"
+        }
+      ]
+    },
+    {
+      "id": "angular-e3.2-library-architecture-pwa",
+      "competencyId": "angular",
+      "competencyName": "Angular",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E3.2",
+      "requirement": "optional",
+      "title": "Разработка библиотек компонентов, PWA и оптимизация сборки",
+      "description": "Создание shared UI-библиотек (Angular CDK/NgPackage), внедрение Service Workers (PWA), оптимизация бандла и миграция мажорных версий.",
+      "topics": [
+        "Angular Libraries (ng-packagr)",
+        "Angular Service Worker (PWA)",
+        "Build optimization",
+        "Angular Upgrade CLI"
+      ],
+      "links": [
+        {
+          "title": "Angular - Creating Libraries",
+          "url": "https://angular.dev/tools/cli/libraries"
+        }
+      ]
+    },
+    {
+      "id": "react-e1.1-hooks-and-lifecycle",
+      "competencyId": "react",
+      "competencyName": "React",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.1",
+      "requirement": "optional",
+      "title": "Жизненный цикл компонентов и базовые хуки React",
+      "description": "Управление состоянием и побочными эффектами: useState, useEffect, мемоизация useMemo/useCallback, React Router.",
+      "topics": [
+        "Component lifecycle",
+        "useState",
+        "useEffect",
+        "useMemo & useCallback",
+        "React Router basics"
+      ],
+      "links": [
+        {
+          "title": "React - State: A Component's Memory",
+          "url": "https://react.dev/learn/state-a-components-memory"
+        },
+        {
+          "title": "React - Synchronizing with Effects",
+          "url": "https://react.dev/learn/synchronizing-with-effects"
+        }
+      ]
+    },
+    {
+      "id": "react-e1.2-reconciliation-context-state",
+      "competencyId": "react",
+      "competencyName": "React",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E1.2",
+      "requirement": "optional",
+      "title": "Reconciliation, кастомные хуки, Context и State Managers",
+      "description": "Алгоритм сверки (Reconciliation), правильное использование key, React.memo, предотвращение Prop Drilling через Context API, Redux/MobX.",
+      "topics": [
+        "Virtual DOM & Reconciliation",
+        "React keys",
+        "React.memo",
+        "Custom Hooks",
+        "Context API",
+        "Redux / MobX basics"
+      ],
+      "links": [
+        {
+          "title": "React - Preserving and Resetting State",
+          "url": "https://react.dev/learn/preserving-and-resetting-state"
+        },
+        {
+          "title": "React - Passing Data Deeply with Context",
+          "url": "https://react.dev/learn/passing-data-deeply-with-context"
+        }
+      ]
+    },
+    {
+      "id": "react-e2.1-perf-boundaries-portals",
+      "competencyId": "react",
+      "competencyName": "React",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.1",
+      "requirement": "optional",
+      "title": "Оптимизация рендеринга, Error Boundaries и Portals",
+      "description": "Разделение кода (React.lazy, Suspense), перехват ошибок рендеринга с Error Boundaries, рендеринг вне иерархии через createPortal.",
+      "topics": [
+        "React.lazy & Suspense",
+        "Error Boundaries",
+        "createPortal",
+        "Redux Toolkit / MobX deep dive"
+      ],
+      "links": [
+        {
+          "title": "React - Code-Splitting",
+          "url": "https://react.dev/reference/react/lazy"
+        },
+        {
+          "title": "React - Portals",
+          "url": "https://react.dev/reference/react-dom/createPortal"
+        }
+      ]
+    },
+    {
+      "id": "react-e2.2-architecture-testing-ssr",
+      "competencyId": "react",
+      "competencyName": "React",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E2.2",
+      "requirement": "optional",
+      "title": "Архитектура, тестирование (RTL), i18n и Server Components / Next.js",
+      "description": "Проектирование масштабируемой архитектуры, тестирование компонентов через React Testing Library/Jest, react-i18next, Next.js (SSR, SSG, RSC).",
+      "topics": [
+        "React App Architecture",
+        "React Testing Library / Jest",
+        "react-i18next",
+        "Next.js SSR / SSG",
+        "React Server Components"
+      ],
+      "links": [
+        {
+          "title": "React Testing Library",
+          "url": "https://testing-library.com/docs/react-testing-library/intro/"
+        },
+        { "title": "Next.js Documentation", "url": "https://nextjs.org/docs" }
+      ]
+    },
+    {
+      "id": "react-e3.1-design-systems-storybook",
+      "competencyId": "react",
+      "competencyName": "React",
+      "category": "Тех. скилы",
+      "section": "JS-технологии",
+      "grade": "E3.1",
+      "requirement": "optional",
+      "title": "Дизайн-системы и документация компонентов в Storybook",
+      "description": "Разработка и версионирование общих библиотек UI-компонентов, изоляция и интерактивная документация в Storybook.",
+      "topics": [
+        "Component Library Architecture",
+        "Storybook",
+        "Component API Design",
+        "Visual Regression Testing"
+      ],
+      "links": [
+        {
+          "title": "Storybook for React",
+          "url": "https://storybook.js.org/docs/react/get-started/install"
+        }
+      ]
+    },
+    {
+      "id": "layout-css-e1.1-html5-css3-basics",
+      "competencyId": "layout-css",
+      "competencyName": "Верстка, CSS",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Семантический HTML5 и базовый CSS3",
+      "description": "Семантическая верстка страницы, структурирование свойств CSS, блочная модель (Box Model), позиционирование элементов.",
+      "topics": ["HTML5 semantics", "CSS Box Model", "Display & Position", "CSS Selectors"],
+      "links": [
+        {
+          "title": "MDN - CSS building blocks",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks"
+        }
+      ]
+    },
+    {
+      "id": "layout-css-e1.2-flexbox-grid-preprocessors",
+      "competencyId": "layout-css",
+      "competencyName": "Верстка, CSS",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Современные сетки Flexbox, CSS Grid и препроцессоры",
+      "description": "Построение раскладок интерфейса с помощью Flexbox и CSS Grid, использование препроцессоров (SCSS/SASS) и UI-китов.",
+      "topics": [
+        "Flexbox layout",
+        "CSS Grid layout",
+        "SASS / SCSS basics",
+        "UI Kits (Bootstrap / Material)"
+      ],
+      "links": [
+        {
+          "title": "MDN - CSS Grid Layout",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout"
+        },
+        {
+          "title": "MDN - CSS Flexible Box Layout",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout"
+        }
+      ]
+    },
+    {
+      "id": "layout-css-e2.1-animations-cascade-bem",
+      "competencyId": "layout-css",
+      "competencyName": "Верстка, CSS",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "CSS-анимации, каскадность, специфичность и BEM",
+      "description": "Иерархия приоритетов стилей (Specificity & Cascade), плавные переходы и keyframe-анимации, методология именования классов BEM.",
+      "topics": [
+        "CSS Specificity & Cascade",
+        "@keyframes & transitions",
+        "BEM methodology",
+        "Cross-browser compatibility"
+      ],
+      "links": [
+        {
+          "title": "MDN - Cascade, specificity, and inheritance",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance"
+        },
+        {
+          "title": "MDN - Using CSS animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations"
+        }
+      ]
+    },
+    {
+      "id": "layout-css-e2.2-responsive-cssom",
+      "competencyId": "layout-css",
+      "competencyName": "Верстка, CSS",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.2",
+      "requirement": "mandatory",
+      "title": "Адаптивная верстка, резиновый дизайн и CSSOM",
+      "description": "Разработка адаптивных интерфейсов через @media-запросы, относительные единицы измерения (rem/em/vw/vh, clamp), работа с CSSOM.",
+      "topics": [
+        "Media Queries (@media)",
+        "Fluid Typography & Layout (clamp, min, max)",
+        "CSS Object Model (CSSOM)"
+      ],
+      "links": [
+        {
+          "title": "MDN - Responsive design",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design"
+        },
+        {
+          "title": "MDN - CSS Object Model",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model"
+        }
+      ]
+    },
+    {
+      "id": "layout-css-e3.1-critical-path-css",
+      "competencyId": "layout-css",
+      "competencyName": "Верстка, CSS",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E3.1",
+      "requirement": "additional",
+      "title": "Critical Path CSS и оптимизация доставки стилей",
+      "description": "Выделение и инлайнинг критического CSS для первого экрана (Critical Path CSS), асинхронная загрузка некритичных стилей, устранение блокировки рендеринга.",
+      "topics": [
+        "Critical Path CSS",
+        "Render-blocking CSS elimination",
+        "PurgeCSS / Unused CSS removal"
+      ],
+      "links": [
+        {
+          "title": "web.dev - Extract critical CSS",
+          "url": "https://web.dev/articles/extract-critical-css"
+        }
+      ]
+    },
+    {
+      "id": "browser-internals-e1.2-dom-mechanics",
+      "competencyId": "browser-internals",
+      "competencyName": "Понимание работы браузера",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Устройство и функционирование DOM",
+      "description": "Понимание древовидной структуры DOM, взаимодействия узлов (Node/Element) и принципов синхронизации с HTML-разметкой.",
+      "topics": ["Document Object Model", "DOM tree traversal", "DOM Node vs Element"],
+      "links": [
+        {
+          "title": "MDN - Introduction to the DOM",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+        }
+      ]
+    },
+    {
+      "id": "browser-internals-e2.1-rendering-pipeline",
+      "competencyId": "browser-internals",
+      "competencyName": "Понимание работы браузера",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Критический путь рендеринга и поток выполнения",
+      "description": "Порядок парсинга страницы, построение Render Tree, этапы Layout (Reflow), Paint (Repaint) и Composite, связь с Main Thread и Call Stack.",
+      "topics": [
+        "Critical Rendering Path",
+        "DOM + CSSOM = Render Tree",
+        "Layout (Reflow) & Paint (Repaint)",
+        "Compositing layers"
+      ],
+      "links": [
+        {
+          "title": "web.dev - Critical rendering path",
+          "url": "https://web.dev/articles/critical-rendering-path"
+        }
+      ]
+    },
+    {
+      "id": "browser-internals-e2.2-web-apis",
+      "competencyId": "browser-internals",
+      "competencyName": "Понимание работы браузера",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.2",
+      "requirement": "mandatory",
+      "title": "Браузерные интерфейсы (Web APIs)",
+      "description": "Практическое использование стандартных браузерных API для работы с хранилищем, историей, сетью и наблюдателями.",
+      "topics": [
+        "Fetch API",
+        "Storage API (localStorage, sessionStorage, IndexedDB)",
+        "History API",
+        "IntersectionObserver / MutationObserver"
+      ],
+      "links": [
+        {
+          "title": "MDN - Web APIs",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API"
+        }
+      ]
+    },
+    {
+      "id": "browser-internals-e3.1-service-workers-multithreading",
+      "competencyId": "browser-internals",
+      "competencyName": "Понимание работы браузера",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Фоновые потоки (Service Workers & Web Workers)",
+      "description": "Жизненный цикл Service Workers, перехват сетевых запросов, кеширование для Offline, вынос тяжелых вычислений в Web Workers.",
+      "topics": [
+        "Service Worker lifecycle",
+        "Offline caching strategies",
+        "Web Workers & multithreading"
+      ],
+      "links": [
+        {
+          "title": "MDN - Service Worker API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API"
+        }
+      ]
+    },
+    {
+      "id": "mobile-tech-e2.2-mobile-web-interactions",
+      "competencyId": "mobile-tech",
+      "competencyName": "Мобильные технологии",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.2",
+      "requirement": "desirable",
+      "title": "Особенности взаимодействия с мобильными устройствами",
+      "description": "Обработка touch-событий, плотность пикселей (DPR / Virtual Pixel Sizes), работа с мобильными браузерными API (Geolocation, Camera/Media API).",
+      "topics": [
+        "Touch Events (touchstart, touchmove, touchend)",
+        "Viewport & DPR",
+        "Device APIs (Geolocation, Media Capture)"
+      ],
+      "links": [
+        {
+          "title": "MDN - Touch events",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Touch_events"
+        }
+      ]
+    },
+    {
+      "id": "mobile-tech-e3.1-react-native-intro",
+      "competencyId": "mobile-tech",
+      "competencyName": "Мобильные технологии",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Разработка базовых приложений на React Native",
+      "description": "Создание кроссплатформенных мобильных интерфейсов с использованием компонентов React Native (View, Text, FlatList, StyleSheet).",
+      "topics": [
+        "React Native Core Components",
+        "Flexbox in React Native",
+        "React Native CLI / Expo",
+        "Debugging mobile apps"
+      ],
+      "links": [
+        {
+          "title": "React Native - Core Components",
+          "url": "https://reactnative.dev/docs/components-and-apis"
+        }
+      ]
+    },
+    {
+      "id": "mobile-tech-e3.2-react-native-navigation",
+      "competencyId": "mobile-tech",
+      "competencyName": "Мобильные технологии",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E3.2",
+      "requirement": "optional",
+      "title": "Маршрутизация и нативные модули React Native",
+      "description": "Настройка стековой и таб-навигации через React Navigation, интеграция нативных мостов и хранилища AsyncStorage.",
+      "topics": ["React Navigation (Stack, Tabs)", "AsyncStorage", "Native Modules integration"],
+      "links": [
+        {
+          "title": "React Navigation Documentation",
+          "url": "https://reactnavigation.org/docs/getting-started"
+        }
+      ]
+    },
+    {
+      "id": "mobile-tech-e4.1-react-native-production",
+      "competencyId": "mobile-tech",
+      "competencyName": "Мобильные технологии",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Production-разработка и публикация React Native приложений",
+      "description": "Оптимизация производительности мобильных приложений, настройка сборки бандлов для iOS/Android, профилирование памяти и анимаций.",
+      "topics": [
+        "Performance profiling in React Native",
+        "Hermes JS Engine",
+        "Release builds & Code signing"
+      ],
+      "links": [
+        {
+          "title": "React Native - Performance",
+          "url": "https://reactnative.dev/docs/performance"
+        }
+      ]
+    },
+    {
+      "id": "performance-e1.2-core-web-vitals",
+      "competencyId": "performance",
+      "competencyName": "Производительность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Метрики производительности веб-приложений",
+      "description": "Знание и интерпретация ключевых метрик Core Web Vitals: LCP, INP, CLS, FCP, TTFB, базовый анализ через DevTools.",
+      "topics": [
+        "Core Web Vitals (LCP, INP, CLS)",
+        "TTFB & FCP",
+        "Chrome DevTools Network & Performance overview"
+      ],
+      "links": [
+        {
+          "title": "web.dev - Core Web Vitals",
+          "url": "https://web.dev/articles/vitals"
+        }
+      ]
+    },
+    {
+      "id": "performance-e2.1-http-caching",
+      "competencyId": "performance",
+      "competencyName": "Производительность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Заголовки и стратегии HTTP-кеширования",
+      "description": "Настройка кеширования статики и API: Cache-Control, ETag, Last-Modified, стратегии валидации кеша и влияние на UX.",
+      "topics": [
+        "Cache-Control directives (no-cache, no-store, max-age, immutable)",
+        "ETag / If-None-Match",
+        "Service Worker Cache API"
+      ],
+      "links": [
+        {
+          "title": "MDN - HTTP caching",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching"
+        }
+      ]
+    },
+    {
+      "id": "performance-e2.2-runtime-and-memory",
+      "competencyId": "performance",
+      "competencyName": "Производительность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.2",
+      "requirement": "mandatory",
+      "title": "Оптимизация рендеринга и устранение утечек памяти",
+      "description": "Поиск и устранение утечек памяти (Memory Leaks, Heap Snapshot), оптимизация ререндеров, батчинг операций с DOM.",
+      "topics": [
+        "Memory Leaks & Heap Snapshots",
+        "Layout Thrashing / Forced Synchronous Layout",
+        "Debounce & Throttle"
+      ],
+      "links": [
+        {
+          "title": "Chrome DevTools - Record heap snapshots",
+          "url": "https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots"
+        }
+      ]
+    },
+    {
+      "id": "performance-e3.1-lighthouse-profiling",
+      "competencyId": "performance",
+      "competencyName": "Производительность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Аудит и детальный разбор в Lighthouse",
+      "description": "Глубокий анализ узких мест приложения по отчетам Lighthouse, профилирование выполнения скриптов (Flame Chart).",
+      "topics": [
+        "Lighthouse Audits",
+        "Flame Chart analysis",
+        "Long Tasks optimization",
+        "Asset compression (Brotli/WebP/AVIF)"
+      ],
+      "links": [
+        {
+          "title": "Chrome for Developers - Lighthouse overview",
+          "url": "https://developer.chrome.com/docs/lighthouse/overview"
+        }
+      ]
+    },
+    {
+      "id": "performance-e3.2-advanced-benchmarking-rum",
+      "competencyId": "performance",
+      "competencyName": "Производительность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E3.2",
+      "requirement": "additional",
+      "title": "Инструменты бенчмаркинга и мониторинг RUM",
+      "description": "Настройка сбора метрик реальных пользователей (Real User Monitoring), синтетическое тестирование через WebPageTest.",
+      "topics": ["Real User Monitoring (RUM)", "WebPageTest", "Performance Observer API"],
+      "links": [
+        {
+          "title": "MDN - PerformanceObserver API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver"
+        }
+      ]
+    },
+    {
+      "id": "security-e1.1-https-basics",
+      "competencyId": "security",
+      "competencyName": "Безопасность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Протокол HTTPS и основы TLS",
+      "description": "Принципы защищенной передачи данных, шифрование трафика, работа цифровых сертификатов.",
+      "topics": ["HTTPS / TLS handshake", "Public & Private keys", "SSL Certificates"],
+      "links": [
+        {
+          "title": "MDN - What is HTTPS?",
+          "url": "https://developer.mozilla.org/en-US/docs/Glossary/HTTPS"
+        }
+      ]
+    },
+    {
+      "id": "security-e1.2-auth-vs-authz",
+      "competencyId": "security",
+      "competencyName": "Безопасность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Аутентификация vs Авторизация и Basic Auth",
+      "description": "Различия между установлением личности и проверкой прав доступа, принцип работы заголовка Authorization и Basic Authentication.",
+      "topics": [
+        "Authentication vs Authorization",
+        "Basic Authentication header",
+        "Base64 encoding limitations"
+      ],
+      "links": [
+        {
+          "title": "MDN - HTTP authentication",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication"
+        }
+      ]
+    },
+    {
+      "id": "security-e2.1-cors-cookies-csp",
+      "competencyId": "security",
+      "competencyName": "Безопасность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "CORS, флаги безопасности Cookies и CSP",
+      "description": "Cross-Origin Resource Sharing (Preflight OPTIONS), риски хранения токенов в localStorage, флаги HttpOnly / SameSite / Secure для Cookie, Content Security Policy.",
+      "topics": [
+        "CORS headers & Preflight",
+        "HttpOnly / SameSite / Secure Cookies",
+        "localStorage security risks",
+        "Content Security Policy (CSP)",
+        "Remote File Inclusion (RFI)"
+      ],
+      "links": [
+        {
+          "title": "MDN - Cross-Origin Resource Sharing (CORS)",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+        },
+        {
+          "title": "MDN - Content Security Policy (CSP)",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"
+        }
+      ]
+    },
+    {
+      "id": "security-e2.2-xss-oauth2-oidc",
+      "competencyId": "security",
+      "competencyName": "Безопасность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E2.2",
+      "requirement": "mandatory",
+      "title": "Защита от XSS, протоколы OAuth 2.0, OIDC и Keycloak",
+      "description": "Предотвращение межсайтового скриптинга (XSS), хеширование паролей с солью, аудит уязвимостей зависимостей, роли и гранты OAuth 2.0 / OpenID Connect, основы Keycloak.",
+      "topics": [
+        "XSS prevention (Stored, Reflected, DOM-based)",
+        "Password Hashing & Salt",
+        "OAuth 2.0 flows (Authorization Code + PKCE)",
+        "OpenID Connect (ID Token)",
+        "Keycloak basics"
+      ],
+      "links": [
+        {
+          "title": "OWASP - Cross Site Scripting (XSS)",
+          "url": "https://owasp.org/www-community/attacks/xss/"
+        },
+        { "title": "OAuth 2.0 Simplified", "url": "https://oauth.net/2/" }
+      ]
+    },
+    {
+      "id": "security-e3.1-private-registry",
+      "competencyId": "security",
+      "competencyName": "Безопасность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Безопасность зависимостей и локальный Package Registry",
+      "description": "Развертывание и безопасная конфигурация корпоративного реестра npm-пакетов (Verdaccio, Nexus, Artifactory), контроль доступа и сканирование уязвимостей.",
+      "topics": [
+        "Private npm Registry",
+        "Dependency confusion prevention",
+        "Automated vulnerability scanning"
+      ],
+      "links": [
+        {
+          "title": "npm Docs - Configuring your registry",
+          "url": "https://docs.npmjs.com/cli/v10/using-npm/registry"
+        }
+      ]
+    },
+    {
+      "id": "security-e3.2-sql-injection-awareness",
+      "competencyId": "security",
+      "competencyName": "Безопасность",
+      "category": "Тех. скилы",
+      "section": "Клиентские технологии",
+      "grade": "E3.2",
+      "requirement": "desirable",
+      "title": "Предотвращение инъекций (SQL Injection)",
+      "description": "Понимание векторов атак SQL/NoSQL Injection, параметризованные запросы, санитизация пользовательского ввода.",
+      "topics": [
+        "SQL Injection vectors",
+        "Parameterized queries / ORM protection",
+        "Input sanitization"
+      ],
+      "links": [
+        {
+          "title": "OWASP - SQL Injection Prevention",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+        }
+      ]
+    },
+    {
+      "id": "mongodb-e3.1-crud-aggregation-transactions",
+      "competencyId": "mongodb",
+      "competencyName": "MongoDB",
+      "category": "Тех. скилы",
+      "section": "БД",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "CRUD, агрегации и транзакции в MongoDB",
+      "description": "Различия реляционных и NoSQL БД, моделирование документов и связей ($lookup), пайплайны агрегации (Aggregation Pipeline), индексы и транзакции.",
+      "topics": [
+        "Document vs Relational data model",
+        "CRUD operators & sorting/pagination",
+        "Aggregation Pipeline ($match, $group, $lookup)",
+        "ACID Transactions"
+      ],
+      "links": [
+        {
+          "title": "MongoDB - Aggregation Pipeline",
+          "url": "https://www.mongodb.com/docs/manual/core/aggregation-pipeline/"
+        }
+      ]
+    },
+    {
+      "id": "mongodb-e4.1-replication-sharding",
+      "competencyId": "mongodb",
+      "competencyName": "MongoDB",
+      "category": "Тех. скилы",
+      "section": "БД",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Репликация и шардирование в MongoDB",
+      "description": "Обеспечение отказоустойчивости через Replica Sets (Primary, Secondary, Arbiter) и горизонтальное масштабирование через Sharding.",
+      "topics": ["Replica Sets & failover", "Sharding & Shard Keys", "Mongos routing service"],
+      "links": [
+        {
+          "title": "MongoDB - Replication",
+          "url": "https://www.mongodb.com/docs/manual/replication/"
+        }
+      ]
+    },
+    {
+      "id": "redis-keydb-e3.1-caching-patterns",
+      "competencyId": "redis-keydb",
+      "competencyName": "Redis / KeyDB",
+      "category": "Тех. скилы",
+      "section": "БД",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Типы данных и паттерны кеширования в Redis",
+      "description": "Применение in-memory хранилищ (Redis/KeyDB), базовые типы данных (Strings, Hashes, Lists, Sets), время жизни ключей (EXPIRE), паттерны Cache-Aside.",
+      "topics": [
+        "Redis Data Types",
+        "Key expiration (TTL)",
+        "Cache-Aside & Write-Through patterns",
+        "Cache Invalidation"
+      ],
+      "links": [
+        {
+          "title": "Redis - Data types tutorial",
+          "url": "https://redis.io/docs/latest/develop/data-types/"
+        }
+      ]
+    },
+    {
+      "id": "redis-keydb-e4.1-cluster-replication",
+      "competencyId": "redis-keydb",
+      "competencyName": "Redis / KeyDB",
+      "category": "Тех. скилы",
+      "section": "БД",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Кластеризация и репликация Redis / KeyDB",
+      "description": "Организация репликации master-replica, автоматический failover через Redis Sentinel и шардирование данных в Redis Cluster.",
+      "topics": ["Redis Sentinel", "Redis Cluster & Hash Slots", "Persistence (RDB & AOF)"],
+      "links": [
+        {
+          "title": "Redis - Cluster tutorial",
+          "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/"
+        }
+      ]
+    },
+    {
+      "id": "web-servers-e1.2-fundamentals",
+      "competencyId": "web-servers",
+      "competencyName": "Понимание работы веб-сервера",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E1.2",
+      "requirement": "optional",
+      "title": "Назначение и архитектура веб-серверов",
+      "description": "Понимание роли веб-сервера в доставке статики и маршрутизации динамических запросов, сравнение популярных решений (Nginx, Caddy, Apache).",
+      "topics": ["Web Server role", "Static asset serving", "HTTP protocol integration"],
+      "links": [
+        {
+          "title": "MDN - What is a web server?",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server"
+        }
+      ]
+    },
+    {
+      "id": "web-servers-e2.1-nginx-basics-http",
+      "competencyId": "web-servers",
+      "competencyName": "Понимание работы веб-сервера",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E2.1",
+      "requirement": "desirable",
+      "title": "Основы Nginx и протокола HTTP",
+      "description": "Базовая структура директив Nginx (server, location), типы HTTP-запросов и статус-кодов.",
+      "topics": ["Nginx basic syntax", "server & location blocks", "HTTP request-response cycle"],
+      "links": [
+        {
+          "title": "NGINX - Beginner's Guide",
+          "url": "https://nginx.org/en/docs/beginners_guide.html"
+        }
+      ]
+    },
+    {
+      "id": "web-servers-e2.2-nginx-reverse-proxy",
+      "competencyId": "web-servers",
+      "competencyName": "Понимание работы веб-сервера",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E2.2",
+      "requirement": "mandatory",
+      "title": "Reverse Proxy, кеширование и логирование в Nginx",
+      "description": "Конфигурирование обратного прокси (proxy_pass), кеширование статических файлов, настройка access/error логов, сжатие gzip.",
+      "topics": [
+        "Reverse Proxy (proxy_pass)",
+        "Static cache headers",
+        "Gzip / Brotli compression",
+        "Logging format"
+      ],
+      "links": [
+        {
+          "title": "NGINX - Reverse Proxy",
+          "url": "https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/"
+        }
+      ]
+    },
+    {
+      "id": "web-servers-e3.1-advanced-nginx-config",
+      "competencyId": "web-servers",
+      "competencyName": "Понимание работы веб-сервера",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Продвинутая настройка Nginx и SSL Termination",
+      "description": "Настройка SSL-терминации, балансировки нагрузки upstream, rate limiting, тонкая настройка буферов и памяти.",
+      "topics": [
+        "SSL/TLS Termination",
+        "Upstream load balancing",
+        "Rate limiting & security headers",
+        "Buffer & memory tuning"
+      ],
+      "links": [
+        {
+          "title": "NGINX - HTTPS servers",
+          "url": "https://nginx.org/en/docs/http/configuring_https_servers.html"
+        }
+      ]
+    },
+    {
+      "id": "nodejs-e2.1-runtime-basics",
+      "competencyId": "nodejs",
+      "competencyName": "Node.js",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E2.1",
+      "requirement": "desirable",
+      "title": "Основы среды выполнения Node.js",
+      "description": "Архитектура Node.js на базе V8 и libuv, модульные системы CommonJS vs ES Modules, создание базовых скриптов и серверов.",
+      "topics": ["Node.js runtime", "CommonJS vs ESM", "Node core modules (fs, path, http)"],
+      "links": [
+        {
+          "title": "Node.js - Introduction",
+          "url": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+        }
+      ]
+    },
+    {
+      "id": "nodejs-e2.2-express-and-nest-intro",
+      "competencyId": "nodejs",
+      "competencyName": "Node.js",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E2.2",
+      "requirement": "desirable",
+      "title": "Разработка REST API на Express.js и основы NestJS",
+      "description": "Маршрутизация и middleware в Express.js, обработка JSON-тел запросов, подключение к БД, первичное знакомство с модульной структурой NestJS.",
+      "topics": [
+        "Express routing & middleware",
+        "Request body parsing",
+        "Database connectivity (CRUD)",
+        "NestJS introduction"
+      ],
+      "links": [
+        {
+          "title": "Express.js - Routing Guide",
+          "url": "https://expressjs.com/en/guide/routing.html"
+        },
+        { "title": "NestJS Documentation", "url": "https://docs.nestjs.com/" }
+      ]
+    },
+    {
+      "id": "nodejs-e3.2-nestjs-architecture",
+      "competencyId": "nodejs",
+      "competencyName": "Node.js",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E3.2",
+      "requirement": "desirable",
+      "title": "Архитектура корпоративных приложений на NestJS",
+      "description": "Проектирование сервисов на NestJS: внедрение зависимостей (DI), Guards, Interceptors, Pipes валидации (class-validator), работа с ORM (TypeORM / Prisma).",
+      "topics": [
+        "NestJS Modules & Providers",
+        "Guards & Interceptors",
+        "Validation Pipes",
+        "TypeORM / Prisma integration"
+      ],
+      "links": [
+        {
+          "title": "NestJS - Controllers and Providers",
+          "url": "https://docs.nestjs.com/controllers"
+        }
+      ]
+    },
+    {
+      "id": "api-e1.2-rest-fundamentals",
+      "competencyId": "api",
+      "competencyName": "API",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E1.2",
+      "requirement": "desirable",
+      "title": "Базовые принципы архитектурного стиля REST",
+      "description": "Ориентация на ресурсы (Resources / URIs), клиент-серверное разделение, отсутствие сохранения состояния (Statelessness).",
+      "topics": ["REST constraints", "Resource-oriented URIs", "Client-Server separation"],
+      "links": [{ "title": "REST API Tutorial", "url": "https://restfulapi.net/" }]
+    },
+    {
+      "id": "api-e2.1-http-methods-headers-codes",
+      "competencyId": "api",
+      "competencyName": "API",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "HTTP-методы, статус-коды и стандартные заголовки",
+      "description": "Семантика методов (GET, POST, PUT, PATCH, DELETE, OPTIONS), статус-коды ответов (2xx, 3xx, 4xx, 5xx) и использование ключевых заголовков.",
+      "topics": [
+        "Idempotent vs Safe methods",
+        "HTTP Status codes (200, 201, 204, 400, 401, 403, 404, 500)",
+        "Headers (Authorization, Content-Type, Content-Disposition, User-Agent, ETag, Cache-Control)"
+      ],
+      "links": [
+        {
+          "title": "MDN - HTTP request methods",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods"
+        },
+        {
+          "title": "MDN - HTTP response status codes",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+        }
+      ]
+    },
+    {
+      "id": "api-e3.1-graphql-contract-testing",
+      "competencyId": "api",
+      "competencyName": "API",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E3.1",
+      "requirement": "additional",
+      "title": "GraphQL и контрактное тестирование с Pact.io",
+      "description": "Спецификация схемы GraphQL (SDL), выполнение Queries, Mutations, Subscriptions, контрактное тестирование API фронтенда и бэкенда с Pact.io.",
+      "topics": [
+        "GraphQL Schema Definition",
+        "Queries & Mutations",
+        "GraphQL Subscriptions",
+        "Contract Testing with Pact.io"
+      ],
+      "links": [
+        {
+          "title": "GraphQL - Introduction",
+          "url": "https://graphql.org/learn/"
+        },
+        { "title": "Pact Documentation", "url": "https://docs.pact.io/" }
+      ]
+    },
+    {
+      "id": "api-e4.1-openapi-swagger",
+      "competencyId": "api",
+      "competencyName": "API",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Стандартизация и актуализация OpenAPI / Swagger",
+      "description": "Проектирование и контроль актуальности спецификаций OpenAPI (Swagger), генерация TypeScript клиентов по схеме.",
+      "topics": [
+        "OpenAPI 3.0 specification",
+        "Swagger UI",
+        "API Client code generation (openapi-generator / orval)"
+      ],
+      "links": [
+        {
+          "title": "OpenAPI Specification",
+          "url": "https://swagger.io/specification/"
+        }
+      ]
+    },
+    {
+      "id": "docker-ci-e2.2-docker-and-ci-intro",
+      "competencyId": "docker-ci",
+      "competencyName": "Docker, CI",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E2.2",
+      "requirement": "desirable",
+      "title": "Основы Docker и принципы CI/CD",
+      "description": "Понятие контейнеризации, работа с Docker Images, Containers, Volumes, базовые CLI-команды, назначение пайплайнов непрерывной интеграции.",
+      "topics": [
+        "Containers vs Virtual Machines",
+        "Dockerfile syntax",
+        "docker run/build/ps/logs",
+        "Docker Volumes",
+        "CI/CD principles"
+      ],
+      "links": [
+        {
+          "title": "Docker - Orientation and setup",
+          "url": "https://docs.docker.com/get-started/"
+        }
+      ]
+    },
+    {
+      "id": "docker-ci-e3.1-gitlab-ci-pipelines",
+      "competencyId": "docker-ci",
+      "competencyName": "Docker, CI",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Написание пайплайнов в GitLab CI/CD",
+      "description": "Создание и поддержка .gitlab-ci.yml: этапы (stages), задачи (jobs), передача артефактов, кеширование node_modules, правила запуска (rules).",
+      "topics": [
+        ".gitlab-ci.yml configuration",
+        "Stages & Jobs",
+        "Artifacts & Cache",
+        "CI/CD Variables & Rules"
+      ],
+      "links": [
+        {
+          "title": "GitLab CI/CD Documentation",
+          "url": "https://docs.gitlab.com/ee/ci/"
+        }
+      ]
+    },
+    {
+      "id": "docker-ci-e3.2-frontend-docker-multistage",
+      "competencyId": "docker-ci",
+      "competencyName": "Docker, CI",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E3.2",
+      "requirement": "mandatory",
+      "title": "Многоэтапная сборка фронтенда в Docker",
+      "description": "Написание легковесных Dockerfile с Multi-stage build для компиляции фронтенд-приложения и раздачи статики через Nginx Alpine.",
+      "topics": [
+        "Multi-stage builds",
+        "Nginx alpine static serving",
+        ".dockerignore optimization",
+        "Container image size reduction"
+      ],
+      "links": [
+        {
+          "title": "Docker - Multi-stage builds",
+          "url": "https://docs.docker.com/build/building/multi-stage/"
+        }
+      ]
+    },
+    {
+      "id": "docker-ci-e4.1-microservices-compose-deploy",
+      "competencyId": "docker-ci",
+      "competencyName": "Docker, CI",
+      "category": "Тех. скилы",
+      "section": "Серверные технологии",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Оркестрация и деплой микросервисов",
+      "description": "Создание конфигураций Docker Compose для связывания микросервисов, проброс портов, монтирование томов и запуск на сервере.",
+      "topics": [
+        "Docker Compose (docker-compose.yml)",
+        "Port mapping & Network bridging",
+        "Environment configuration",
+        "Production deploy scripts"
+      ],
+      "links": [
+        {
+          "title": "Docker Compose Overview",
+          "url": "https://docs.docker.com/compose/"
+        }
+      ]
+    },
+    {
+      "id": "coding-refactoring-e1.2-clean-code-naming",
+      "competencyId": "coding-refactoring",
+      "competencyName": "Coding & Refactoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Чистый код: осмысленное именование и компактные функции",
+      "description": "Правила чистого кода: говорящие имена классов, методов и переменных, отражающие намерение разработчика, атомарность функций.",
+      "topics": ["Meaningful Naming", "Single Purpose Functions", "Avoiding Magic Numbers/Strings"],
+      "links": [
+        {
+          "title": "Clean Code JavaScript",
+          "url": "https://github.com/ryanmcdermott/clean-code-javascript"
+        }
+      ]
+    },
+    {
+      "id": "coding-refactoring-e2.1-unit-refactoring-solid-intro",
+      "competencyId": "coding-refactoring",
+      "competencyName": "Coding & Refactoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Локальный рефакторинг, Code Style и культура комментариев",
+      "description": "Рефакторинг на уровне функции/класса, соблюдение ESLint/Prettier правил, комментирование причин ('почему', а не 'что'), базовое понимание SOLID.",
+      "topics": [
+        "Unit-level refactoring",
+        "Code style consistency",
+        "Self-documenting code vs Good comments",
+        "SOLID fundamentals introduction",
+        "Basic Patterns (Factory, Singleton, Decorator)"
+      ],
+      "links": [
+        {
+          "title": "Refactoring Guru - Refactoring Basics",
+          "url": "https://refactoring.guru/refactoring"
+        }
+      ]
+    },
+    {
+      "id": "coding-refactoring-e2.2-gof-patterns-dry-kiss",
+      "competencyId": "coding-refactoring",
+      "competencyName": "Coding & Refactoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E2.2",
+      "requirement": "desirable",
+      "title": "Паттерны проектирования и принципы DRY, KISS, YAGNI",
+      "description": "Практическое использование паттернов Factory, Singleton, Decorator и применение инженерных принципов DRY, KISS, YAGNI.",
+      "topics": ["Factory Pattern", "Singleton Pattern", "Decorator Pattern", "DRY, KISS, YAGNI"],
+      "links": [
+        {
+          "title": "Refactoring Guru - Design Patterns",
+          "url": "https://refactoring.guru/design-patterns"
+        }
+      ]
+    },
+    {
+      "id": "coding-refactoring-e3.1-module-refactoring-complexity",
+      "competencyId": "coding-refactoring",
+      "competencyName": "Coding & Refactoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Рефакторинг модулей и цикломатическая сложность",
+      "description": "Проведение безопасного рефакторинга на уровне модулей, расчет и снижение цикломатической сложности функций (Cyclomatic Complexity).",
+      "topics": [
+        "Module-level refactoring",
+        "Cyclomatic Complexity calculation",
+        "Polymorphism over conditionals"
+      ],
+      "links": [
+        {
+          "title": "Martin Fowler - Refactoring",
+          "url": "https://martinfowler.com/books/refactoring.html"
+        }
+      ]
+    },
+    {
+      "id": "coding-refactoring-e3.2-solid-gof-catalog",
+      "competencyId": "coding-refactoring",
+      "competencyName": "Coding & Refactoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E3.2",
+      "requirement": "desirable",
+      "title": "Глубокое применение SOLID и каталога паттернов GoF",
+      "description": "Применение всех принципов SOLID (SRP, OCP, LSP, ISP, DIP) и каталога Creational, Structural, Behavioral паттернов (Mediator, Command, Observer, Facade, Strategy).",
+      "topics": [
+        "SOLID Principles in TypeScript/JS",
+        "Creational Patterns",
+        "Structural Patterns (Facade, Adapter)",
+        "Behavioral Patterns (Observer, Command, Mediator, Strategy)"
+      ],
+      "links": [
+        {
+          "title": "SOLID Principles with TypeScript",
+          "url": "https://khalilstemmler.com/articles/solid-principles/solid-typescript/"
+        }
+      ]
+    },
+    {
+      "id": "coding-refactoring-e4.1-reengineering-migrations",
+      "competencyId": "coding-refactoring",
+      "competencyName": "Coding & Refactoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Реинжиниринг и распил монолитов",
+      "description": "Смена архитектурных парадигм и фреймворков, разделение монорепозиториев на независимые пакеты и микрофронтенды.",
+      "topics": [
+        "System Re-engineering",
+        "Monolith decomposition",
+        "Framework migration strategies",
+        "Microfrontends"
+      ],
+      "links": [
+        {
+          "title": "Martin Fowler - Strangler Fig Application",
+          "url": "https://martinfowler.com/bliki/StranglerFigApplication.html"
+        }
+      ]
+    },
+    {
+      "id": "coding-refactoring-e5.1-grasp-and-ddd",
+      "competencyId": "coding-refactoring",
+      "competencyName": "Coding & Refactoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E5.1",
+      "requirement": "desirable",
+      "title": "Принципы распределения обязанностей GRASP и DDD",
+      "description": "Применение 9 принципов GRASP (Information Expert, Creator, Low Coupling, High Cohesion, Controller, Polymorphism, Pure Fabrication, Indirection, Protected Variations) и их связь с Domain-Driven Design.",
+      "topics": [
+        "9 GRASP principles",
+        "Low Coupling vs High Cohesion",
+        "Domain-Driven Design (DDD) concepts",
+        "Architectural synthesis with GoF/SOLID"
+      ],
+      "links": [
+        {
+          "title": "GRASP (Object-Oriented Design)",
+          "url": "https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)"
+        }
+      ]
+    },
+    {
+      "id": "testing-e1.2-pyramid-concept",
+      "competencyId": "testing",
+      "competencyName": "Testing",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E1.2",
+      "requirement": "desirable",
+      "title": "Концепция пирамиды тестирования",
+      "description": "Понимание уровней тестирования (Unit, Integration, E2E), их стоимости, скорости выполнения и зон ответственности.",
+      "topics": ["Test Pyramid levels", "Unit vs Integration vs E2E", "ROI of tests"],
+      "links": [
+        {
+          "title": "Martin Fowler - The Practical Test Pyramid",
+          "url": "https://martinfowler.com/articles/practical-test-pyramid.html"
+        }
+      ]
+    },
+    {
+      "id": "testing-e2.1-unit-testing-basics",
+      "competencyId": "testing",
+      "competencyName": "Testing",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E2.1",
+      "requirement": "desirable",
+      "title": "Написание модульных тестов (Unit Tests)",
+      "description": "Разработка unit-тестов с помощью Jest/Vitest, проверка чистых функций и базовой бизнес-логики.",
+      "topics": ["Test runners (Jest / Vitest)", "describe / it / expect", "Testing pure logic"],
+      "links": [
+        {
+          "title": "Jest - Getting Started",
+          "url": "https://jestjs.io/docs/getting-started"
+        }
+      ]
+    },
+    {
+      "id": "testing-e2.2-mocking-snapshots-jsdom",
+      "competencyId": "testing",
+      "competencyName": "Testing",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E2.2",
+      "requirement": "desirable",
+      "title": "Моки, снепшоты и тестирование DOM окружения",
+      "description": "Полное покрытие positive/negative сценариев, эмуляция браузера с jsdom, применение snapshot-тестов, мокирование модулей и таймеров.",
+      "topics": [
+        "Positive & Negative test cases",
+        "Snapshot Testing",
+        "jsdom environment",
+        "jest.mock / vi.mock"
+      ],
+      "links": [
+        {
+          "title": "Jest - Mock Functions",
+          "url": "https://jestjs.io/docs/mock-functions"
+        },
+        {
+          "title": "Jest - Snapshot Testing",
+          "url": "https://jestjs.io/docs/snapshot-testing"
+        }
+      ]
+    },
+    {
+      "id": "testing-e3.1-doubles-and-coverage-review",
+      "competencyId": "testing",
+      "competencyName": "Testing",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Test Doubles (Mock, Spy, Stub) и ревью покрытия тестами",
+      "description": "Четкое различение и уместное применение тестовых дублеров (Dummy, Stub, Spy, Mock, Fake), ревью качества и покрытия тестами задач команды.",
+      "topics": [
+        "Test Doubles taxonomy (Mock vs Spy vs Stub)",
+        "Code Coverage metrics (Lines, Branches, Statements)",
+        "Test Code Review standards"
+      ],
+      "links": [
+        {
+          "title": "Martin Fowler - TestDouble",
+          "url": "https://martinfowler.com/bliki/TestDouble.html"
+        }
+      ]
+    },
+    {
+      "id": "testing-e4.1-e2e-automation",
+      "competencyId": "testing",
+      "competencyName": "Testing",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Сквозное автоматизированное тестирование (E2E)",
+      "description": "Разработка сквозных сценариев тестирования с использованием Playwright или Cypress, интеграция в CI пайплайн.",
+      "topics": [
+        "Playwright / Cypress",
+        "Page Object Pattern",
+        "E2E CI integration",
+        "Visual regression & network intercepting"
+      ],
+      "links": [
+        {
+          "title": "Playwright - Getting Started",
+          "url": "https://playwright.dev/docs/intro"
+        }
+      ]
+    },
+    {
+      "id": "testing-e4.2-holistic-test-strategy",
+      "competencyId": "testing",
+      "competencyName": "Testing",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E4.2",
+      "requirement": "mandatory",
+      "title": "Комплексная стратегия сквозного покрытия тестами",
+      "description": "Построение единой стратегии тестирования проекта: баланс Unit/Integration/E2E, настройка порогов покрытия (coverage gates) и превентивная проверка качества.",
+      "topics": [
+        "Test Strategy Design",
+        "Quality Gates in CI",
+        "Flaky tests management",
+        "Contract & Integration testing balance"
+      ],
+      "links": [
+        {
+          "title": "web.dev - Testing Best Practices",
+          "url": "https://web.dev/articles/ta-best-practices"
+        }
+      ]
+    },
+    {
+      "id": "debugging-e1.2-devtools-stepping",
+      "competencyId": "debugging",
+      "competencyName": "Debugging",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E1.2",
+      "requirement": "mandatory",
+      "title": "Базовые инструменты отладки в IDE и DevTools",
+      "description": "Установка точек останова (breakpoints), пошаговая навигация по коду (Step over, Step in, Step out), мониторинг переменных через Watches.",
+      "topics": [
+        "Breakpoints",
+        "Step over, Step into, Step out",
+        "Watch expressions",
+        "Scope inspection"
+      ],
+      "links": [
+        {
+          "title": "Chrome DevTools - Debug JavaScript",
+          "url": "https://developer.chrome.com/docs/devtools/javascript"
+        }
+      ]
+    },
+    {
+      "id": "debugging-e2.1-conditional-breakpoints-stacktrace",
+      "competencyId": "debugging",
+      "competencyName": "Debugging",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Анализ Stack Trace и продвинутые брейкпоинты",
+      "description": "Поиск первопричин дефектов по Stack Trace, условные брейкпоинты (Conditional Breakpoints), изменение значений переменных в runtime, сброс фрейма вызова (Drop Frame).",
+      "topics": [
+        "Stack Trace analysis",
+        "Conditional Breakpoints",
+        "Runtime variable modification",
+        "Call stack navigation / Restart frame"
+      ],
+      "links": [
+        {
+          "title": "Chrome DevTools - Pause your code with breakpoints",
+          "url": "https://developer.chrome.com/docs/devtools/javascript/breakpoints"
+        }
+      ]
+    },
+    {
+      "id": "debugging-e2.2-binary-search-isolation",
+      "competencyId": "debugging",
+      "competencyName": "Debugging",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E2.2",
+      "requirement": "mandatory",
+      "title": "Методы бинарного поиска и изолирования проблем",
+      "description": "Поиск причин багов методами деления кода пополам (бинарный поиск, git bisect), упрощение проблемы и изоляция дефекта в минимальном воспроизводимом примере.",
+      "topics": [
+        "Binary search debugging",
+        "git bisect",
+        "Problem simplification / Isolation",
+        "Minimal Reproducible Example"
+      ],
+      "links": [
+        {
+          "title": "Git - git-bisect Documentation",
+          "url": "https://git-scm.com/docs/git-bisect"
+        }
+      ]
+    },
+    {
+      "id": "debugging-e4.1-monitoring-stack-debugging",
+      "competencyId": "debugging",
+      "competencyName": "Debugging",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Комплексная production-отладка (ELK, Grafana, Sentry)",
+      "description": "Поиск первопричин системных сбоев с использованием агрегаторов логов (ELK/Loki), метрик (Grafana) и трекеров ошибок (Sentry).",
+      "topics": [
+        "Centralized Logging (ELK / Loki)",
+        "Grafana Metrics & Traces",
+        "Sentry Issue Tracking & Breadcrumbs",
+        "Distributed Tracing"
+      ],
+      "links": [
+        {
+          "title": "Sentry - JavaScript SDK Docs",
+          "url": "https://docs.sentry.io/platforms/javascript/"
+        }
+      ]
+    },
+    {
+      "id": "monitoring-e3.1-grafana-prometheus",
+      "competencyId": "monitoring",
+      "competencyName": "Monitoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Дашборды в Grafana и сбор метрик Prometheus",
+      "description": "Построение дашбордов в Grafana для мониторинга фронтенд и бэкенд метрик, интеграция стандартного экспортера Prometheus.",
+      "topics": [
+        "Grafana Dashboards",
+        "Prometheus metrics (Counter, Gauge, Histogram)",
+        "PromQL queries basics"
+      ],
+      "links": [
+        {
+          "title": "Prometheus - Overview",
+          "url": "https://prometheus.io/docs/introduction/overview/"
+        },
+        {
+          "title": "Grafana Documentation",
+          "url": "https://grafana.com/docs/grafana/latest/"
+        }
+      ]
+    },
+    {
+      "id": "monitoring-e3.2-sentry-integration",
+      "competencyId": "monitoring",
+      "competencyName": "Monitoring",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E3.2",
+      "requirement": "desirable",
+      "title": "Интеграция и настройка трекинга ошибок Sentry",
+      "description": "Конфигурация Sentry SDK в приложении: фильтрация шума, проброс Source Maps, добавление пользовательского контекста и тегов.",
+      "topics": [
+        "Sentry Source Maps integration",
+        "Context & Tags",
+        "Custom error boundaries capture",
+        "Alert rules"
+      ],
+      "links": [
+        {
+          "title": "Sentry - Source Maps Guide",
+          "url": "https://docs.sentry.io/platforms/javascript/sourcemaps/"
+        }
+      ]
+    },
+    {
+      "id": "software-design-architecture-e2.2-algorithmic-complexity",
+      "competencyId": "software-design-architecture",
+      "competencyName": "Software Design & Architecture",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E2.2",
+      "requirement": "mandatory",
+      "title": "Оценка алгоритмической сложности (Big O)",
+      "description": "Оценка временной и пространственной сложности алгоритмов (Big O notation: O(1), O(log n), O(n), O(n log n), O(n^2)), оптимизация структур данных.",
+      "topics": [
+        "Big O Notation",
+        "Time Complexity",
+        "Space Complexity",
+        "Array vs Map/Set lookup costs"
+      ],
+      "links": [{ "title": "Big O Cheat Sheet", "url": "https://www.bigocheatsheet.com/" }]
+    },
+    {
+      "id": "software-design-architecture-e3.1-clean-architecture-principles",
+      "competencyId": "software-design-architecture",
+      "competencyName": "Software Design & Architecture",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E3.1",
+      "requirement": "additional",
+      "title": "Принципы чистой архитектуры (Clean Architecture)",
+      "description": "Слои чистой архитектуры (Entities, Use Cases, Controllers, Presenters), направление зависимостей (Dependency Rule) и однонаправленный поток данных.",
+      "topics": [
+        "Clean Architecture layers",
+        "The Dependency Rule",
+        "Inversion of Control in Frontend Architecture"
+      ],
+      "links": [
+        {
+          "title": "The Clean Code Blog - Clean Architecture",
+          "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        }
+      ]
+    },
+    {
+      "id": "software-design-architecture-e3.2-monolith-soa-microservices",
+      "competencyId": "software-design-architecture",
+      "competencyName": "Software Design & Architecture",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E3.2",
+      "requirement": "additional",
+      "title": "Архитектурные парадигмы: Monolith, SOA, Microservices",
+      "description": "Сравнение монолитной, сервис-ориентированной (SOA) и микросервисной архитектур: плюсы, минусы, способы межсервисного взаимодействия.",
+      "topics": [
+        "Monolithic Architecture",
+        "SOA vs Microservices",
+        "Inter-service communication (REST, gRPC, Message Queues)"
+      ],
+      "links": [
+        {
+          "title": "Microservice Architecture - Pattern Language",
+          "url": "https://microservices.io/patterns/index.html"
+        }
+      ]
+    },
+    {
+      "id": "software-design-architecture-e4.1-client-architectures-fsd",
+      "competencyId": "software-design-architecture",
+      "competencyName": "Software Design & Architecture",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E4.1",
+      "requirement": "desirable",
+      "title": "Архитектурные паттерны GUI и Feature-Sliced Design",
+      "description": "Практическое применение паттернов MVC, MVP, MVVM и методологии Feature-Sliced Design (FSD) для структурирования фронтенда.",
+      "topics": [
+        "MVC / MVP / MVVM in modern frontend",
+        "Feature-Sliced Design (app, pages, widgets, features, entities, shared)",
+        "Layer Isolation & Public API"
+      ],
+      "links": [
+        {
+          "title": "Feature-Sliced Design Documentation",
+          "url": "https://feature-sliced.design/docs/get-started/overview"
+        }
+      ]
+    },
+    {
+      "id": "software-design-architecture-e5.1-microservice-patterns",
+      "competencyId": "software-design-architecture",
+      "competencyName": "Software Design & Architecture",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E5.1",
+      "requirement": "desirable",
+      "title": "Паттерны распределенных микросервисных систем",
+      "description": "Проектирование распределенных систем: API Gateway, Service Discovery, Serverless, Idempotent Consumer, Circuit Breaker, Observability & Tracing.",
+      "topics": [
+        "API Gateway Pattern",
+        "Service Discovery",
+        "Idempotent Consumer",
+        "Reliability & Circuit Breaker",
+        "Distributed Security"
+      ],
+      "links": [
+        {
+          "title": "Microservice Patterns - API Gateway",
+          "url": "https://microservices.io/patterns/apigateway.html"
+        }
+      ]
+    },
+    {
+      "id": "software-design-architecture-e5.2-event-sourcing-cqrs",
+      "competencyId": "software-design-architecture",
+      "competencyName": "Software Design & Architecture",
+      "category": "Тех. скилы",
+      "section": "Рабочие практики",
+      "grade": "E5.2",
+      "requirement": "desirable",
+      "title": "Паттерны Event Sourcing и CQRS",
+      "description": "Концепция хранения состояния в виде последовательности доменных событий (Event Sourcing), разделение моделей чтения и записи (CQRS).",
+      "topics": [
+        "Event Sourcing concept",
+        "Domain Events stream",
+        "CQRS (Command Query Responsibility Segregation)",
+        "Read model projections"
+      ],
+      "links": [
+        {
+          "title": "Martin Fowler - Event Sourcing",
+          "url": "https://martinfowler.com/eaaDev/EventSourcing.html"
+        },
+        {
+          "title": "Martin Fowler - CQRS",
+          "url": "https://martinfowler.com/bliki/CQRS.html"
+        }
+      ]
+    },
+    {
+      "id": "processes-standards-e1.1-mentorship-interaction",
+      "competencyId": "processes-standards",
+      "competencyName": "Процессы и стандарты",
+      "category": "Софт скилы",
+      "section": "Процессы и стандарты",
+      "grade": "E1.1",
+      "requirement": "mandatory",
+      "title": "Взаимодействие с техническим наставником",
+      "description": "Своевременная синхронизация с наставником: формулирование вопросов, согласование решений и инициатив перед внедрением.",
+      "topics": [
+        "Формулирование инженерных вопросов",
+        "Согласование подходов с наставником",
+        "Принятие код-ревью"
+      ],
+      "links": [
+        {
+          "title": "Google Engineering Practices - Code Review Developer Guide",
+          "url": "https://google.github.io/eng-practices/review/developer/"
+        }
+      ]
+    },
+    {
+      "id": "processes-standards-e2.1-autonomous-problem-solving",
+      "competencyId": "processes-standards",
+      "competencyName": "Процессы и стандарты",
+      "category": "Софт скилы",
+      "section": "Процессы и стандарты",
+      "grade": "E2.1",
+      "requirement": "mandatory",
+      "title": "Самостоятельное решение инженерных задач",
+      "description": "Автономный поиск информации, декомпозиция задач и нахождение решений без постоянного вовлечения наставника.",
+      "topics": [
+        "Самостоятельный ресерч",
+        "Декомпозиция пользовательских историй",
+        "Автономное устранение блокеров"
+      ],
+      "links": [
+        {
+          "title": "Atlassian - Agile Task Decomposition",
+          "url": "https://www.atlassian.com/agile/project-management/user-stories"
+        }
+      ]
+    },
+    {
+      "id": "processes-standards-e3.1-sentry-zero-bugs",
+      "competencyId": "processes-standards",
+      "competencyName": "Процессы и стандарты",
+      "category": "Софт скилы",
+      "section": "Процессы и стандарты",
+      "grade": "E3.1",
+      "requirement": "mandatory",
+      "title": "Поддержание стабильности и Zero Bug Policy в Sentry",
+      "description": "Контроль ошибок релизов, оперативное устранение сбоев в Sentry и поддержание чистоты продакшен-окружения.",
+      "topics": ["Zero Bug Policy", "Sentry alert response", "Production issue triage"],
+      "links": [
+        {
+          "title": "Sentry - Triage Workflow",
+          "url": "https://docs.sentry.io/product/issues/issue-details/"
+        }
+      ]
+    },
+    {
+      "id": "processes-standards-e3.2-pm-alignment-tech-debt",
+      "competencyId": "processes-standards",
+      "competencyName": "Процессы и стандарты",
+      "category": "Софт скилы",
+      "section": "Процессы и стандарты",
+      "grade": "E3.2",
+      "requirement": "mandatory",
+      "title": "Управление техдолгом и взаимодействие с Project Manager",
+      "description": "Подсвечивание узких мест и рисков проекта для PM, планирование и ответственность за регулярный рефакторинг, инициативы по обновлению стека.",
+      "topics": [
+        "Управление техдолгом (Technical Debt Management)",
+        "Взаимодействие с менеджерами проекта",
+        "Оценка технико-экономической целесообразности"
+      ],
+      "links": [
+        {
+          "title": "Martin Fowler - Technical Debt Quadrant",
+          "url": "https://martinfowler.com/bliki/TechnicalDebtQuadrant.html"
+        }
+      ]
+    },
+    {
+      "id": "processes-standards-e4.1-standards-formulation",
+      "competencyId": "processes-standards",
+      "competencyName": "Процессы и стандарты",
+      "category": "Софт скилы",
+      "section": "Процессы и стандарты",
+      "grade": "E4.1",
+      "requirement": "mandatory",
+      "title": "Проработка стандартов и регламентов разработки",
+      "description": "Формулирование единых стандартов написания кода, регламентов ревью, правил ветвления и релизных политик команды.",
+      "topics": [
+        "Engineering Standards definition",
+        "Code Review guidelines",
+        "Release policy creation"
+      ],
+      "links": [
+        {
+          "title": "Google Engineering Practices - Code Review",
+          "url": "https://google.github.io/eng-practices/review/"
+        }
+      ]
+    },
+    {
+      "id": "processes-standards-e4.2-incident-postmortem",
+      "competencyId": "processes-standards",
+      "competencyName": "Процессы и стандарты",
+      "category": "Софт скилы",
+      "section": "Процессы и стандарты",
+      "grade": "E4.2",
+      "requirement": "mandatory",
+      "title": "Разбор инцидентов и превентивные меры (Post-Mortem)",
+      "description": "Организация и проведение постмортемов (blameless post-mortem), анализ коренных причин инцидентов и выработка превентивных мер.",
+      "topics": [
+        "Blameless Post-Mortem",
+        "Root Cause Analysis (5 Whys)",
+        "Preventative action items implementation"
+      ],
+      "links": [
+        {
+          "title": "Google SRE - Postmortem Culture",
+          "url": "https://sre.google/sre-book/postmortem-culture/"
+        }
+      ]
+    },
+    {
+      "id": "processes-standards-e5.1-standards-adoption-scale",
+      "competencyId": "processes-standards",
+      "competencyName": "Процессы и стандарты",
+      "category": "Софт скилы",
+      "section": "Процессы и стандарты",
+      "grade": "E5.1",
+      "requirement": "mandatory",
+      "title": "Внедрение и масштабирование инженерных стандартов компании",
+      "description": "Внедрение технологических стандартов, инструментов и практик на уровне всех команд компании, кросс-командный надзор.",
+      "topics": [
+        "Company-wide technology adoption",
+        "Cross-team governance",
+        "Tech radar curation"
+      ],
+      "links": [
+        {
+          "title": "Thoughtworks Technology Radar",
+          "url": "https://www.thoughtworks.com/radar"
+        }
+      ]
+    },
+    {
+      "id": "improvements-e2.1-project-proposals",
+      "competencyId": "improvements",
+      "competencyName": "Улучшения",
+      "category": "Софт скилы",
+      "section": "Инициативы",
+      "grade": "E2.1",
+      "requirement": "desirable",
+      "title": "Предложения по развитию своего проекта",
+      "description": "Выдвижение конкретных инженерных улучшений в рамках своего проекта и их самостоятельная реализация.",
+      "topics": ["Инициативы по оптимизации процессов", "Внедрение улучшений в проект"],
+      "links": [
+        {
+          "title": "Atlassian - Continuous Improvement",
+          "url": "https://www.atlassian.com/agile/agile-at-scale/continuous-improvement"
+        }
+      ]
+    },
+    {
+      "id": "improvements-e2.2-reusable-solutions",
+      "competencyId": "improvements",
+      "competencyName": "Улучшения",
+      "category": "Софт скилы",
+      "section": "Инициативы",
+      "grade": "E2.2",
+      "requirement": "additional",
+      "title": "Разработка универсальных модулей в проекте",
+      "description": "Выделение и разработка переиспользуемых утилит, хуков и компонентов общего назначения внутри проекта.",
+      "topics": ["Reusable code architecture", "Internal libraries extraction"],
+      "links": [
+        {
+          "title": "Refactoring Guru - Extract Module",
+          "url": "https://refactoring.guru/extract-class"
+        }
+      ]
+    },
+    {
+      "id": "improvements-e3.2-cross-project-initiatives",
+      "competencyId": "improvements",
+      "competencyName": "Улучшения",
+      "category": "Софт скилы",
+      "section": "Инициативы",
+      "grade": "E3.2",
+      "requirement": "mandatory",
+      "title": "Кросс-проектное внедрение технических решений",
+      "description": "Инициирование и согласование с архитекторами тиражирования успешных технических практик и решений на другие проекты компании.",
+      "topics": ["Cross-project adoption", "Architectural RFC proposals", "Shared tooling scaling"],
+      "links": [
+        {
+          "title": "GitHub RFC Process example",
+          "url": "https://github.com/reactjs/rfcs"
+        }
+      ]
+    },
+    {
+      "id": "tech-committees-e2.2-committee-participation",
+      "competencyId": "tech-committees",
+      "competencyName": "Техкомы",
+      "category": "Софт скилы",
+      "section": "Инициативы",
+      "grade": "E2.2",
+      "requirement": "desirable",
+      "title": "Участие и доклады на технических комитетах",
+      "description": "Инициирование технических тем на техкомах, презентация результатов апробации новых библиотек и подходов.",
+      "topics": ["Подготовка технических докладов", "Демонстрация PoC (Proof of Concept)"],
+      "links": [
+        {
+          "title": "Spotify Engineering Culture",
+          "url": "https://engineering.atspotify.com/"
+        }
+      ]
+    },
+    {
+      "id": "tech-committees-e3.2-committee-leadership",
+      "competencyId": "tech-committees",
+      "competencyName": "Техкомы",
+      "category": "Софт скилы",
+      "section": "Инициативы",
+      "grade": "E3.2",
+      "requirement": "mandatory",
+      "title": "Ведение и модерация технических комитетов",
+      "description": "Организация и ведение повесток техкомов, выработка финальных технических резолюций, контроль внедрения согласованных решений.",
+      "topics": [
+        "Tech Committee moderation",
+        "Architecture Decision Records (ADR)",
+        "Consensus building"
+      ],
+      "links": [
+        {
+          "title": "Architecture Decision Record (ADR) concept",
+          "url": "https://adr.github.io/"
+        }
+      ]
+    },
+    {
+      "id": "mentoring-e2.2-team-mentoring",
+      "competencyId": "mentoring",
+      "competencyName": "Наставничество",
+      "category": "Софт скилы",
+      "section": "Обучение",
+      "grade": "E2.2",
+      "requirement": "optional",
+      "title": "Наставничество внутри своей команды",
+      "description": "Помощь в онбординге новичков, консультации коллег по возникающим техническим трудностям в проекте.",
+      "topics": ["Onboarding support", "Peer code review assistance"],
+      "links": [
+        {
+          "title": "LeadDev - How to be a great engineering mentor",
+          "url": "https://leaddev.com/"
+        }
+      ]
+    },
+    {
+      "id": "mentoring-e3.2-systemic-learning-program",
+      "competencyId": "mentoring",
+      "competencyName": "Наставничество",
+      "category": "Софт скилы",
+      "section": "Обучение",
+      "grade": "E3.2",
+      "requirement": "mandatory",
+      "title": "Системное обучение и развитие инженеров",
+      "description": "Формирование индивидуальных планов развития (ИПР), проведение обучающих семинаров, сбор обратной связи по уровню знаний.",
+      "topics": [
+        "Индивидуальный план развития (ИПР)",
+        "Проведение обучающих воркшопов",
+        "Сбор и анализ 360 feedback"
+      ],
+      "links": [
+        {
+          "title": "Google re:Work - Guide: Give feedback",
+          "url": "https://rework.withgoogle.com/guides/give-feedback/steps/introduction/"
+        }
+      ]
+    },
+    {
+      "id": "certification-e3.2-assessment-interviews",
+      "competencyId": "certification",
+      "competencyName": "Сертификация",
+      "category": "Софт скилы",
+      "section": "Обучение",
+      "grade": "E3.2",
+      "requirement": "desirable",
+      "title": "Проведение квалификационных аттестаций и собеседований",
+      "description": "Участие в аттестационных комиссиях, проведение технических интервью и оценка компетенций разработчиков по матрице.",
+      "topics": [
+        "Проведение технических интервью",
+        "Оценка кандидатов по матрице грейдов",
+        "Составление объективного фидбэка"
+      ],
+      "links": [
+        {
+          "title": "Google Engineering Practices - Hiring & Assessment",
+          "url": "https://google.github.io/eng-practices/"
+        }
+      ]
+    }
+  ]
+}
