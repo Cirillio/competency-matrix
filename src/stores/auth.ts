@@ -27,6 +27,13 @@ export const useAuthStore = defineStore('auth', () => {
       session.value = data.session;
       user.value = data.session?.user ?? null;
       status.value = data.session ? 'authed' : 'anon';
+
+      // Restore progress on boot when a persisted session already exists.
+      // onAuthStateChange only fires INITIAL_SESSION here (not SIGNED_IN), so
+      // the listener below would not load anything on a plain page reload.
+      if (data.session) {
+        await useProgressStore().loadProgress();
+      }
     } catch {
       status.value = 'anon';
     }

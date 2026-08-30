@@ -21,10 +21,17 @@ if (!isSupabaseConfigured && import.meta.env.DEV) {
  * refreshed automatically. Safe to ship the publishable key: Row Level Security
  * on `public.progress` restricts every row to its owner.
  */
-export const supabase = createClient<Database>(url ?? '', publishableKey ?? '', {
-  auth: {
-    persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: true,
-  },
-});
+// Fallbacks keep createClient from throwing "supabaseUrl is required" when env
+// is absent. In that case isSupabaseConfigured is false and nothing calls into
+// this client (createStorageDriver returns LocalStorageDriver, App skips the gate).
+export const supabase = createClient<Database>(
+  url || 'http://localhost:54321',
+  publishableKey || 'public-anon-key-placeholder',
+  {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
+  }
+);
