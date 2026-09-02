@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('public catalogue (/)', () => {
   test('renders the catalogue without a login', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { name: 'Что должен знать фронтенд-инженер' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Матрицы компетенций по направлениям' })).toBeVisible();
     await expect(page.getByText('139 навыков', { exact: false })).toBeVisible();
     // no progress affordances on the catalogue
     await expect(page.getByRole('checkbox')).toHaveCount(0);

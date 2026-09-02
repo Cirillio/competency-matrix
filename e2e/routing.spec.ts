@@ -4,7 +4,7 @@ test.describe('routing', () => {
   test('unknown path redirects to the catalogue', async ({ page }) => {
     await page.goto('/does-not-exist');
     await expect(page).toHaveURL(/\/$/);
-    await expect(page.getByRole('heading', { name: 'Что должен знать фронтенд-инженер' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Матрицы компетенций по направлениям' })).toBeVisible();
   });
 
   test('the login route renders its form', async ({ page }) => {
@@ -19,7 +19,7 @@ test.describe('routing', () => {
     await expect(page.getByText('Сейчас', { exact: true })).toBeVisible();
     await page.getByRole('link', { name: /Матрица/ }).click();
     await expect(page).toHaveURL(/\/$/);
-    await expect(page.getByRole('heading', { name: 'Что должен знать фронтенд-инженер' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Матрицы компетенций по направлениям' })).toBeVisible();
   });
 
   test('deep links survive a reload', async ({ page }) => {

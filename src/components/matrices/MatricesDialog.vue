@@ -9,7 +9,7 @@ import { useMatrixStore } from '../../stores/matrix';
 import { useToast } from '../../composables/useToast';
 import { validatePack, type PackValidationResult } from '../../types/matrixPack';
 import { PACK_FIELDS, PACK_TEMPLATE_JSON } from '../../config/packFormat';
-import { APP_NAME_SHORT } from '../../config/app';
+import { BUILTIN_MATRIX_LABEL } from '../../config/app';
 import type { SkillItem } from '../../types/matrix';
 import AppDialog from '../common/AppDialog.vue';
 import AppSwitch from '../common/AppSwitch.vue';
@@ -59,7 +59,7 @@ function groupCompetencies(skills: readonly SkillItem[]) {
 const entries = computed<MatrixEntry[]>(() => {
   const builtIn: MatrixEntry = {
     key: 'builtin',
-    name: `${APP_NAME_SHORT} — встроенная`,
+    name: `${BUILTIN_MATRIX_LABEL} — встроенная`,
     subtitle: `${matrixStore.builtInSkills.length} навыков · только чтение`,
     builtIn: true,
     enabled: true,
