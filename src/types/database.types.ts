@@ -12,6 +12,69 @@ export type Database = {
   }
   public: {
     Tables: {
+      api_tokens: {
+        Row: {
+          created_at: string
+          last_used_at: string | null
+          name: string
+          owner_id: string
+          revoked: boolean
+          token_hash: string
+        }
+        Insert: {
+          created_at?: string
+          last_used_at?: string | null
+          name: string
+          owner_id: string
+          revoked?: boolean
+          token_hash: string
+        }
+        Update: {
+          created_at?: string
+          last_used_at?: string | null
+          name?: string
+          owner_id?: string
+          revoked?: boolean
+          token_hash?: string
+        }
+        Relationships: []
+      }
+      builtin_skills: {
+        Row: {
+          competency_id: string
+          competency_name: string
+          description: string
+          grade: string
+          id: string
+          requirement: string
+          sort: number
+          title: string
+          topics: Json
+        }
+        Insert: {
+          competency_id: string
+          competency_name: string
+          description?: string
+          grade: string
+          id: string
+          requirement: string
+          sort: number
+          title: string
+          topics?: Json
+        }
+        Update: {
+          competency_id?: string
+          competency_name?: string
+          description?: string
+          grade?: string
+          id?: string
+          requirement?: string
+          sort?: number
+          title?: string
+          topics?: Json
+        }
+        Relationships: []
+      }
       matrix_packs: {
         Row: {
           created_at: string

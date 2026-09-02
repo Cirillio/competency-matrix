@@ -4,6 +4,7 @@ import type { Session, User } from '@supabase/supabase-js';
 import { supabase } from '../services/supabase/client';
 import { useProgressStore } from './progress';
 import { usePacksStore } from './packs';
+import { useTokensStore } from './tokens';
 import { LocalStorageDriver } from '../services/storage/LocalStorageDriver';
 
 export type AuthStatus = 'loading' | 'authed' | 'anon';
@@ -33,7 +34,7 @@ export const useAuthStore = defineStore('auth', () => {
       // onAuthStateChange only fires INITIAL_SESSION here (not SIGNED_IN), so
       // the listener below would not load anything on a plain page reload.
       if (data.session) {
-        await Promise.all([useProgressStore().loadProgress(), usePacksStore().load()]);
+        await Promise.all([useProgressStore().loadProgress(), usePacksStore().load(), useTokensStore().load()]);
       }
     } catch {
       status.value = 'anon';
@@ -45,12 +46,13 @@ export const useAuthStore = defineStore('auth', () => {
 
       if (event === 'SIGNED_IN' || (newSession && status.value !== 'authed')) {
         status.value = 'authed';
-        await Promise.all([useProgressStore().loadProgress(), usePacksStore().load()]);
+        await Promise.all([useProgressStore().loadProgress(), usePacksStore().load(), useTokensStore().load()]);
       } else if (event === 'SIGNED_OUT' || !newSession) {
         status.value = 'anon';
         // Safe local-only cache wipe (never triggers remote.clear() on logout)
         useProgressStore().resetLocalState();
         usePacksStore().reset();
+        useTokensStore().reset();
         const localDriver = new LocalStorageDriver();
         await localDriver.clear();
       }

@@ -11,9 +11,10 @@ import AppDropdownItem from '../components/common/AppDropdownItem.vue';
 import AppAlertDialog from '../components/common/AppAlertDialog.vue';
 import AiContextDialog from '../components/ai/AiContextDialog.vue';
 import PacksDialog from '../components/packs/PacksDialog.vue';
+import AgentAccessDialog from '../components/agents/AgentAccessDialog.vue';
 import {
   PhDownloadSimple, PhUploadSimple, PhArrowCounterClockwise,
-  PhSparkle, PhSignOut, PhDotsThree, PhStack,
+  PhSparkle, PhSignOut, PhDotsThree, PhStack, PhPlugs,
 } from '@phosphor-icons/vue';
 
 const progressStore = useProgressStore();
@@ -70,6 +71,7 @@ async function handleReset() {
 // its calibration depends on a profile the user has to supply.
 const aiDialogOpen = ref(false);
 const packsDialogOpen = ref(false);
+const agentsDialogOpen = ref(false);
 </script>
 
 <template>
@@ -132,6 +134,11 @@ const packsDialogOpen = ref(false);
             <span>Наборы компетенций</span>
           </AppDropdownItem>
 
+          <AppDropdownItem @select="agentsDialogOpen = true">
+            <PhPlugs :size="16" class="shrink-0" />
+            <span>Доступ для ИИ-агентов</span>
+          </AppDropdownItem>
+
           <AppDropdownItem tone="critical" @select="resetDialogOpen = true">
             <PhArrowCounterClockwise :size="16" class="shrink-0" />
             <span>Сбросить прогресс</span>
@@ -151,6 +158,7 @@ const packsDialogOpen = ref(false);
 
     <AiContextDialog v-model:open="aiDialogOpen" />
     <PacksDialog v-model:open="packsDialogOpen" />
+    <AgentAccessDialog v-model:open="agentsDialogOpen" />
 
     <AppAlertDialog
       v-model:open="resetDialogOpen"
