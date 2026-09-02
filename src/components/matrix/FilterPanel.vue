@@ -107,7 +107,7 @@ const requirement = computed({
         ]"
         @click="filterStore.onlyGap = !filterStore.onlyGap"
       >
-        Блокеры
+        Пробелы
       </button>
 
       <button
@@ -141,9 +141,9 @@ const requirement = computed({
     <!-- Grade pills -->
     <div class="space-y-1.5">
       <div class="flex items-baseline justify-between gap-2">
-        <span class="text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">Грейд</span>
+        <span class="text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">Уровень</span>
         <span v-if="filterStore.selectedGrade !== 'all'" class="text-[10px] text-(--text-tertiary)">
-          включая нижние
+          и всё, что ниже
         </span>
       </div>
       <div class="flex flex-wrap gap-1">

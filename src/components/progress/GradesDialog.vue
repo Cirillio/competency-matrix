@@ -65,13 +65,13 @@ const specializations = computed(() =>
   <AppDialog
     v-model:open="open"
     size="lg"
-    title="Грейды"
-    description="Выберите ступень, к которой идёте. Цель определяет список блокеров."
+    title="Уровни"
+    description="Отметьте уровень, к которому готовитесь. От него зависит, что приложение показывает как незакрытое."
   >
     <TabsRoot default-value="ladder" class="flex flex-col gap-4">
       <TabsList class="flex items-center gap-1 p-1 rounded-lg bg-(--surface-1) self-start" aria-label="Разделы">
         <TabsTrigger
-          v-for="tab in [{ v: 'ladder', l: 'Лестница' }, { v: 'bonus', l: 'Специализации' }]"
+          v-for="tab in [{ v: 'ladder', l: 'Уровни' }, { v: 'bonus', l: 'Дополнительно' }]"
           :key="tab.v"
           :value="tab.v"
           class="min-h-9 px-3 rounded-md text-xs cursor-pointer transition-colors outline-none
@@ -87,7 +87,7 @@ const specializations = computed(() =>
       <TabsContent value="ladder" class="outline-none space-y-5">
         <div class="flex items-center justify-between gap-3">
           <p class="text-[11px] text-(--text-tertiary)">
-            Ступени ниже текущей уже пройдены и недоступны для выбора.
+            Уровни ниже текущего уже пройдены, их выбрать нельзя.
           </p>
           <button
             v-if="evalResult.isTargetManual"
@@ -97,13 +97,13 @@ const specializations = computed(() =>
             @click="progressStore.setTargetGrade(null)"
           >
             <PhArrowCounterClockwise :size="14" />
-            <span>Вернуть авто-цель</span>
+            <span>Сбросить свой выбор</span>
           </button>
         </div>
 
         <RadioGroupRoot
           :model-value="evalResult.targetGrade ?? ''"
-          aria-label="Целевой грейд"
+          aria-label="Уровень, к которому готовитесь"
           class="space-y-4"
           @update:model-value="handleTargetSelect"
         >
@@ -156,7 +156,7 @@ const specializations = computed(() =>
         <div v-if="targetProgress && evalResult.targetGrade" class="rounded-xl bg-(--surface-1) p-4 space-y-3">
           <div class="flex items-baseline justify-between gap-3">
             <span class="text-xs text-(--text-secondary)">
-              До <strong class="text-(--text-primary)">{{ GRADE_DETAILS[evalResult.targetGrade].label }}</strong>
+              Готовность к <strong class="text-(--text-primary)">{{ GRADE_DETAILS[evalResult.targetGrade].label }}</strong>
             </span>
             <span class="text-xs font-mono font-semibold text-(--text-primary)">
               {{ evalResult.targetGradeProgressPercent }}%
@@ -167,13 +167,13 @@ const specializations = computed(() =>
 
           <div class="flex flex-wrap gap-x-5 gap-y-1 text-[11px] font-mono text-(--text-tertiary)">
             <span>
-              Обязательные
+              Обязательные (все)
               <span :class="targetProgress.mandatoryCoverage === 1 ? 'text-(--success)' : 'text-(--text-secondary)'">
                 {{ targetProgress.completedMandatory }}/{{ targetProgress.totalMandatory }}
               </span>
             </span>
             <span>
-              Желательные ≥70%
+              Желательные (70%)
               <span :class="targetProgress.desirableCoverage >= 0.7 ? 'text-(--success)' : 'text-(--text-secondary)'">
                 {{ targetProgress.completedDesirable }}/{{ targetProgress.totalDesirable }}
               </span>
@@ -182,7 +182,7 @@ const specializations = computed(() =>
 
           <div v-if="intermediateGrades.length > 0" class="pt-2 space-y-1.5">
             <div class="text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">
-              Промежуточные ступени
+              По пути к цели
             </div>
             <div class="flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-mono">
               <span
@@ -216,7 +216,7 @@ const specializations = computed(() =>
           </div>
         </div>
         <p v-else class="text-xs text-(--text-tertiary) py-6 text-center">
-          Пока нет закрытых дополнительных навыков.
+          Здесь появятся необязательные навыки, которые вы отметите — по React, Angular и другим темам.
         </p>
       </TabsContent>
     </TabsRoot>

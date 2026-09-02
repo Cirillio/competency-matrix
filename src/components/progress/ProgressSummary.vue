@@ -3,10 +3,12 @@ import { computed, ref } from 'vue';
 import { useProgressStore } from '../../stores/progress';
 import { useFilterStore } from '../../stores/filter';
 import { GRADE_DETAILS } from '../../config/grades';
+import { COPY } from '../../config/copy';
 import ProgressBar from '../common/ProgressBar.vue';
 import AppPopover from '../common/AppPopover.vue';
+import AppTooltip from '../common/AppTooltip.vue';
 import GradesDialog from './GradesDialog.vue';
-import { PhCaretRight, PhArrowRight } from '@phosphor-icons/vue';
+import { PhArrowRight, PhListChecks } from '@phosphor-icons/vue';
 
 const progressStore = useProgressStore();
 const filterStore = useFilterStore();
@@ -30,17 +32,11 @@ function jumpToGapInMatrix() {
 </script>
 
 <template>
-  <section class="rounded-2xl bg-(--surface-1) p-5 space-y-5">
-    <!-- Current level → opens the grades dialog -->
-    <button
-      type="button"
-      class="w-full text-left group cursor-pointer rounded-lg
-             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
-      @click="gradesDialogOpen = true"
-    >
-      <span class="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">
+  <section class="rounded-2xl bg-(--surface-1) p-5 space-y-4">
+    <!-- Current level — plain heading, not a hidden button -->
+    <div>
+      <span class="text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">
         Сейчас
-        <PhCaretRight :size="14" class="transition-transform group-hover:translate-x-0.5" />
       </span>
       <span class="mt-1 flex items-baseline gap-2">
         <span class="text-3xl font-semibold tracking-tight text-(--text-primary)">
@@ -49,14 +45,14 @@ function jumpToGapInMatrix() {
         <span class="text-xs font-mono text-(--text-tertiary)">{{ evalResult.currentGrade }}</span>
       </span>
       <span class="block text-xs text-(--text-secondary)">{{ currentMeta.shortLabel }}</span>
-    </button>
+    </div>
 
     <!-- Movement to target -->
     <div v-if="targetMeta" class="space-y-2">
       <div class="flex items-baseline justify-between gap-2 text-xs">
         <span class="text-(--text-secondary) truncate">
-          Цель — {{ targetMeta.label }}
-          <span v-if="evalResult.isTargetManual" class="text-(--accent)">·&nbsp;вручную</span>
+          {{ COPY.targetLabel }} — {{ targetMeta.label }}
+          <span v-if="evalResult.isTargetManual" class="text-(--accent)">·&nbsp;выбрана вручную</span>
         </span>
         <span class="shrink-0 font-mono font-semibold text-(--text-primary)">
           {{ evalResult.targetGradeProgressPercent }}%
@@ -65,10 +61,30 @@ function jumpToGapInMatrix() {
       <ProgressBar :value="evalResult.targetGradeProgressPercent" color="accent" size="sm" />
     </div>
 
+    <!-- Explicit control: this is what opens the full ladder -->
+    <AppTooltip :label="COPY.levelsHint">
+      <button
+        type="button"
+        class="w-full min-h-10 px-3 inline-flex items-center justify-between gap-2 rounded-xl
+               bg-(--surface-2) text-xs text-(--text-secondary) cursor-pointer transition-colors
+               hover:bg-(--surface-3) hover:text-(--text-primary)
+               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
+        @click="gradesDialogOpen = true"
+      >
+        <span class="inline-flex items-center gap-2">
+          <PhListChecks :size="15" class="shrink-0" />
+          {{ COPY.levelsAction }}
+        </span>
+        <PhArrowRight :size="14" class="shrink-0" />
+      </button>
+    </AppTooltip>
+
     <!-- Secondary counters -->
-    <div class="flex items-center gap-5 text-xs">
+    <div class="flex items-center gap-6 text-xs pt-1">
       <div>
-        <div class="text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">Охват</div>
+        <div class="text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">
+          {{ COPY.coverageLabel }}
+        </div>
         <div class="mt-0.5 font-mono text-(--text-primary)">{{ evalResult.matrixProgressPercent }}%</div>
       </div>
 
@@ -77,18 +93,26 @@ function jumpToGapInMatrix() {
           <button
             type="button"
             :disabled="gapSkills.length === 0"
-            class="text-left rounded-lg cursor-pointer disabled:cursor-default
+            :aria-label="COPY.gapLong"
+            class="text-left rounded-lg cursor-pointer disabled:cursor-default group
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
           >
             <span class="block text-[10px] font-mono uppercase tracking-[0.14em] text-(--text-tertiary)">
-              Блокеры
+              {{ COPY.gapLabel }}
             </span>
             <span class="mt-0.5 flex items-center gap-1.5">
               <span
                 v-if="gapSkills.length > 0"
                 class="w-1.5 h-1.5 rounded-full bg-(--critical) shrink-0"
               />
-              <span :class="['font-mono', gapSkills.length > 0 ? 'text-(--critical)' : 'text-(--text-primary)']">
+              <span
+                :class="[
+                  'font-mono',
+                  gapSkills.length > 0
+                    ? 'text-(--critical) border-b border-dotted border-(--critical)/50 group-hover:border-(--critical)'
+                    : 'text-(--text-primary)',
+                ]"
+              >
                 {{ gapSkills.length }}
               </span>
             </span>
@@ -97,9 +121,9 @@ function jumpToGapInMatrix() {
 
         <div class="space-y-3">
           <div class="space-y-1">
-            <h3 class="text-xs font-semibold text-(--text-primary)">Блокируют переход</h3>
+            <h3 class="text-xs font-semibold text-(--text-primary)">{{ COPY.gapLong }}</h3>
             <p class="text-[11px] text-(--text-tertiary)">
-              Обязательные навыки до цели {{ targetMeta?.label ?? '' }}
+              Обязательные навыки до уровня {{ targetMeta?.label ?? '' }}
             </p>
           </div>
 
@@ -124,7 +148,7 @@ function jumpToGapInMatrix() {
                    rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
             @click="jumpToGapInMatrix"
           >
-            Показать в матрице
+            Показать в списке
             <PhArrowRight :size="14" />
           </button>
         </div>

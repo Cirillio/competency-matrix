@@ -48,7 +48,7 @@ async function handleSubmit() {
           {{ APP_NAME }}
         </h1>
         <p class="text-xs text-[var(--text-tertiary)]">
-          Вход для синхронизации прогресса
+          Войдите, чтобы прогресс сохранялся на всех устройствах
         </p>
       </div>
 

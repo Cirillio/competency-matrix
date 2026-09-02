@@ -68,7 +68,8 @@ watch(notesOpen, (isOpen, wasOpen) => {
     <!-- Title opens the details dialog -->
     <button
       type="button"
-      class="min-w-0 flex-1 py-2 text-left cursor-pointer rounded
+      class="min-w-0 flex-1 py-2 text-left cursor-pointer rounded underline-offset-2
+             hover:underline decoration-(--text-tertiary)
              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
       @click="detailsOpen = true"
     >
@@ -116,7 +117,7 @@ watch(notesOpen, (isOpen, wasOpen) => {
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)',
             skillRecord?.notes
               ? 'text-(--accent)'
-              : 'text-(--text-tertiary) opacity-0 group-hover:opacity-100 focus-visible:opacity-100 sm:opacity-0',
+              : 'text-(--text-tertiary) opacity-40 group-hover:opacity-100 focus-visible:opacity-100',
           ]"
         >
           <PhNotePencil :size="16" />
