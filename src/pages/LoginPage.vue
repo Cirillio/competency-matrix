@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, useTemplateRef } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
 import { APP_NAME } from '../config/app';
 import { PhSpinnerGap } from '@phosphor-icons/vue';
 
 const authStore = useAuthStore();
+const route = useRoute();
+const router = useRouter();
 
 const email = ref('');
 const password = ref('');
@@ -28,7 +31,10 @@ async function handleSubmit() {
 
   try {
     const result = await authStore.signInWithPassword(email.value.trim(), password.value);
-    if (!result.ok) {
+    if (result.ok) {
+      const redirect = typeof route.query.redirect === 'string' ? route.query.redirect : '/tracker';
+      await router.replace(redirect);
+    } else {
       errorMessage.value = result.error || 'Ошибка входа';
     }
   } catch (err: unknown) {

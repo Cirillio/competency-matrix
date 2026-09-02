@@ -1,40 +1,25 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { useAuthStore } from './stores/auth';
-import { isSupabaseConfigured } from './services/supabase/client';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import MainLayout from './layout/MainLayout.vue';
-import DashboardPage from './pages/DashboardPage.vue';
-import LoginPage from './pages/LoginPage.vue';
-import { PhSpinnerGap } from '@phosphor-icons/vue';
+import CatalogLayout from './layout/CatalogLayout.vue';
 
-const authStore = useAuthStore();
+const route = useRoute();
 
-onMounted(async () => {
-  if (isSupabaseConfigured) {
-    await authStore.init();
-  } else {
-    authStore.status = 'authed';
+const layout = computed(() => {
+  switch (route.meta.layout) {
+    case 'catalog':
+      return CatalogLayout;
+    case 'blank':
+      return 'div';
+    default:
+      return MainLayout;
   }
 });
 </script>
 
 <template>
-  <!-- Loading state -->
-  <div
-    v-if="isSupabaseConfigured && authStore.status === 'loading'"
-    class="min-h-screen bg-[var(--surface-0)] flex items-center justify-center text-[var(--text-tertiary)]"
-  >
-    <div class="flex flex-col items-center gap-3">
-      <PhSpinnerGap :size="24" class="animate-spin text-[var(--accent)]" />
-      <span class="text-xs font-mono">Загрузка сессии...</span>
-    </div>
-  </div>
-
-  <!-- Unauthenticated Gate -->
-  <LoginPage v-else-if="isSupabaseConfigured && authStore.status !== 'authed'" />
-
-  <!-- Authenticated Application -->
-  <MainLayout v-else>
-    <DashboardPage />
-  </MainLayout>
+  <component :is="layout">
+    <RouterView />
+  </component>
 </template>

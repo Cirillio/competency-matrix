@@ -57,6 +57,12 @@ export const useAuthStore = defineStore('auth', () => {
     });
   }
 
+  /** No Supabase env: the app runs local-only, so treat every visitor as signed in. */
+  function setLocalMode() {
+    isInitialized = true;
+    status.value = 'authed';
+  }
+
   async function signInWithPassword(email: string, password: string): Promise<AuthActionResult> {
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -92,6 +98,7 @@ export const useAuthStore = defineStore('auth', () => {
     user,
     status,
     init,
+    setLocalMode,
     signInWithPassword,
     signOut,
   };

@@ -56,6 +56,12 @@ export const useMatrixStore = defineStore('matrix', () => {
 
   return {
     skills,
+    /**
+     * The bundled, curated dataset only. Alias of `skills` today; kept separate
+     * so the public catalogue keeps showing just this set once user-imported
+     * competency packs start extending `skills`.
+     */
+    builtInSkills: skills,
     categories,
     sections,
     competencies,
