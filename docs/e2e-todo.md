@@ -44,3 +44,9 @@
 - [API] GET / с валидным cmx-токеном → level, gapSkills, completedSkillIds, profile.
 - [Токены] Меню → «Доступ для ИИ-агентов» → создать токен → cmx-строка показана один раз + curl-пример.
 - [Токены] Отозвать / удалить токен в списке.
+
+---
+E2E-раннер: Playwright. `npm run e2e` (поднимает vite в локальном режиме без Supabase).
+Авторизованные сценарии в `e2e/authed.spec.ts` заскипованы; включаются так:
+`E2E_EMAIL=… E2E_PASSWORD=… npx vite --port 5174` в одном терминале + `npx playwright test authed` в другом
+(dev-сервер должен стартовать с реальными VITE_SUPABASE_*).

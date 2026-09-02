@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 import { isSupabaseConfigured } from '../services/supabase/client';
 import { useAuthStore } from '../stores/auth';
+import { useProgressStore } from '../stores/progress';
 import { resolveNavigation } from './guard';
 
 declare module 'vue-router' {
@@ -43,7 +44,12 @@ router.beforeEach(async (to) => {
   const auth = useAuthStore();
 
   if (!isSupabaseConfigured) {
-    if (auth.status !== 'authed') auth.setLocalMode();
+    if (auth.status !== 'authed') {
+      auth.setLocalMode();
+      // No Supabase => nothing else loads progress on boot; do it here so a
+      // reload restores the localStorage-backed state.
+      await useProgressStore().loadProgress();
+    }
     return true;
   }
 

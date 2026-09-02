@@ -7,7 +7,7 @@ import vueParser from 'vue-eslint-parser';
 
 export default [
   {
-    ignores: ['dist/**', 'node_modules/**', 'coverage/**', 'supabase/**'],
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**', 'supabase/**', 'e2e/**', 'playwright.config.ts', 'playwright-report/**', 'test-results/**'],
   },
   js.configs.recommended,
   ...vuePlugin.configs['flat/recommended'],

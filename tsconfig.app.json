@@ -26,5 +26,5 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts"],
-  "exclude": ["supabase", "tests/edge"]
+  "exclude": ["supabase", "tests/edge", "e2e", "playwright.config.ts"]
 }
