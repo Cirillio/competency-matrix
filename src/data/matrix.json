@@ -11,7 +11,11 @@
       "requirement": "mandatory",
       "title": "Использование UI-клиентов Git",
       "description": "Выполнение базовых операций системы контроля версий через графический интерфейс (GitKraken, VS Code Git, SourceTree).",
-      "topics": ["Клонирование репозитория", "Создание коммитов через UI", "Переключение веток"],
+      "topics": [
+        "Клонирование репозитория",
+        "Создание коммитов через UI",
+        "Переключение веток"
+      ],
       "links": [
         {
           "title": "Git - GUI Clients",
@@ -29,7 +33,11 @@
       "requirement": "mandatory",
       "title": "Базовые команды Git CLI",
       "description": "Создание веток, фиксация изменений и отправка локальных коммитов в удаленный репозиторий через командную строку.",
-      "topics": ["git branch", "git commit", "git push"],
+      "topics": [
+        "git branch",
+        "git commit",
+        "git push"
+      ],
       "links": [
         {
           "title": "Git Basics",
@@ -47,7 +55,11 @@
       "requirement": "desirable",
       "title": "Синхронизация и слияние веток",
       "description": "Получение актуальных изменений из основной ветки в feature-ветку и базовое разрешение конфликтов слияния.",
-      "topics": ["git pull", "git merge", "Разрешение конфликтов слияния"],
+      "topics": [
+        "git pull",
+        "git merge",
+        "Разрешение конфликтов слияния"
+      ],
       "links": [
         {
           "title": "Git Branching - Basic Branching and Merging",
@@ -65,11 +77,16 @@
       "requirement": "mandatory",
       "title": "Внутреннее устройство и состояния Git",
       "description": "Понимание жизненного цикла файлов и внутреннего устройства директории .git, областей Working Directory, Staging Area и Git Repository.",
-      "topics": ["Working directory", "Staging Area (Index)", ".git structure", "Git tree objects"],
+      "topics": [
+        "Working directory",
+        "Staging Area (Index)",
+        ".git structure",
+        "Git tree objects"
+      ],
       "links": [
         {
           "title": "Git Internals - Git Objects",
-          "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+          "url": "https://git-scm.com/book/ru/v2/Git-изнутри-Объекты-Git"
         }
       ]
     },
@@ -83,11 +100,15 @@
       "requirement": "mandatory",
       "title": "Инспекция истории и откат изменений",
       "description": "Просмотр различий между состояниями, анализ журнала коммитов и откат изменений с помощью soft/mixed/hard reset.",
-      "topics": ["git diff", "git log", "git reset --soft/--hard"],
+      "topics": [
+        "git diff",
+        "git log",
+        "git reset --soft/--hard"
+      ],
       "links": [
         {
           "title": "Git Reset Demystified",
-          "url": "https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified"
+          "url": "https://git-scm.com/book/ru/v2/Инструменты-Git-Раскрытие-тайн-reset"
         }
       ]
     },
@@ -101,7 +122,11 @@
       "requirement": "mandatory",
       "title": "Продвинутое манипулирование коммитами",
       "description": "Точечный перенос отдельных коммитов между ветками и безопасное получение метаданных удаленного репозитория.",
-      "topics": ["git cherry-pick", "git fetch", "Удаленные tracking-ветки"],
+      "topics": [
+        "git cherry-pick",
+        "git fetch",
+        "Удаленные tracking-ветки"
+      ],
       "links": [
         {
           "title": "Git Cherry-Pick Documentation",
@@ -142,11 +167,15 @@
       "requirement": "additional",
       "title": "Продвинутый Rebase и стратегии слияния",
       "description": "Линеаризация истории коммитов через интерактивный rebase и управление созданием merge-коммитов с флагом --no-ff.",
-      "topics": ["git rebase -i", "git merge --no-ff", "Squash commits"],
+      "topics": [
+        "git rebase -i",
+        "git merge --no-ff",
+        "Squash commits"
+      ],
       "links": [
         {
           "title": "Git Branching - Rebasing",
-          "url": "https://git-scm.com/book/en/v2/Git-Branching-Rebasing"
+          "url": "https://git-scm.com/book/ru/v2/Ветвление-в-Git-Перебазирование"
         }
       ]
     },
@@ -160,7 +189,12 @@
       "requirement": "desirable",
       "title": "Концепции сборщиков модулей Webpack",
       "description": "Понимание базовых концепций бандлинга: точки входа (entry), выходной файл (output), загрузчики (loaders) и плагины (plugins).",
-      "topics": ["Entry", "Output", "Loaders", "Plugins"],
+      "topics": [
+        "Entry",
+        "Output",
+        "Loaders",
+        "Plugins"
+      ],
       "links": [
         {
           "title": "Webpack Core Concepts",
@@ -178,7 +212,12 @@
       "requirement": "desirable",
       "title": "Создание базовой конфигурации Webpack",
       "description": "Самостоятельная настройка базового файла webpack.config.js для сборки JS, CSS и работы с HTML Webpack Plugin.",
-      "topics": ["webpack.config.js", "Babel loader", "CSS/Style loaders", "HtmlWebpackPlugin"],
+      "topics": [
+        "webpack.config.js",
+        "Babel loader",
+        "CSS/Style loaders",
+        "HtmlWebpackPlugin"
+      ],
       "links": [
         {
           "title": "Webpack - Getting Started",
@@ -196,7 +235,12 @@
       "requirement": "mandatory",
       "title": "Поддержка конфигураций сборки",
       "description": "Уверенная работа с существующими конфигурациями Webpack/Vite, разделение конфигов на dev и prod окружения.",
-      "topics": ["Webpack Merge", "Source Maps", "DevServer", "Environment variables"],
+      "topics": [
+        "Webpack Merge",
+        "Source Maps",
+        "DevServer",
+        "Environment variables"
+      ],
       "links": [
         {
           "title": "Webpack - Production Guide",
@@ -214,7 +258,12 @@
       "requirement": "desirable",
       "title": "Продвинутая конфигурация и оптимизация бандла",
       "description": "Написание кастомных загрузчиков/плагинов, разделение бандла (Code Splitting), Tree Shaking и миграция систем сборки.",
-      "topics": ["SplitChunksPlugin", "Tree Shaking", "Dynamic Imports", "Asset Modules"],
+      "topics": [
+        "SplitChunksPlugin",
+        "Tree Shaking",
+        "Dynamic Imports",
+        "Asset Modules"
+      ],
       "links": [
         {
           "title": "Webpack - Code Splitting",
@@ -241,7 +290,7 @@
       "links": [
         {
           "title": "MDN - JavaScript data types and data structures",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Data_structures"
         }
       ]
     },
@@ -263,7 +312,7 @@
       "links": [
         {
           "title": "MDN - Indexed collections",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Indexed_collections"
         }
       ]
     },
@@ -277,11 +326,15 @@
       "requirement": "mandatory",
       "title": "Объявление переменных и контекст вызова (this)",
       "description": "Различия между var, let и const, блочная и функциональная области видимости, базовые правила вычисления this.",
-      "topics": ["var vs let vs const", "Контекст this", "Стрелочные функции и лексический this"],
+      "topics": [
+        "var vs let vs const",
+        "Контекст this",
+        "Стрелочные функции и лексический this"
+      ],
       "links": [
         {
           "title": "MDN - The this keyword",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/this"
         }
       ]
     },
@@ -304,7 +357,7 @@
       "links": [
         {
           "title": "MDN - Functions",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions"
         }
       ]
     },
@@ -327,7 +380,7 @@
       "links": [
         {
           "title": "MDN - Closures",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Closures"
         }
       ]
     },
@@ -341,11 +394,16 @@
       "requirement": "mandatory",
       "title": "Поднятие (Hoisting), 'use strict' и аксессоры объектов",
       "description": "Поведение всплытия переменных и функций, Temporal Dead Zone (TDZ), строгий режим и геттеры/сеттеры свойств.",
-      "topics": ["Hoisting", "Temporal Dead Zone", "use strict", "Getters and Setters"],
+      "topics": [
+        "Hoisting",
+        "Temporal Dead Zone",
+        "use strict",
+        "Getters and Setters"
+      ],
       "links": [
         {
           "title": "MDN - Hoisting",
-          "url": "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"
+          "url": "https://developer.mozilla.org/ru/docs/Glossary/Hoisting"
         }
       ]
     },
@@ -368,7 +426,7 @@
       "links": [
         {
           "title": "MDN - Promise",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise"
         }
       ]
     },
@@ -391,7 +449,7 @@
       "links": [
         {
           "title": "MDN - Introduction to events",
-          "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
+          "url": "https://developer.mozilla.org/ru/docs/Learn/JavaScript/Building_blocks/Events"
         }
       ]
     },
@@ -413,11 +471,11 @@
       "links": [
         {
           "title": "MDN - Object.defineProperty()",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty"
         },
         {
           "title": "MDN - Keyed collections",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Keyed_collections"
         }
       ]
     },
@@ -440,7 +498,7 @@
       "links": [
         {
           "title": "MDN - The event loop",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Event_loop"
         }
       ]
     },
@@ -463,7 +521,7 @@
       "links": [
         {
           "title": "MDN - Regular Expressions",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Regular_expressions"
         }
       ]
     },
@@ -487,7 +545,7 @@
       "links": [
         {
           "title": "MDN - Classes",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes"
         }
       ]
     },
@@ -501,11 +559,16 @@
       "requirement": "mandatory",
       "title": "Элементы функционального программирования",
       "description": "Применение чистых функций, функций высшего порядка (HOF), принципов иммутабельности и рекурсивных алгоритмов.",
-      "topics": ["Pure Functions", "Higher-Order Functions", "Immutability", "Recursion"],
+      "topics": [
+        "Pure Functions",
+        "Higher-Order Functions",
+        "Immutability",
+        "Recursion"
+      ],
       "links": [
         {
           "title": "MDN - First-class Function",
-          "url": "https://developer.mozilla.org/en-US/docs/Glossary/First_class_Function"
+          "url": "https://developer.mozilla.org/ru/docs/Glossary/First-class_Function"
         }
       ]
     },
@@ -528,7 +591,7 @@
       "links": [
         {
           "title": "MDN - Iterators and generators",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Iterators_and_generators"
         }
       ]
     },
@@ -542,7 +605,11 @@
       "requirement": "mandatory",
       "title": "Каррирование и мемоизация",
       "description": "Реализация каррирования (Currying / Partial Application), создание функций мемоизации и кеширования вычислений.",
-      "topics": ["Currying", "Partial Application", "Memoization techniques"],
+      "topics": [
+        "Currying",
+        "Partial Application",
+        "Memoization techniques"
+      ],
       "links": [
         {
           "title": "JavaScript.info - Currying",
@@ -570,7 +637,7 @@
       "links": [
         {
           "title": "MDN - Memory Management",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management"
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Memory_management"
         }
       ]
     },
@@ -606,7 +673,12 @@
       "requirement": "mandatory",
       "title": "Базовая типизация примитивов и сигнатур функций",
       "description": "Типизация переменных, аргументов функций и возвращаемых значений с использованием существующих базовых типов.",
-      "topics": ["Primitive types", "Function parameter types", "Return types", "Type inference"],
+      "topics": [
+        "Primitive types",
+        "Function parameter types",
+        "Return types",
+        "Type inference"
+      ],
       "links": [
         {
           "title": "TypeScript Handbook - Everyday Types",
@@ -721,7 +793,11 @@
       "requirement": "optional",
       "title": "Основы маршрутизации и Flux-архитектуры",
       "description": "Базовая настройка Vue Router для SPA навигации и понимание принципов однонаправленного потока данных Flux.",
-      "topics": ["Vue Router basics", "router-link / router-view", "Flux pattern in Vuex / Pinia"],
+      "topics": [
+        "Vue Router basics",
+        "router-link / router-view",
+        "Flux pattern in Vuex / Pinia"
+      ],
       "links": [
         {
           "title": "Vue Router - Getting Started",
@@ -752,7 +828,10 @@
           "title": "Vue.js - Slots",
           "url": "https://vuejs.org/guide/components/slots.html"
         },
-        { "title": "Nuxt Documentation", "url": "https://nuxt.com/docs" }
+        {
+          "title": "Nuxt Documentation",
+          "url": "https://nuxt.com/docs"
+        }
       ]
     },
     {
@@ -788,7 +867,12 @@
       "requirement": "optional",
       "title": "Основы контроллеров и директив AngularJS",
       "description": "Понимание архитектуры контроллеров, фабрик, базовых директив ng-app, ng-model, ng-repeat, ng-if и стандартных фильтров.",
-      "topics": ["Controllers", "Factories", "ng-directives", "Filters"],
+      "topics": [
+        "Controllers",
+        "Factories",
+        "ng-directives",
+        "Filters"
+      ],
       "links": [
         {
           "title": "AngularJS Developer Guide",
@@ -919,8 +1003,17 @@
       "requirement": "optional",
       "title": "Основы реактивного программирования и RxJS",
       "description": "Концепция Observable, подписки и отписки (Subscription), базовый пайплайн обработки потока через .pipe().",
-      "topics": ["Observables", "Subscriptions & memory management", ".pipe() operator chaining"],
-      "links": [{ "title": "RxJS - Overview", "url": "https://rxjs.dev/guide/overview" }]
+      "topics": [
+        "Observables",
+        "Subscriptions & memory management",
+        ".pipe() operator chaining"
+      ],
+      "links": [
+        {
+          "title": "RxJS - Overview",
+          "url": "https://rxjs.dev/guide/overview"
+        }
+      ]
     },
     {
       "id": "angular-e1.2-reactive-forms-http",
@@ -1002,8 +1095,17 @@
       "requirement": "optional",
       "title": "RxJS Subjects и мультикастинг",
       "description": "Использование Subject, BehaviorSubject, ReplaySubject, AsyncSubject для реактивного управления состоянием.",
-      "topics": ["Subject vs BehaviorSubject", "ReplaySubject", "Multicasting in RxJS"],
-      "links": [{ "title": "RxJS - Subjects", "url": "https://rxjs.dev/guide/subject" }]
+      "topics": [
+        "Subject vs BehaviorSubject",
+        "ReplaySubject",
+        "Multicasting in RxJS"
+      ],
+      "links": [
+        {
+          "title": "RxJS - Subjects",
+          "url": "https://rxjs.dev/guide/subject"
+        }
+      ]
     },
     {
       "id": "angular-e2.2-change-detection-interceptors",
@@ -1098,11 +1200,11 @@
       "links": [
         {
           "title": "React - State: A Component's Memory",
-          "url": "https://react.dev/learn/state-a-components-memory"
+          "url": "https://ru.react.dev/learn/state-a-components-memory"
         },
         {
           "title": "React - Synchronizing with Effects",
-          "url": "https://react.dev/learn/synchronizing-with-effects"
+          "url": "https://ru.react.dev/learn/synchronizing-with-effects"
         }
       ]
     },
@@ -1127,11 +1229,11 @@
       "links": [
         {
           "title": "React - Preserving and Resetting State",
-          "url": "https://react.dev/learn/preserving-and-resetting-state"
+          "url": "https://ru.react.dev/learn/preserving-and-resetting-state"
         },
         {
           "title": "React - Passing Data Deeply with Context",
-          "url": "https://react.dev/learn/passing-data-deeply-with-context"
+          "url": "https://ru.react.dev/learn/passing-data-deeply-with-context"
         }
       ]
     },
@@ -1154,11 +1256,11 @@
       "links": [
         {
           "title": "React - Code-Splitting",
-          "url": "https://react.dev/reference/react/lazy"
+          "url": "https://ru.react.dev/reference/react/lazy"
         },
         {
           "title": "React - Portals",
-          "url": "https://react.dev/reference/react-dom/createPortal"
+          "url": "https://ru.react.dev/reference/react-dom/createPortal"
         }
       ]
     },
@@ -1184,7 +1286,10 @@
           "title": "React Testing Library",
           "url": "https://testing-library.com/docs/react-testing-library/intro/"
         },
-        { "title": "Next.js Documentation", "url": "https://nextjs.org/docs" }
+        {
+          "title": "Next.js Documentation",
+          "url": "https://nextjs.org/docs"
+        }
       ]
     },
     {
@@ -1220,11 +1325,16 @@
       "requirement": "mandatory",
       "title": "Семантический HTML5 и базовый CSS3",
       "description": "Семантическая верстка страницы, структурирование свойств CSS, блочная модель (Box Model), позиционирование элементов.",
-      "topics": ["HTML5 semantics", "CSS Box Model", "Display & Position", "CSS Selectors"],
+      "topics": [
+        "HTML5 semantics",
+        "CSS Box Model",
+        "Display & Position",
+        "CSS Selectors"
+      ],
       "links": [
         {
           "title": "MDN - CSS building blocks",
-          "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks"
+          "url": "https://developer.mozilla.org/ru/docs/Learn/CSS/Building_blocks"
         }
       ]
     },
@@ -1247,11 +1357,11 @@
       "links": [
         {
           "title": "MDN - CSS Grid Layout",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout"
+          "url": "https://developer.mozilla.org/ru/docs/Web/CSS/CSS_grid_layout"
         },
         {
           "title": "MDN - CSS Flexible Box Layout",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout"
+          "url": "https://developer.mozilla.org/ru/docs/Web/CSS/CSS_flexible_box_layout"
         }
       ]
     },
@@ -1274,11 +1384,11 @@
       "links": [
         {
           "title": "MDN - Cascade, specificity, and inheritance",
-          "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance"
+          "url": "https://developer.mozilla.org/ru/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance"
         },
         {
           "title": "MDN - Using CSS animations",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations"
+          "url": "https://developer.mozilla.org/ru/docs/Web/CSS/CSS_animations/Using_CSS_animations"
         }
       ]
     },
@@ -1300,11 +1410,11 @@
       "links": [
         {
           "title": "MDN - Responsive design",
-          "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design"
+          "url": "https://developer.mozilla.org/ru/docs/Learn/CSS/CSS_layout/Responsive_Design"
         },
         {
           "title": "MDN - CSS Object Model",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model"
+          "url": "https://developer.mozilla.org/ru/docs/Web/API/CSS_Object_Model"
         }
       ]
     },
@@ -1340,11 +1450,15 @@
       "requirement": "mandatory",
       "title": "Устройство и функционирование DOM",
       "description": "Понимание древовидной структуры DOM, взаимодействия узлов (Node/Element) и принципов синхронизации с HTML-разметкой.",
-      "topics": ["Document Object Model", "DOM tree traversal", "DOM Node vs Element"],
+      "topics": [
+        "Document Object Model",
+        "DOM tree traversal",
+        "DOM Node vs Element"
+      ],
       "links": [
         {
           "title": "MDN - Introduction to the DOM",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+          "url": "https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model/Introduction"
         }
       ]
     },
@@ -1390,7 +1504,7 @@
       "links": [
         {
           "title": "MDN - Web APIs",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/API"
+          "url": "https://developer.mozilla.org/ru/docs/Web/API"
         }
       ]
     },
@@ -1412,7 +1526,7 @@
       "links": [
         {
           "title": "MDN - Service Worker API",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API"
+          "url": "https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API"
         }
       ]
     },
@@ -1434,7 +1548,7 @@
       "links": [
         {
           "title": "MDN - Touch events",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Touch_events"
+          "url": "https://developer.mozilla.org/ru/docs/Web/API/Touch_events"
         }
       ]
     },
@@ -1471,7 +1585,11 @@
       "requirement": "optional",
       "title": "Маршрутизация и нативные модули React Native",
       "description": "Настройка стековой и таб-навигации через React Navigation, интеграция нативных мостов и хранилища AsyncStorage.",
-      "topics": ["React Navigation (Stack, Tabs)", "AsyncStorage", "Native Modules integration"],
+      "topics": [
+        "React Navigation (Stack, Tabs)",
+        "AsyncStorage",
+        "Native Modules integration"
+      ],
       "links": [
         {
           "title": "React Navigation Documentation",
@@ -1541,7 +1659,7 @@
       "links": [
         {
           "title": "MDN - HTTP caching",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching"
+          "url": "https://developer.mozilla.org/ru/docs/Web/HTTP/Caching"
         }
       ]
     },
@@ -1600,7 +1718,11 @@
       "requirement": "additional",
       "title": "Инструменты бенчмаркинга и мониторинг RUM",
       "description": "Настройка сбора метрик реальных пользователей (Real User Monitoring), синтетическое тестирование через WebPageTest.",
-      "topics": ["Real User Monitoring (RUM)", "WebPageTest", "Performance Observer API"],
+      "topics": [
+        "Real User Monitoring (RUM)",
+        "WebPageTest",
+        "Performance Observer API"
+      ],
       "links": [
         {
           "title": "MDN - PerformanceObserver API",
@@ -1618,11 +1740,15 @@
       "requirement": "mandatory",
       "title": "Протокол HTTPS и основы TLS",
       "description": "Принципы защищенной передачи данных, шифрование трафика, работа цифровых сертификатов.",
-      "topics": ["HTTPS / TLS handshake", "Public & Private keys", "SSL Certificates"],
+      "topics": [
+        "HTTPS / TLS handshake",
+        "Public & Private keys",
+        "SSL Certificates"
+      ],
       "links": [
         {
           "title": "MDN - What is HTTPS?",
-          "url": "https://developer.mozilla.org/en-US/docs/Glossary/HTTPS"
+          "url": "https://developer.mozilla.org/ru/docs/Glossary/HTTPS"
         }
       ]
     },
@@ -1644,7 +1770,7 @@
       "links": [
         {
           "title": "MDN - HTTP authentication",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication"
+          "url": "https://developer.mozilla.org/ru/docs/Web/HTTP/Authentication"
         }
       ]
     },
@@ -1668,11 +1794,11 @@
       "links": [
         {
           "title": "MDN - Cross-Origin Resource Sharing (CORS)",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+          "url": "https://developer.mozilla.org/ru/docs/Web/HTTP/CORS"
         },
         {
           "title": "MDN - Content Security Policy (CSP)",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"
+          "url": "https://developer.mozilla.org/ru/docs/Web/HTTP/CSP"
         }
       ]
     },
@@ -1698,7 +1824,10 @@
           "title": "OWASP - Cross Site Scripting (XSS)",
           "url": "https://owasp.org/www-community/attacks/xss/"
         },
-        { "title": "OAuth 2.0 Simplified", "url": "https://oauth.net/2/" }
+        {
+          "title": "OAuth 2.0 Simplified",
+          "url": "https://oauth.net/2/"
+        }
       ]
     },
     {
@@ -1778,7 +1907,11 @@
       "requirement": "mandatory",
       "title": "Репликация и шардирование в MongoDB",
       "description": "Обеспечение отказоустойчивости через Replica Sets (Primary, Secondary, Arbiter) и горизонтальное масштабирование через Sharding.",
-      "topics": ["Replica Sets & failover", "Sharding & Shard Keys", "Mongos routing service"],
+      "topics": [
+        "Replica Sets & failover",
+        "Sharding & Shard Keys",
+        "Mongos routing service"
+      ],
       "links": [
         {
           "title": "MongoDB - Replication",
@@ -1819,7 +1952,11 @@
       "requirement": "mandatory",
       "title": "Кластеризация и репликация Redis / KeyDB",
       "description": "Организация репликации master-replica, автоматический failover через Redis Sentinel и шардирование данных в Redis Cluster.",
-      "topics": ["Redis Sentinel", "Redis Cluster & Hash Slots", "Persistence (RDB & AOF)"],
+      "topics": [
+        "Redis Sentinel",
+        "Redis Cluster & Hash Slots",
+        "Persistence (RDB & AOF)"
+      ],
       "links": [
         {
           "title": "Redis - Cluster tutorial",
@@ -1837,11 +1974,15 @@
       "requirement": "optional",
       "title": "Назначение и архитектура веб-серверов",
       "description": "Понимание роли веб-сервера в доставке статики и маршрутизации динамических запросов, сравнение популярных решений (Nginx, Caddy, Apache).",
-      "topics": ["Web Server role", "Static asset serving", "HTTP protocol integration"],
+      "topics": [
+        "Web Server role",
+        "Static asset serving",
+        "HTTP protocol integration"
+      ],
       "links": [
         {
           "title": "MDN - What is a web server?",
-          "url": "https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server"
+          "url": "https://developer.mozilla.org/ru/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server"
         }
       ]
     },
@@ -1855,7 +1996,11 @@
       "requirement": "desirable",
       "title": "Основы Nginx и протокола HTTP",
       "description": "Базовая структура директив Nginx (server, location), типы HTTP-запросов и статус-кодов.",
-      "topics": ["Nginx basic syntax", "server & location blocks", "HTTP request-response cycle"],
+      "topics": [
+        "Nginx basic syntax",
+        "server & location blocks",
+        "HTTP request-response cycle"
+      ],
       "links": [
         {
           "title": "NGINX - Beginner's Guide",
@@ -1919,7 +2064,11 @@
       "requirement": "desirable",
       "title": "Основы среды выполнения Node.js",
       "description": "Архитектура Node.js на базе V8 и libuv, модульные системы CommonJS vs ES Modules, создание базовых скриптов и серверов.",
-      "topics": ["Node.js runtime", "CommonJS vs ESM", "Node core modules (fs, path, http)"],
+      "topics": [
+        "Node.js runtime",
+        "CommonJS vs ESM",
+        "Node core modules (fs, path, http)"
+      ],
       "links": [
         {
           "title": "Node.js - Introduction",
@@ -1948,7 +2097,10 @@
           "title": "Express.js - Routing Guide",
           "url": "https://expressjs.com/en/guide/routing.html"
         },
-        { "title": "NestJS Documentation", "url": "https://docs.nestjs.com/" }
+        {
+          "title": "NestJS Documentation",
+          "url": "https://docs.nestjs.com/"
+        }
       ]
     },
     {
@@ -1984,8 +2136,17 @@
       "requirement": "desirable",
       "title": "Базовые принципы архитектурного стиля REST",
       "description": "Ориентация на ресурсы (Resources / URIs), клиент-серверное разделение, отсутствие сохранения состояния (Statelessness).",
-      "topics": ["REST constraints", "Resource-oriented URIs", "Client-Server separation"],
-      "links": [{ "title": "REST API Tutorial", "url": "https://restfulapi.net/" }]
+      "topics": [
+        "REST constraints",
+        "Resource-oriented URIs",
+        "Client-Server separation"
+      ],
+      "links": [
+        {
+          "title": "REST API Tutorial",
+          "url": "https://restfulapi.net/"
+        }
+      ]
     },
     {
       "id": "api-e2.1-http-methods-headers-codes",
@@ -2005,11 +2166,11 @@
       "links": [
         {
           "title": "MDN - HTTP request methods",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods"
+          "url": "https://developer.mozilla.org/ru/docs/Web/HTTP/Methods"
         },
         {
           "title": "MDN - HTTP response status codes",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+          "url": "https://developer.mozilla.org/ru/docs/Web/HTTP/Status"
         }
       ]
     },
@@ -2034,7 +2195,10 @@
           "title": "GraphQL - Introduction",
           "url": "https://graphql.org/learn/"
         },
-        { "title": "Pact Documentation", "url": "https://docs.pact.io/" }
+        {
+          "title": "Pact Documentation",
+          "url": "https://docs.pact.io/"
+        }
       ]
     },
     {
@@ -2162,7 +2326,11 @@
       "requirement": "mandatory",
       "title": "Чистый код: осмысленное именование и компактные функции",
       "description": "Правила чистого кода: говорящие имена классов, методов и переменных, отражающие намерение разработчика, атомарность функций.",
-      "topics": ["Meaningful Naming", "Single Purpose Functions", "Avoiding Magic Numbers/Strings"],
+      "topics": [
+        "Meaningful Naming",
+        "Single Purpose Functions",
+        "Avoiding Magic Numbers/Strings"
+      ],
       "links": [
         {
           "title": "Clean Code JavaScript",
@@ -2190,7 +2358,7 @@
       "links": [
         {
           "title": "Refactoring Guru - Refactoring Basics",
-          "url": "https://refactoring.guru/refactoring"
+          "url": "https://refactoring.guru/ru/refactoring"
         }
       ]
     },
@@ -2204,11 +2372,16 @@
       "requirement": "desirable",
       "title": "Паттерны проектирования и принципы DRY, KISS, YAGNI",
       "description": "Практическое использование паттернов Factory, Singleton, Decorator и применение инженерных принципов DRY, KISS, YAGNI.",
-      "topics": ["Factory Pattern", "Singleton Pattern", "Decorator Pattern", "DRY, KISS, YAGNI"],
+      "topics": [
+        "Factory Pattern",
+        "Singleton Pattern",
+        "Decorator Pattern",
+        "DRY, KISS, YAGNI"
+      ],
       "links": [
         {
           "title": "Refactoring Guru - Design Patterns",
-          "url": "https://refactoring.guru/design-patterns"
+          "url": "https://refactoring.guru/ru/design-patterns"
         }
       ]
     },
@@ -2299,7 +2472,7 @@
       "links": [
         {
           "title": "GRASP (Object-Oriented Design)",
-          "url": "https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)"
+          "url": "https://ru.wikipedia.org/wiki/GRASP"
         }
       ]
     },
@@ -2313,7 +2486,11 @@
       "requirement": "desirable",
       "title": "Концепция пирамиды тестирования",
       "description": "Понимание уровней тестирования (Unit, Integration, E2E), их стоимости, скорости выполнения и зон ответственности.",
-      "topics": ["Test Pyramid levels", "Unit vs Integration vs E2E", "ROI of tests"],
+      "topics": [
+        "Test Pyramid levels",
+        "Unit vs Integration vs E2E",
+        "ROI of tests"
+      ],
       "links": [
         {
           "title": "Martin Fowler - The Practical Test Pyramid",
@@ -2331,7 +2508,11 @@
       "requirement": "desirable",
       "title": "Написание модульных тестов (Unit Tests)",
       "description": "Разработка unit-тестов с помощью Jest/Vitest, проверка чистых функций и базовой бизнес-логики.",
-      "topics": ["Test runners (Jest / Vitest)", "describe / it / expect", "Testing pure logic"],
+      "topics": [
+        "Test runners (Jest / Vitest)",
+        "describe / it / expect",
+        "Testing pure logic"
+      ],
       "links": [
         {
           "title": "Jest - Getting Started",
@@ -2430,7 +2611,7 @@
       "links": [
         {
           "title": "web.dev - Testing Best Practices",
-          "url": "https://web.dev/articles/ta-best-practices"
+          "url": "https://web.dev/learn/testing"
         }
       ]
     },
@@ -2591,7 +2772,12 @@
         "Space Complexity",
         "Array vs Map/Set lookup costs"
       ],
-      "links": [{ "title": "Big O Cheat Sheet", "url": "https://www.bigocheatsheet.com/" }]
+      "links": [
+        {
+          "title": "Big O Cheat Sheet",
+          "url": "https://www.bigocheatsheet.com/"
+        }
+      ]
     },
     {
       "id": "software-design-architecture-e3.1-clean-architecture-principles",
@@ -2655,7 +2841,7 @@
       "links": [
         {
           "title": "Feature-Sliced Design Documentation",
-          "url": "https://feature-sliced.design/docs/get-started/overview"
+          "url": "https://feature-sliced.design/ru/docs/get-started/overview"
         }
       ]
     },
@@ -2764,7 +2950,11 @@
       "requirement": "mandatory",
       "title": "Поддержание стабильности и Zero Bug Policy в Sentry",
       "description": "Контроль ошибок релизов, оперативное устранение сбоев в Sentry и поддержание чистоты продакшен-окружения.",
-      "topics": ["Zero Bug Policy", "Sentry alert response", "Production issue triage"],
+      "topics": [
+        "Zero Bug Policy",
+        "Sentry alert response",
+        "Production issue triage"
+      ],
       "links": [
         {
           "title": "Sentry - Triage Workflow",
@@ -2870,11 +3060,14 @@
       "requirement": "desirable",
       "title": "Предложения по развитию своего проекта",
       "description": "Выдвижение конкретных инженерных улучшений в рамках своего проекта и их самостоятельная реализация.",
-      "topics": ["Инициативы по оптимизации процессов", "Внедрение улучшений в проект"],
+      "topics": [
+        "Инициативы по оптимизации процессов",
+        "Внедрение улучшений в проект"
+      ],
       "links": [
         {
           "title": "Atlassian - Continuous Improvement",
-          "url": "https://www.atlassian.com/agile/agile-at-scale/continuous-improvement"
+          "url": "https://www.atlassian.com/team-playbook/plays/retrospective"
         }
       ]
     },
@@ -2888,11 +3081,14 @@
       "requirement": "additional",
       "title": "Разработка универсальных модулей в проекте",
       "description": "Выделение и разработка переиспользуемых утилит, хуков и компонентов общего назначения внутри проекта.",
-      "topics": ["Reusable code architecture", "Internal libraries extraction"],
+      "topics": [
+        "Reusable code architecture",
+        "Internal libraries extraction"
+      ],
       "links": [
         {
           "title": "Refactoring Guru - Extract Module",
-          "url": "https://refactoring.guru/extract-class"
+          "url": "https://refactoring.guru/ru/extract-class"
         }
       ]
     },
@@ -2906,7 +3102,11 @@
       "requirement": "mandatory",
       "title": "Кросс-проектное внедрение технических решений",
       "description": "Инициирование и согласование с архитекторами тиражирования успешных технических практик и решений на другие проекты компании.",
-      "topics": ["Cross-project adoption", "Architectural RFC proposals", "Shared tooling scaling"],
+      "topics": [
+        "Cross-project adoption",
+        "Architectural RFC proposals",
+        "Shared tooling scaling"
+      ],
       "links": [
         {
           "title": "GitHub RFC Process example",
@@ -2924,7 +3124,10 @@
       "requirement": "desirable",
       "title": "Участие и доклады на технических комитетах",
       "description": "Инициирование технических тем на техкомах, презентация результатов апробации новых библиотек и подходов.",
-      "topics": ["Подготовка технических докладов", "Демонстрация PoC (Proof of Concept)"],
+      "topics": [
+        "Подготовка технических докладов",
+        "Демонстрация PoC (Proof of Concept)"
+      ],
       "links": [
         {
           "title": "Spotify Engineering Culture",
@@ -2964,7 +3167,10 @@
       "requirement": "optional",
       "title": "Наставничество внутри своей команды",
       "description": "Помощь в онбординге новичков, консультации коллег по возникающим техническим трудностям в проекте.",
-      "topics": ["Onboarding support", "Peer code review assistance"],
+      "topics": [
+        "Onboarding support",
+        "Peer code review assistance"
+      ],
       "links": [
         {
           "title": "LeadDev - How to be a great engineering mentor",
