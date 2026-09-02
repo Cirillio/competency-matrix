@@ -14,6 +14,14 @@ test.describe('routing', () => {
     await expect(page.getByRole('button', { name: 'Войти' })).toBeVisible();
   });
 
+  test('the header wordmark returns to the catalogue from the tracker', async ({ page }) => {
+    await page.goto('/tracker');
+    await expect(page.getByText('Сейчас', { exact: true })).toBeVisible();
+    await page.getByRole('link', { name: /Матрица/ }).click();
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.getByRole('heading', { name: 'Что должен знать фронтенд-инженер' })).toBeVisible();
+  });
+
   test('deep links survive a reload', async ({ page }) => {
     await page.goto('/tracker');
     await expect(page.getByText('Сейчас', { exact: true })).toBeVisible();

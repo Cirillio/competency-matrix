@@ -78,15 +78,19 @@ const agentsDialogOpen = ref(false);
   <!-- Same ground as the page: content slides under it without a visible slab edge. -->
   <header class="bg-(--surface-0) sticky top-0 z-30 px-4 sm:px-6">
     <div class="max-w-[1320px] mx-auto h-14 flex items-center justify-between gap-4">
-      <!-- Wordmark: name carries the weight, qualifier stays quiet -->
-      <h1 class="flex items-baseline gap-1.5 select-none">
+      <!-- Wordmark doubles as the way back to the public catalogue. -->
+      <RouterLink
+        to="/"
+        class="flex items-baseline gap-1.5 select-none rounded
+               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent)"
+      >
         <span class="text-[15px] font-semibold tracking-[-0.01em] text-(--text-primary)">
           {{ APP_NAME_SHORT }}
         </span>
         <span class="hidden sm:inline text-[13px] font-normal text-(--text-tertiary)">
           компетенций
         </span>
-      </h1>
+      </RouterLink>
 
       <div class="flex items-center gap-0.5">
         <!-- Frequent action stays visible; the rest lives in the menu. -->
