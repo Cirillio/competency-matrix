@@ -10,7 +10,7 @@ import AppDropdown from '../components/common/AppDropdown.vue';
 import AppDropdownItem from '../components/common/AppDropdownItem.vue';
 import AppAlertDialog from '../components/common/AppAlertDialog.vue';
 import AiContextDialog from '../components/ai/AiContextDialog.vue';
-import PacksDialog from '../components/packs/PacksDialog.vue';
+import MatricesDialog from '../components/matrices/MatricesDialog.vue';
 import AgentAccessDialog from '../components/agents/AgentAccessDialog.vue';
 import {
   PhDownloadSimple, PhUploadSimple, PhArrowCounterClockwise,
@@ -70,7 +70,7 @@ async function handleReset() {
 // The prompt is reviewed and edited in the dialog rather than copied blind:
 // its calibration depends on a profile the user has to supply.
 const aiDialogOpen = ref(false);
-const packsDialogOpen = ref(false);
+const matricesDialogOpen = ref(false);
 const agentsDialogOpen = ref(false);
 </script>
 
@@ -133,9 +133,9 @@ const agentsDialogOpen = ref(false);
             <span>Импорт из файла</span>
           </AppDropdownItem>
 
-          <AppDropdownItem @select="packsDialogOpen = true">
+          <AppDropdownItem @select="matricesDialogOpen = true">
             <PhStack :size="16" class="shrink-0" />
-            <span>Наборы компетенций</span>
+            <span>Матрицы</span>
           </AppDropdownItem>
 
           <AppDropdownItem @select="agentsDialogOpen = true">
@@ -161,7 +161,7 @@ const agentsDialogOpen = ref(false);
     </div>
 
     <AiContextDialog v-model:open="aiDialogOpen" />
-    <PacksDialog v-model:open="packsDialogOpen" />
+    <MatricesDialog v-model:open="matricesDialogOpen" />
     <AgentAccessDialog v-model:open="agentsDialogOpen" />
 
     <AppAlertDialog

@@ -15,6 +15,7 @@ export const useFilterStore = defineStore('filter', () => {
   const selectedRequirement = ref<RequirementLevel | 'all'>('all');
   const onlyUncompleted = ref(false);
   const onlyGap = ref(false);
+  const selectedSource = ref<string>('all'); // 'all' | 'builtin' | <packId>
 
   // Which competency accordion items are open. Lives here (not in the component)
   // so the open/closed state survives re-filtering and re-mounting of rows.
@@ -28,7 +29,8 @@ export const useFilterStore = defineStore('filter', () => {
       selectedSection.value !== 'all' ||
       selectedRequirement.value !== 'all' ||
       onlyUncompleted.value ||
-      onlyGap.value
+      onlyGap.value ||
+      selectedSource.value !== 'all'
     )
   );
 
@@ -41,6 +43,7 @@ export const useFilterStore = defineStore('filter', () => {
     if (selectedRequirement.value !== 'all') count++;
     if (onlyUncompleted.value) count++;
     if (onlyGap.value) count++;
+    if (selectedSource.value !== 'all') count++;
     return count;
   });
 
@@ -72,6 +75,12 @@ export const useFilterStore = defineStore('filter', () => {
 
       // 3. Section filter
       if (selectedSection.value !== 'all' && skill.section !== selectedSection.value) {
+        return false;
+      }
+
+      // 3b. Source filter (which matrix the skill came from)
+      if (selectedSource.value !== 'all' &&
+          matrixStore.skillSource.get(skill.id) !== selectedSource.value) {
         return false;
       }
 
@@ -113,6 +122,7 @@ export const useFilterStore = defineStore('filter', () => {
     selectedRequirement.value = 'all';
     onlyUncompleted.value = false;
     onlyGap.value = false;
+    selectedSource.value = 'all';
   }
 
   function setExpandedCompetencies(ids: string[]) {
@@ -134,6 +144,7 @@ export const useFilterStore = defineStore('filter', () => {
     selectedRequirement,
     onlyUncompleted,
     onlyGap,
+    selectedSource,
     expandedCompetencies,
     hasActiveFilters,
     activeFilterCount,

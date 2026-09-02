@@ -11,11 +11,27 @@ test.describe('header dialogs', () => {
     await expect(page.getByText('Сейчас', { exact: true })).toBeVisible();
   });
 
-  test('competency pack import: live validation', async ({ page }) => {
-    await openMenuItem(page, 'Наборы компетенций');
+  test('matrices dialog: list, empty state, format spec, import validation', async ({ page }) => {
+    await openMenuItem(page, 'Матрицы');
     const dialog = page.getByRole('dialog');
+
+    // list tab: built-in matrix is always present + a friendly empty state
+    await expect(dialog.getByRole('button', { name: /встроенная/i })).toBeVisible();
+    await expect(dialog.getByText('Своих матриц пока нет')).toBeVisible();
+
+    // -> Добавить (both the empty-state CTA and the tab reach it)
+    await dialog.getByRole('button', { name: 'Загрузить матрицу' }).click();
+    await expect(dialog.getByText('Формат файла')).toBeVisible();
+    await dialog.getByRole('tab', { name: 'Список' }).click();
+    await expect(dialog.getByRole('button', { name: /встроенная/i })).toBeVisible();
+    await dialog.getByRole('tab', { name: 'Добавить' }).click();
+    await expect(dialog.getByText('Формат файла')).toBeVisible();
+    await expect(dialog.getByText('skills[].requirement')).toBeVisible();
+    await expect(dialog.getByText('"mandatory" | "desirable" | "additional" | "optional"')).toBeVisible();
+    await expect(dialog.getByRole('button', { name: 'Скачать шаблон' })).toBeVisible();
+
     const json = dialog.locator('#pack-json');
-    const addBtn = dialog.getByRole('button', { name: 'Добавить набор' });
+    const addBtn = dialog.getByRole('button', { name: 'Добавить матрицу' });
 
     await json.fill('{ not json');
     await expect(dialog.getByText('не похоже на JSON', { exact: false })).toBeVisible();
@@ -49,8 +65,8 @@ test.describe('header dialogs', () => {
     // valid, new
     await json.fill(
       JSON.stringify({
-        name: 'Бэкенд-основы',
-        version: '1.0.0',
+        name: 'Проверочный набор',
+        version: '2.0.0',
         skills: [
           {
             id: 'be-node-1',
@@ -68,7 +84,7 @@ test.describe('header dialogs', () => {
         ],
       })
     );
-    await expect(dialog.getByText('Бэкенд-основы', { exact: false })).toBeVisible();
+    await expect(dialog.getByText('Проверочный набор', { exact: false })).toBeVisible();
     await expect(addBtn).toBeEnabled();
   });
 

@@ -85,4 +85,18 @@ describe('useFilterStore', () => {
     expect(filterStore.selectedGrade).toBe('all');
     expect(filterStore.onlyUncompleted).toBe(false);
   });
+
+  it('source filter scopes to a single matrix', () => {
+    const filterStore = useFilterStore();
+    const total = filterStore.filteredSkills.length;
+
+    filterStore.selectedSource = 'builtin';
+    expect(filterStore.filteredSkills.length).toBe(total); // no packs -> everything is built-in
+
+    filterStore.selectedSource = 'pack-that-does-not-exist';
+    expect(filterStore.filteredSkills.length).toBe(0);
+
+    filterStore.resetFilters();
+    expect(filterStore.selectedSource).toBe('all');
+  });
 });

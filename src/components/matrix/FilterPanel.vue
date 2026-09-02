@@ -50,6 +50,16 @@ const requirementOptions: SelectOption[] = [
   { value: 'optional', label: 'Опционально' },
 ];
 
+// Only worth showing once at least one imported matrix is enabled.
+const showSourceFilter = computed(() => matrixStore.sources.length > 2);
+const sourceOptions = computed<SelectOption[]>(() =>
+  matrixStore.sources.map((s) => ({ value: s.id, label: s.name }))
+);
+const source = computed({
+  get: () => filterStore.selectedSource,
+  set: (v: string) => { filterStore.selectedSource = v; },
+});
+
 // Bridge the store's union types to the string-only Select model.
 const category = computed({
   get: () => filterStore.selectedCategory,
@@ -168,6 +178,7 @@ const requirement = computed({
     </div>
 
     <div class="space-y-2.5">
+      <AppSelect v-if="showSourceFilter" v-model="source" label="Матрица" :options="sourceOptions" />
       <AppSelect v-model="category" label="Категория" :options="categoryOptions" />
       <AppSelect v-model="section" label="Секция" :options="sectionOptions" />
       <AppSelect v-model="requirement" label="Важность" :options="requirementOptions" />

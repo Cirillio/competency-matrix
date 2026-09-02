@@ -35,6 +35,24 @@ export const useMatrixStore = defineStore('matrix', () => {
     ...packsStore.enabledSkills,
   ]);
 
+  /** Choices for the "источник" filter: everything, the built-in set, or one enabled pack. */
+  const sources = computed(() => [
+    { id: 'all', name: 'Все матрицы' },
+    { id: 'builtin', name: 'Встроенная' },
+    ...packsStore.packs.filter((p) => p.enabled).map((p) => ({ id: p.id, name: p.name })),
+  ]);
+
+  /** skill id -> 'builtin' | <packId> */
+  const skillSource = computed<Map<string, string>>(() => {
+    const m = new Map<string, string>();
+    for (const s of builtInSkills.value) m.set(s.id, 'builtin');
+    for (const pack of packsStore.packs) {
+      if (!pack.enabled) continue;
+      for (const s of pack.skills) m.set(s.id, pack.id);
+    }
+    return m;
+  });
+
   const categories = computed(() => {
     return Array.from(new Set(skills.value.map((s) => s.category)));
   });
@@ -67,6 +85,8 @@ export const useMatrixStore = defineStore('matrix', () => {
     skills,
     /** The bundled, curated dataset only. Used by the public catalogue. */
     builtInSkills,
+    sources,
+    skillSource,
     categories,
     sections,
     competencies,
