@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import type { Session, User } from '@supabase/supabase-js';
 import { supabase } from '../services/supabase/client';
 import { useProgressStore } from './progress';
+import { usePacksStore } from './packs';
 import { LocalStorageDriver } from '../services/storage/LocalStorageDriver';
 
 export type AuthStatus = 'loading' | 'authed' | 'anon';
@@ -32,7 +33,7 @@ export const useAuthStore = defineStore('auth', () => {
       // onAuthStateChange only fires INITIAL_SESSION here (not SIGNED_IN), so
       // the listener below would not load anything on a plain page reload.
       if (data.session) {
-        await useProgressStore().loadProgress();
+        await Promise.all([useProgressStore().loadProgress(), usePacksStore().load()]);
       }
     } catch {
       status.value = 'anon';
@@ -44,13 +45,12 @@ export const useAuthStore = defineStore('auth', () => {
 
       if (event === 'SIGNED_IN' || (newSession && status.value !== 'authed')) {
         status.value = 'authed';
-        const progressStore = useProgressStore();
-        await progressStore.loadProgress();
+        await Promise.all([useProgressStore().loadProgress(), usePacksStore().load()]);
       } else if (event === 'SIGNED_OUT' || !newSession) {
         status.value = 'anon';
-        const progressStore = useProgressStore();
         // Safe local-only cache wipe (never triggers remote.clear() on logout)
-        progressStore.resetLocalState();
+        useProgressStore().resetLocalState();
+        usePacksStore().reset();
         const localDriver = new LocalStorageDriver();
         await localDriver.clear();
       }

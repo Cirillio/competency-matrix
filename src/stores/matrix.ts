@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import type { SkillItem } from '../types/matrix';
 import { matrixDataSchema } from '../types/matrix';
 import matrixRawData from '../data/matrix.json';
+import { usePacksStore } from './packs';
 
 export interface CompetencyGroup {
   id: string;
@@ -25,7 +26,14 @@ function loadAndValidateMatrix(): SkillItem[] {
 }
 
 export const useMatrixStore = defineStore('matrix', () => {
-  const skills = ref<SkillItem[]>(loadAndValidateMatrix());
+  const builtInSkills = ref<SkillItem[]>(loadAndValidateMatrix());
+  const packsStore = usePacksStore();
+
+  // The working set = curated dataset + every enabled imported pack.
+  const skills = computed<SkillItem[]>(() => [
+    ...builtInSkills.value,
+    ...packsStore.enabledSkills,
+  ]);
 
   const categories = computed(() => {
     return Array.from(new Set(skills.value.map((s) => s.category)));
@@ -55,13 +63,10 @@ export const useMatrixStore = defineStore('matrix', () => {
   });
 
   return {
+    /** Curated dataset + enabled imported packs. Used by the tracker. */
     skills,
-    /**
-     * The bundled, curated dataset only. Alias of `skills` today; kept separate
-     * so the public catalogue keeps showing just this set once user-imported
-     * competency packs start extending `skills`.
-     */
-    builtInSkills: skills,
+    /** The bundled, curated dataset only. Used by the public catalogue. */
+    builtInSkills,
     categories,
     sections,
     competencies,

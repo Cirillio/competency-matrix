@@ -10,9 +10,10 @@ import AppDropdown from '../components/common/AppDropdown.vue';
 import AppDropdownItem from '../components/common/AppDropdownItem.vue';
 import AppAlertDialog from '../components/common/AppAlertDialog.vue';
 import AiContextDialog from '../components/ai/AiContextDialog.vue';
+import PacksDialog from '../components/packs/PacksDialog.vue';
 import {
   PhDownloadSimple, PhUploadSimple, PhArrowCounterClockwise,
-  PhSparkle, PhSignOut, PhDotsThree,
+  PhSparkle, PhSignOut, PhDotsThree, PhStack,
 } from '@phosphor-icons/vue';
 
 const progressStore = useProgressStore();
@@ -68,6 +69,7 @@ async function handleReset() {
 // The prompt is reviewed and edited in the dialog rather than copied blind:
 // its calibration depends on a profile the user has to supply.
 const aiDialogOpen = ref(false);
+const packsDialogOpen = ref(false);
 </script>
 
 <template>
@@ -125,6 +127,11 @@ const aiDialogOpen = ref(false);
             <span>Импорт из файла</span>
           </AppDropdownItem>
 
+          <AppDropdownItem @select="packsDialogOpen = true">
+            <PhStack :size="16" class="shrink-0" />
+            <span>Наборы компетенций</span>
+          </AppDropdownItem>
+
           <AppDropdownItem tone="critical" @select="resetDialogOpen = true">
             <PhArrowCounterClockwise :size="16" class="shrink-0" />
             <span>Сбросить прогресс</span>
@@ -143,6 +150,7 @@ const aiDialogOpen = ref(false);
     </div>
 
     <AiContextDialog v-model:open="aiDialogOpen" />
+    <PacksDialog v-model:open="packsDialogOpen" />
 
     <AppAlertDialog
       v-model:open="resetDialogOpen"
