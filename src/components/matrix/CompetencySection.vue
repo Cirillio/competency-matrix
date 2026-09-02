@@ -61,7 +61,11 @@ const isComplete = computed(() => completedCount.value === props.skills.length);
       </AccordionTrigger>
     </AccordionHeader>
 
-    <AccordionContent class="overflow-hidden">
+    <AccordionContent
+      class="overflow-hidden
+             data-[state=open]:animate-[accordion-down_220ms_ease-out]
+             data-[state=closed]:animate-[accordion-up_180ms_ease-out]"
+    >
       <div class="p-1.5 pt-0 space-y-1">
         <SkillRow v-for="skill in skills" :key="skill.id" :skill="skill" />
       </div>
